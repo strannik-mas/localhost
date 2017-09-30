@@ -61,7 +61,7 @@ return datepicker.regional.ru;
                    newrequest($('input[name=func]').val(), '#tabs-1', $('input[name=m_b]').val() + ',' + $('input[name=f_b]').val() + ',' + $('input[name=zach]').val())
                 });
                 $('#pol_f2').on('submit', function(){
-                   newrequest($('input[name=func2]').val(), '#tabs-2', $('input[name=m2_b]').val() + ',' + $('input[name=f2_b]').val() + ',' + $('input[name=zach2]').val())
+                   newrequest($('input[name=func2]').val(), '#tabs-2', $('input[name=m2_b]').val() + ',' + $('input[name=f2_b]').val() + ',' + $('input[name=zach2]').val());
                 });
             });
             function newrequest(func, toupdate, params) {

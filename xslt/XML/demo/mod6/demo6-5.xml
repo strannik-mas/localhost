@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo6-5.xsl"?>
+<demo6>
+	<row animal="Кошка" name="Мурка" />
+	<row animal="Собака" name="Жучка" />
+	<row animal="Собака" name="Пулька" />
+	<row animal="Кошка" name="Мулька" />
+	<row animal="Собака" name="Барбос" />
+	<row animal="Собака" name="Рекс" />
+	<row animal="Слон" name="Федя" />
+</demo6>

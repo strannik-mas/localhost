@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo6-4.xsl"?>
+<demo5>
+	<row title="Занятие 1" date="2008-12-01" />
+	<row title="Занятие 2" date="2008-12-02" />
+	<row title="Занятие 3" date="2008-12-03" />
+	<row title="Занятие 4" date="2008-12-04" />
+</demo5>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persons>
+	<client>
+		<name>string</name>
+		<birthdate>2003-07-21</birthdate>
+		<!--<passport>string</passport>-->
+	</client>
+	<client>
+		<name>string</name>
+		<birthdate>2003-07-21</birthdate>
+		<!--<passport>string</passport>-->
+	</client>
+	<clerk>
+		<name>string</name>
+		<birthdate>2019-11-20</birthdate>
+		<!--<id>string</id>-->
+	</clerk>
+</persons>

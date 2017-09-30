@@ -1,0 +1,12 @@
+# Требуется аутентификация
+AuthType Basic  
+AuthName "Private zone. Only for valid users!"
+AuthUserFile  "c:/WebServers/denwer/www/denwer/ajax/demo/module6/base_auth/.htpasswd"
+require valid-user
+
+# Закроем доступ к файлу паролей
+<Files .htpasswd>
+   deny from all
+</Files>
+
+

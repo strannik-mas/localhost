@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<timeTable>
+	<week.chislitel>
+		<ponedelnik>
+			<para>
+				<time>8:00-9:40</time>
+				<title>Матанализ</title>
+			</para>
+			<para>
+				<time>9:50-11:30</time>
+				<title>Начерталка
+					<![CDATA[
+						сегодня будет вводное занятие & демонстрация возможностей
+					]]>
+				</title>
+			</para>
+			<para>
+				<time>11:45-13:25</time>
+				<title>Физика</title>
+			</para>
+		</ponedelnik>
+	</week.chislitel>
+</timeTable>

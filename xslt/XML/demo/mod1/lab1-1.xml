@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- создание xml документа -->
+<raspisanie>
+	<lesson>
+		<year>2013</year>
+		<month>05</month>
+		<day>25</day>
+	</lesson>
+	<lesson>
+		<year>2013</year>
+		<month>05</month>
+		<day>24</day>
+	</lesson>
+	<lesson>
+		<year>2013</year>
+		<month>05</month>
+		<day>23</day>
+	</lesson>
+	<lesson>
+		<year>2013</year>
+		<month>05</month>
+		<day>22</day>
+	</lesson>	
+</raspisanie>

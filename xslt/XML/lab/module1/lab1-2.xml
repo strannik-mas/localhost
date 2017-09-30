@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<timeTable xmlns="http://www.specialist.ru/ns/courses/xml/lab1">
+	<of:offices xmlns:of="http://www.specialist.ru/ns/courses/xml/office">
+		<week.chislitel>
+			<ponedelnik>
+				<para>
+					<of:office code="ЛК">
+						<name>Летательный корпус</name>
+						<place>Возле шары</place>
+					</of:office>
+					<time>8:00-9:40</time>
+					<title>Матанализ</title>
+				</para>
+				<para>
+					<of:office code="ГК">
+						<name>Главный корпус</name>
+						<place>Возле ГПИ</place>
+					</of:office>
+					<time>9:50-11:30</time>
+					<title>Начерталка
+						<![CDATA[
+							сегодня будет вводное занятие & демонстрация возможностей
+						]]>
+					</title>
+				</para>
+				<para>
+					<of:office code="ГК">
+						<name>Радио корпус</name>
+						<place>В конце аллеи космонавтов</place>
+					</of:office>
+					<time>11:45-13:25</time>
+					<title>Физика</title>
+				</para>
+			</ponedelnik>
+		</week.chislitel>
+	</of:offices>
+</timeTable>

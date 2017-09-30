@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<persons>
+	<client>
+		<name>Shura</name>
+		<birthdate>1983-01-25</birthdate>
+		<passport>string</passport>
+	</client>
+    <client>
+		<name>Shura</name>
+		<birthdate>1983-01-25</birthdate>
+		<passport>string</passport>
+	</client>
+	<clerk>
+		<name>string</name>
+		<birthdate>1983-01-28</birthdate>
+		<Id>string</Id>
+	</clerk>
+</persons>

@@ -1,0 +1,3 @@
+Options Indexes FollowSymLinks
+DirectoryIndex none
+AddDefaultCharset utf-8

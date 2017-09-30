@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
+	<xs:element name="timeTable">
+		<xs:complexType>
+            <xs:sequence>
+                <xs:element name="week.chislitel">
+                    <xs:complexType>
+                        <xs:group ref="week"></xs:group>
+					</xs:complexType>
+                </xs:element>
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:group name="week">
+			<xs:sequence>
+				<xs:element name="ponedelnik">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="day" />
+                            <xs:element name="sovet" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="subbota">
+                    <xs:complexType>
+                        <xs:sequence>
+                           <xs:group ref="day" /> 
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:group>
+        <xs:group name="day">
+            <xs:sequence>
+                <xs:element name="para" minOccurs="1" maxOccurs="6">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="time" type="xs:string" />
+                            <xs:element name="title" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:group>
+</xs:schema>

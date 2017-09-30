@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" dir="ltr">
+<head>
+	<title>Пользователи на сайте</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+	<link rel="stylesheet" type="text/css" href="mod_3.css" />
+	<script type="text/javascript" src="xmlhttprequest.js"></script>
+	<!--<script type="text/javascript" src="json2.js"></script>-->
+	<script type="text/javascript">
+		// Класс UserInfo
+		function UserInfo(name, log, pass)
+		{
+			this.name = "";
+			this.login = log;
+			this.password = pass;
+		}
+		
+		// Класс Билет сессии
+		function Ticket(t)
+		{
+			this.id = "";
+			this.valid = false;
+			this.name = "";
+		}
+		//класс записи чата
+		function Record(author, message)
+		{
+			this.author = author;
+			this.message = message;
+		}
+		
+		var checkTimer;
+		var checkTimer2;
+		var checkInterval = 10000;
+		var checkInterval2 = 20000;
+		
+		// Дата и время последнего изменения гостевой книги,
+		// по умолчанию - дата в прошлом
+		var lastUpdate = new Date("01/01/1900");
+		
+		
+		/*
+		** Задание 1. Напишите сценарий отображения формы frmLogin при нажатии
+		** на кнопку "Вход" в блоке divUsers.
+		*/
+		function showLoginForm(but){
+			//console.log(but);
+			but.style.visibility = 'hidden';
+			var f = document.getElementById("frmLogin");
+			f.style.display = "block";
+		}
+		
+		/*
+		** Задание 2. Напишите функцию проверки пользователя и поставьте ее на 
+		**	обработчик onclick кнопки в форме авторизации пользователя.
+		**	Для проверки пользователя создайте объект класса UserInfo 
+		**	и передайте объект JSON в сценарий user_auth.php
+		**	Этот сценарий вернет объект класса Ticket.
+		**	Свойство Ticket.valid показывает пройденную авторизацию
+		**	Сохраните билет (Ticket) в глобальной переменной
+		*/
+		
+		
+		// Билет пользователя
+		var ticket;
+		var name;
+		function validateUser(){
+			var txtLog = document.getElementById("txtLogin");
+			var txtPass = document.getElementById("txtPassword");
+		
+		// Проверка заполнения элементов
+			if (txtLog.value == "" || txtPass.value == "")
+			{
+				alert("Необходимо заполнить все поля...");
+				return;
+			}
+			
+			
+			var user = new UserInfo("", txtLog.value, txtPass.value);
+			// Сериализация в JSON
+			var jsonData = JSON.stringify(user);
+			// Передача данных
+			var req = getXmlHttpRequest();
+			req.onreadystatechange = function()
+				{
+					if (req.readyState != 4) return;
+					ticket = JSON.parse(req.responseText);
+					if (!ticket.valid){
+						var dm = document.getElementById("divMessage");
+						dm.style.display = "block";
+					}else {
+						name = ticket.name;
+						
+						getOnlineUser();
+					}
+				
+				}
+			req.open("POST", "user_auth.php", true);
+			req.setRequestHeader("Content-Type", "text/plain");
+			req.setRequestHeader("Content-Length", jsonData.length);			
+			req.send(jsonData);		
+		}
+		function hideErrorMessage(){
+			var dm = document.getElementById("divMessage");
+			dm.style.display = "";
+		}
+		function getOnlineUser(){	
+			document.getElementById("frmLogin").style.display = "none";
+			var jsonData2 = JSON.stringify(ticket);
+			var req = getXmlHttpRequest();
+			req.onreadystatechange = function()
+				{
+					if (req.readyState != 4) return;
+					console.log(req.responseText);
+					users = JSON.parse(req.responseText);
+					var divUs = document.getElementById("divUsers");
+					var ul = divUs.getElementsByTagName('UL')[0];
+						// Удаление старых записей
+					while (ul.hasChildNodes()) ul.removeChild(ul.lastChild);
+					for (var i = 0; i < users.length; i++)
+					{
+						
+						var aAuthor = document.createElement("li");
+						liText = document.createTextNode(users[i].name);
+						aAuthor.appendChild(liText);						
+						ul.appendChild(aAuthor);
+					}
+				}
+			req.open("POST", "get_online_users.php", true);
+			req.setRequestHeader("Content-Type", "text/plain");
+			req.setRequestHeader("Content-Length", jsonData2.length);			
+			req.send(jsonData2);	
+			checkTimer2 = window.setTimeout("getOnlineUser()", checkInterval2);
+		}
+		/*
+		** Задание 3. На основе полученного билета (Ticket) покажите пользователю 
+		**	сообщение об ошибке, установив свойство CSS display = "block"
+		**	объекту divMessage (не забудьте создать функцию гашения
+		**	это сообщения, присвоив пустую строку в свойство CSS display! Это
+		**	нужно сделать по нажатию кнопки в слое divMessage)
+		**	Если же билет правильный, сохраните его в глобальной переменной
+		**	и переходите к заданию 4
+		**  Не забудьте погасить кнопку ВХОД в объекте divUsers
+		*/
+		
+
+		
+		/*
+		** Задание 4. Напишите функцию запроса пользователей, которые находятся в режиме online
+		**	Для этого передайте билет сценарию get_online_users.php
+		**	Этот сценарий возвращает массив объектов UserInfo
+		**	На основе этого массива выведите список пользователей online в
+		**	список объекта divUsers.
+		**	Установите таймер на вызов этой же функции в диапазоне 30 - 60 сек...
+		*/	
+		function addRecord()
+		{
+			// Элементы управления
+			var txtMessage = document.getElementById("txtMessage");
+			
+			// Проверка заполнения элементов
+			if (txtMessage.value == "")
+			{
+				alert("Необходимо написать послание!");
+				return;
+			}
+			// Создание объъекта записи
+			var record = new Record(name, txtMessage.value);
+			
+			// Сериализация в JSON
+			var jsonData = JSON.stringify(record);
+			// Передача данных
+			var reqChat = getXmlHttpRequest();
+			reqChat.onreadystatechange = function()
+				{
+					if (reqChat.readyState != 4) return;
+					// Завершение передачи... Сброс таймера и показ сообщения
+					window.clearTimeout(checkTimer);
+					checkUpdates();
+				}
+			reqChat.open("POST", "addrecord.php", true);
+			reqChat.setRequestHeader("Content-Type", "text/plain");
+			reqChat.setRequestHeader("Content-Length", jsonData.length);			
+			reqChat.send(jsonData);				
+		}
+		function getLastModified()
+		{
+			// Выполним запрос HEAD к скрипту гостевой книги...
+			var reqChat = getXmlHttpRequest();
+			reqChat.open("HEAD", "getlastmsgs.php", false);
+			reqChat.send(null);
+			// Создадим объект Date на основе ответа Last-Modified
+			return new Date(reqChat.getResponseHeader("Last-Modified"));
+		}
+		
+		// Создание элемента с тектом
+		function createElement(tag, text)
+		{
+			var element = document.createElement(tag);
+			var elementText = document.createTextNode(text);
+			element.appendChild(elementText);
+			return element;
+		}
+		
+		function checkUpdates()
+		{
+			var lastModified = getLastModified();
+			if (lastUpdate < lastModified)
+			{
+				// Запрос новых данных из гостевой книги
+				var reqChat = getXmlHttpRequest();
+				reqChat.onreadystatechange = function()
+				{
+					if (reqChat.readyState != 4) return;
+					var records = JSON.parse(reqChat.responseText);
+					// Элемент для отображения
+					var divResult = document.getElementById("divResult");
+					// Удаление старых записей
+					while (divResult.hasChildNodes()) divResult.removeChild(divResult.lastChild);
+					// Отображение записей чата
+					for (var i = 0; i < records.length; i++)
+					{
+						// Элемент для размещения записи
+						var divRecord = document.createElement("div");
+						divRecord.className = "divRecord";
+						// Ссылка на автора
+						var aAuthor = createElement("p", records[i].author);
+						// Текст сообщения
+						var pMessage = createElement("p", records[i].message);
+						divRecord.appendChild(aAuthor);
+						divRecord.appendChild(pMessage);
+						divResult.appendChild(divRecord);
+						// Время  последнего отображения 
+						lastUpdate = lastModified;
+					}
+				}
+				reqChat.open("GET", "getlastmsgs.php", true);
+				reqChat.send(null);
+			}
+			// Таймер на следующую проверку
+			checkTimer = window.setTimeout("checkUpdates()", checkInterval);
+		}
+		window.onload = function()
+		{
+			document.getElementById("frmLogin").style.display = "none";
+		}
+	</script>
+</head>
+<body>
+	<h1>Пользователи на сайте</h1>
+	
+	
+	
+	<!-- Форма входа -->
+	<form id="frmLogin" onsubmit="return false" class="block">
+		<h2>Авторизация пользователя</h2>
+		<div>
+			<label for="txtLogin">Логин</label>
+			<input id="txtLogin" type="text" />
+		</div>
+		<div>
+			<label for="txtPassword">Пароль</label>
+			<input id="txtPassword" type="password" />
+		</div>
+		<button onclick="validateUser()">Вход</button>
+		<div id="divMessage" class="block">
+			<h2>Ошибка</h2>
+			<div>Неправильный логин или пароль!</div>
+			<button onclick="hideErrorMessage()">Закрыть</button>
+		</div>
+	</form> 
+	
+	<!-- Панель списка пользователей -->
+	<div id="divUsers" class="block">
+		<h2>Пользователи на сайте</h2>
+		<button onclick="showLoginForm(this)">Вход</button>
+		<ul></ul>
+	</div>
+	<h2>Чат</h2>
+	<form onsubmit="return false">
+		<div>
+			<textarea id="txtMessage"></textarea>
+		</div>
+		<button onclick="addRecord()">Отправить</button>
+	</form>
+	<div id="divResult"></div>
+	
+	<!-- Задания -->
+	<dl>
+		<dt><h2>Задания</h2></dt>
+		
+		<dt><h3>Задание 1</h3></dt>
+		<dd>
+			Напишите сценарий отображения формы frmLogin при нажатии
+			на кнопку "Вход" в блоке divUsers.
+		</dd>
+		
+		<dt><h3>Задание 2</h3></dt>
+		<dd>
+			Напишите функцию проверки пользователя и поставьте ее на 
+			обработчик onclick кнопки в форме авторизации пользователя.
+			Для проверки пользователя создайте объект класса UserInfo 
+			и передайте объект JSON в сценарий user_auth.php
+			Этот сценарий вернет объект класса Ticket.
+			Свойство Ticket.valid показывает пройденную авторизацию
+			Сохраните билет (Ticket) в глобальной переменной
+		</dd>		
+
+		<dt><h3>Задание 3</h3></dt>
+		<dd>
+			На основе полученного билета (Ticket) покажите пользователю 
+			сообщение об ошибке, установив свойство CSS display = "block"
+			объекту divMessage (не забудьте создать функцию гашения
+			это сообщения, присвоив пустую строку в свойство CSS display! Это
+			нужно сделать по нажатию кнопки в слое divMessage)
+			Если же билет правильный, сохраните его в глобальной переменной
+			и переходите к заданию 4
+			Не забудьте погасить кнопку ВХОД в объекте divUsers
+		</dd>	
+
+		<dt><h3>Задание 4</h3></dt>
+		<dd>
+			Напишите функцию запроса пользователей, которые находятся в режиме online
+			Для этого передайте сценарию get_online_users.php
+			Этот сценарий возвращает массив объектов UserInfo
+			На основе этого массива выведите список пользователей online в
+			список объекта divUsers
+			Установите таймер на вызов этой же функции в диапазоне 30 - 60 сек...
+		</dd>	
+
+		<dt><h3>Задание 5 (дополнительно)</h3></dt>
+		<dd>
+			Самостоятельно дома напишите сцераний PHP и необходимые AJAX функции
+			для обмена сообщениями между пользовтелями находящимся в online
+		</dd>	
+	</dl>
+</body>
+</html>
+

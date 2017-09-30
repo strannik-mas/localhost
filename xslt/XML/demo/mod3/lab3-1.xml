@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Создание XML схемы простого документа -->
+<root
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="lab3-1.xsd">
+	<name>Mike</name>
+	<sname>Doo</sname>
+	<age>12</age>
+	<birthday>1986-03-28</birthday>
+</root>

@@ -1,0 +1,7 @@
+cd D:\WebServer\Apache2.2\htdocs\localhost\mod6
+
+msxsl.exe lab6-2.xml lab6-2-html.xsl -o lab6-2-html-result.html
+
+msxsl.exe lab6-2.xml lab6-2-text.xsl -o lab6-2-text-result.txt
+
+msxsl.exe lab6-2.xml lab6-2-xml.xsl -o lab6-2-xml-result.xml

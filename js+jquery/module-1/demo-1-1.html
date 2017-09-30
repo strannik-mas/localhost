@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Начало</title>
+		<link rel="stylesheet" href="../css/style.css" type="text/css" />  
+		<script src="../lib/jquery.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function(){
+				/*var x = $('ul li').css('color', 'green');
+				var x = $('ul li').css('background', 'white');
+				var x = $('ul li').css({
+					'color': 'red',
+					'background': 'black',
+					'font-size': '16px'
+				});
+				
+				
+				if (x.length>0)	{
+					console.log(x);	
+				}*/
+				//$('ul li').addClass('mystyle');
+				$('li:first-child').addClass('mystyle');
+				//$('ul li').toggleClass('mystyle');
+				//$('ul').removeClass('mylist');
+				//$('div ul.mylist').children('li').css('border', '2px dashed');
+				//var x = $('div ul.mylist').children('li').eq(1).text('New');
+				//var x = $('div ul.mylist').children('li').eq(2).html();
+				//$('div ul.mylist').find('li').css('border', '1px solid');
+				var x = $('ul').add('div');
+				console.log(x);
+				$('li').eq(2).siblings().css('color', 'green')
+					.andSelf().css('font-weight', 'bold');
+			});
+		</script>
+		<style>
+			.mystyle{
+				color: red;
+				background: blue;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='box'>
+			<ul class="mylist">
+				<li>Первый пункт</li>
+				<li>Второй пункт</li>
+				<li>Третий пункт
+					<ul><li>HELLO</li></ul>
+				</li>
+				<li>Четвертый пункт</li>
+				<!-- <li class="mystyle">Четвертый пункт</li> -->
+			</ul>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>

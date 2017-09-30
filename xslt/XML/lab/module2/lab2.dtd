@@ -1,0 +1,7 @@
+<!ELEMENT timeTable (week.chislitel)>
+<!ELEMENT week.chislitel (ponedelnik, subbota)>
+<!ELEMENT ponedelnik (para+)>
+<!ELEMENT subbota (para+)>
+<!ELEMENT para (time, title)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT title (#PCDATA)>

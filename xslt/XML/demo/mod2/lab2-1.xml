@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--создание dtd описания--> 
+<!--(entity следует прописывать внутри xml-документа
+, т.к из внешнего он не подтягивается)-->
+<!DOCTYPE books SYSTEM "lab2-1.dtd" [
+<!ENTITY bhv "BHV">
+<!ENTITY will "Williams">
+<!ENTITY apress "A-Press Publishing">
+]>
+<books>
+	<book>
+		<title>Название</title>
+		<author>Автор</author>
+		<price>123.00</price>
+		<publisher>&apress;</publisher>
+	</book>
+</books>

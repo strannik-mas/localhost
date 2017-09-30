@@ -1,0 +1,10 @@
+<HTML>
+<HEAD>
+<TITLE>time</TITLE>
+</HEAD>
+<BODY>
+<?
+	print(time());
+?>
+</BODY>
+</HTML>

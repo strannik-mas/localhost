@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="lab5-2.xsl"?>
+<lab5_2>
+	<element name="computer" value="Intel Core Duo" />
+	<element name="monitor" value="19 in. " />
+	<element name="printer" value="LBP2900" />
+	<element name="keyboard" value="104 keys" />
+	<element name="mouse" value="optical" />
+</lab5_2>

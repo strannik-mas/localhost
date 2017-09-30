@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Расширение типов -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="account" minOccurs="1" maxOccurs="unbounded" type="acct" />
+				<xs:element name="savingAccount" minOccurs="1" maxOccurs="unbounded" type="savingAcct" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+		<xs:complexType name="acct">
+			<xs:sequence>
+				<xs:element name="description" type="xs:string" />
+				<xs:element name="number" type="xs:string" />
+				<xs:element name="type" type="xs:string" />
+				<xs:element name="balance" type="xs:decimal" />
+			</xs:sequence>
+			<xs:attribute name="status" type="xs:string" use="optional"/>
+		</xs:complexType>
+		
+		<xs:complexType name="savingAcct">
+			<xs:complexContent>
+				<xs:extension base="acct">
+					<xs:sequence>
+						<xs:element name="minimumBalance" type="xs:decimal" />
+					</xs:sequence>
+					
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>		
+		
+</xs:schema>		

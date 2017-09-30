@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:pricelist xmlns:ns1="http://www.specialist.ru/courses/xml/module-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ns1:book>
+		<ns1:title>XML и IE5</ns1:title>
+		<ns1:author>Алекс Гомер</ns1:author>
+		<ns1:price>200</ns1:price>
+	</ns1:book>
+	<ns1:book>
+		<ns1:title>Dinamic HTML</ns1:title>
+		<ns1:author>Алекс Хоумер</ns1:author>
+		<ns1:price>120</ns1:price>
+	</ns1:book>
+	<ns1:book>
+		<ns1:title>Технология XSLT</ns1:title>
+		<ns1:author>Алексей Валиков</ns1:author>
+		<ns1:price>150</ns1:price>
+	</ns1:book>
+	<ns1:book>
+		<ns1:title>jnjnj</ns1:title>
+		<ns1:author>mmmm</ns1:author>
+		<ns1:price>33</ns1:price>
+	</ns1:book>
+</ns1:pricelist>

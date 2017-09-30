@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Расширение типов -->
+<list>
+	<account status="SS">
+		<description>string</description>
+		<number>string</number>
+		<type>string</type>
+		<balance>12.00</balance>
+	</account>
+	
+	<savingAccount>
+		<description>string</description>
+		<number>string</number>
+		<type>string</type>
+		<balance>12.00</balance>
+		<minimumBalance>0.01</minimumBalance>
+	</savingAccount>	
+</list>

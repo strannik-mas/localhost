@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Создание XML схемы простого документа -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="sname" type="xs:string" />
+				<xs:element name="age" type="xs:integer" />
+				<xs:element name="birthday" type="xs:date" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

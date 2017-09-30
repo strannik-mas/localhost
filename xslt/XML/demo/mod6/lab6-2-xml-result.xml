@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE lab62Result PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/1999/xhtml">
+<lab62Result>
+	<course teacher="Никитин И.Г." id="XML">
+		<title>XML и XSLT. Современные технологии обработки данных для Web и Office 2007</title>
+		<keywords>
+			<keyword>XML</keyword>
+			<keyword>XML Schema</keyword>
+			<keyword>XPath</keyword>
+			<keyword>XSLT</keyword>
+		</keywords>
+		<teachers>
+			<teacher>Никитин И.Г.</teacher>
+			<teacher>Павлов Ю.Е.</teacher>
+		</teachers>
+	</course>
+	<course teacher="Никитин И.Г." id="AJAX">
+		<title>AJAX. Разработка web-приложений для Web 2.0</title>
+		<keywords>
+			<keyword>AJAX</keyword>
+			<keyword>XML</keyword>
+			<keyword>XML Schema</keyword>
+			<keyword>JavaScript</keyword>
+			<keyword>XSLT</keyword>
+		</keywords>
+		<teachers>
+			<teacher>Никитин И.Г.</teacher>
+			<teacher>Чебыкин Р.И.</teacher>
+		</teachers>
+	</course>
+	<course teacher="Никитин И.Г." id="PHP">
+		<title>Профессиональное программирование на PHP 5</title>
+		<keywords>
+			<keyword>PHP</keyword>
+			<keyword>XML</keyword>
+			<keyword>XSLT</keyword>
+		</keywords>
+		<teachers>
+			<teacher>Никитин И.Г.</teacher>
+			<teacher>Борисов И.О.</teacher>
+		</teachers>
+	</course>
+</lab62Result>

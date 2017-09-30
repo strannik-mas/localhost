@@ -1,0 +1,83 @@
+{
+    "name": " Just Another Some Shop",
+    "description": " Lorem Ipsum - це текст-\"риба\", що використовується в друкарстві та дизайні. Lorem Ipsum є, фактично, стандартною "рибою" аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та склав на ній підбірку зразків шрифтів. "Риба" не тільки успішно пережила п'ять століть, але й прижилася в електронному верстуванні, залишаючись по суті незмінною. Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп'ютерного верстування на кшталт Aldus Pagemaker, які використовували різні версії Lorem Ipsum.",
+    "special": [
+        "Lorem ipsum ",
+		" dolor sit amet", 
+		"consectetur   adipiscing elit",
+        "",
+        ""
+    ],
+    "categories": [
+        {
+            "name": "Donec"
+        },
+        {
+            "name": "at sagittis"
+        },
+        {
+            "name": "elit"
+        },
+        {
+            "name": ""
+        }
+    ],
+    "images": [
+        {
+            "image": "shop\/1\/img\/001.jpg",
+            "isMain": true
+        },
+        {
+            "image": "shop\/1\/img\/005.jpg",
+            "isMain": false
+        },
+        {
+            "image": "shop\/1\/img\/006.jpg",
+            "isMain": false
+        },
+        {
+            "image": "shop\/1\/img\/010.jpg",
+            "isMain": false
+        },
+        {
+            "image": "shop\/1\/img\/009.jpg",
+            "isMain": false
+        },
+        {
+            "image": "shop\/1\/img\/008.png",
+            "isMain": false
+        }
+    ],
+    "contacts": {
+        "website": "http:\/\/sevenlines.com.ua",
+        "email": "serge@sevenlines.com.ua",
+        "location": {
+            "country": "Украина",
+            "city": "Харьков",
+            "streetNumber": "Соляниковский пер., 10\/12",
+            "coords": [
+                49.9847864,
+                36.2338603
+            ]
+        },
+        "phones": [
+            {
+                "phone": "+38 067 376 87 92",
+                "isMain": true,
+                "person": "Сергей"
+            },
+            {
+                "phone": "",
+                "isMain": false,
+                "person": ""
+            }
+        ],
+        "social": {
+            "vk": "http:\/\/vk.com\/sevenlinesstudio",
+            "fb": "https:\/\/www.facebook.com\/SevenLinesStudio\/",
+            "instagramm": "",
+            "twitter": "",
+            "google": ""
+        }
+    }
+}

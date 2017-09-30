@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Группы элементов -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="persons">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="client" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:group ref="PersonGroup" />
+							<xs:element name="passport" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="clerk">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:group ref="PersonGroup" />
+							<xs:element name="id" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+		<xs:group name="PersonGroup">
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="birthdate" type="xs:date" />
+			</xs:sequence>
+		</xs:group>
+</xs:schema>		

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Применение простых типов -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="number">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:maxInclusive value="100" />
+							<xs:minExclusive value="0" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="age" type="ageType" />
+				<xs:element name="phone">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{3}-\d{2}-\d{2}" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+                <xs:element name="birthday">
+					<xs:simpleType>
+						<xs:restriction base="xs:date">
+							<xs:minInclusive value="1980-01-01" />
+							<xs:maxExclusive value="2014-09-18" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="workdays">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Воскресенье" />
+							<xs:enumeration value="Понедельник" />
+							<xs:enumeration value="Вторник" />
+							<xs:enumeration value="Среда" />
+							<xs:enumeration value="Четверг" />
+							<xs:enumeration value="Пятница" />
+							<xs:enumeration value="Суббота" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>	
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+		<xs:simpleType name="ageType">
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="5" />
+							<xs:maxInclusive value="99" />
+						</xs:restriction>
+		</xs:simpleType>	
+		
+</xs:schema>		

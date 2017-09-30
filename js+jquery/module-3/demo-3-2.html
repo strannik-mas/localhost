@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Основы анимации</title>
+	<script src="../lib/jquery.js" type="text/javascript"></script>
+	<script>
+		$(function(){
+		$('button').on('click', function(){
+			var content = $('div.content') ;	
+			var winW = $(window).width() / 2 - content.outerWidth() / 2;
+			var winH = $(window).height() / 2 - content.outerHeight() / 2;
+			content.animate({
+			'left': winW,
+			
+			'position': 'absolute',
+			'height': 'toggle',
+			'opacity': 'toggle'
+			}, 2000)
+			.animate(
+				{'top': winH}, {duration: 2000, queue:false}
+			);
+			/*console.log(winW);
+			content.animate(
+			{'font-size': '+=2'}, {duration: 500}
+			)
+			.animate(
+				{'top': 500}, {duration: 3000, queue:false}
+			);
+			
+			content.animate({
+				'font-size': '+=2',
+				'width': '+=100'
+			}, {
+			duration: 3000,
+			complete:function(){console.log("stop")},
+			step:function(){console.log($(this).css('font-size'))},
+			
+			});
+			content.css({
+				'font-size': '+=2',
+				'color': 'green'
+			});
+			content.css('font-size', '+=2');
+			content.css('color', 'green');
+			*/
+			$.fn.myMethod = function(){}//добавление своего метода в jquery
+		});
+		});
+	</script>
+	<style>
+	/*body{margin:0}*/
+		.content{
+			width: 400px;
+			background: yellow;
+			padding: 2em;
+			position: relative
+		}
+	</style>
+</head>
+<body>
+
+<div class=content>
+	<h1>Какой-то текст</h1>
+	<p>
+	Неспроста свинцовый сосуд мгновенно открывает квазиупругую колбу. Карусель быстра и кратковременна. Часто бывает, что ядерная лапка груба и продуманна. Очевидно, феноменальная шестерня брезентового комплекта бережно увеличивает тайную лампу. Изящное значение резко и метастабильно. Платиновая инерция перегоревшего изолятора образовывает разделение.
+	</p>
+</div>
+<p><button>Изменить</button></p>
+
+<script>
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" dir="ltr">
+<head>
+	<title>Получение данных с сервера</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+	<script type="text/javascript" src="xmlhttprequest.js"></script>
+	<script type="text/javascript">
+		
+		// Показ заголовков, пполученных от сервера
+		function getTime()
+		{
+			// Создадим объект
+			req = getXmlHttpRequest();
+			// Установим обработчик
+			req.onreadystatechange = function()
+			{
+				// только при состоянии "complete"
+				if (req.readyState == 4)
+				{
+					var time = req.getResponseHeader("Current-Time");
+					document.getElementById("result").innerHTML = time;
+				}
+			}
+			// Выполним асинхронный запрос
+			req.open("HEAD", "gettime-2.php", true);
+			req.send(null);
+		}		
+		
+		window.onload = function(){
+			setInterval("getTime()", 1000)
+		}
+	</script>
+</head>
+<body>
+	<h1>Получение данных с сервера</h1>
+	<div id="result">Loading</div>
+</body>
+</html>
+

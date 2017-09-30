@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xsi:noNamespaceShemaLocation="file:///D:/WebServer/Apache2.2/htdocs/localhost/mod3/demo3-1.xsd"
+-->
+<root
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="demo3-1.xsd">
+	<name>string</name>
+	<myAge>12</myAge>
+</root>

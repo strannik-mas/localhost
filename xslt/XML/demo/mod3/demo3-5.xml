@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Применение простых типов -->
+<list>
+	<number>25</number>
+	<age>10</age>
+	<phone>777-99-99</phone>
+    <birthday>2008-05-12</birthday>
+	<workdays>Понедельник</workdays>
+</list>

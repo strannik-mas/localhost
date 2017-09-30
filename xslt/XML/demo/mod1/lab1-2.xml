@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- использование пространства имен -->
+<data xmlns="somenamespace">
+	<lesson>
+		<startDate>01-04-2013</startDate>
+		<description>
+			<div xmlns="http://www.w3.org/1999/xhtml"></div>
+		</description>
+	</lesson>
+</data> 

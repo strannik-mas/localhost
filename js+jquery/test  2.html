@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+  $(document).ready(function(){
+
+    var arr = [ "a", "b", "c", "d", "e" ]
+    $("div").text(arr.join(", "));
+
+    arr = jQuery.map(arr, function(n, i){
+      return (n.toUpperCase() + i);
+    });
+    $("p").text(arr.join(", "));
+
+    arr = jQuery.map(arr, function (a) { return a + a; });
+    $("span").text(arr.join(", "));
+
+  });
+  </script>
+
+  <style>
+  div { color:blue; }
+  p { color:green; margin:0; }
+  span { color:red; }
+  </style>
+</head>
+<body>
+  <div></div>
+  <p></p>
+
+  <span></span>
+
+</body>
+</html>

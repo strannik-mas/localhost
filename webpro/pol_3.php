@@ -5,6 +5,7 @@
         <title>Chinese_table</title>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
+            //данные взяты отсюда: http://baby-calendar.ru/plod/opredelenie-pola/tablicy-opredeleniya/
             function getPolChinese(){
                 var chineseArr = [
                     ["девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик"],

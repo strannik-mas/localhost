@@ -373,8 +373,8 @@
         $date_bloodRenewMother =strtotime($params[0] . "+" . $kMother*3 . " year");
         $date_bloodRenewFather = strtotime($params[1] . "+" . $kFather*4 . " year");
         $text = $date_bloodRenewFather > $date_bloodRenewMother ? 'У вас будет мальчик!' : 'У вас будет девочка!';
-        $text2 = date('d-m-y', $date_bloodRenewFather).' -дата обновления крови папы; '.date('d-m-y',$date_bloodRenewMother).' -дата обновления крови мамы';
-        $out = '<table><tr><td>тут должно быть фото. '.$text2.'</td><td><h2>'.$text.'</h2><p>Результаты теста не являются медицинским заключением и для уверенности в поле будущего ребенка необходимо обратится к врачу.</p></td><td><button>Сохранить результат</button><br><br><button onclick="location.reload()">Проверить другую дату</button></td></tr></table>';
+//        $text2 = date('d-m-y', $date_bloodRenewFather).' -дата обновления крови папы; '.date('d-m-y',$date_bloodRenewMother).' -дата обновления крови мамы';
+        $out = '<table><tr><td><img src="http://rs1037.pbsrc.com/albums/a454/redwine-n-strawberries/Greetings%20Funny%20or%20Flirty/Happy%20Birthday-Anniversary-Congratulaions/02f.gif?w=280&h=210&fit=crop" width="200" height="200"></td><td><h2>'.$text.'</h2><p>Результаты теста не являются медицинским заключением и для уверенности в поле будущего ребенка необходимо обратится к врачу.</p></td><td><button>Сохранить результат</button><br><br><button onclick="location.reload()">Проверить другую дату</button></td></tr></table>';
         return $out;
     }
 ?>

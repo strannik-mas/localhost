@@ -3,7 +3,46 @@
     <head>
         <meta charset="UTF-8">
         <title>Chinese_table</title>
-        
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            function getPolChinese(){
+                var chineseArr = [
+                    ["девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "девочка", "мальчик", "девочка"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик", "девочка", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка"],
+                    ["девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка"],
+                    ["мальчик", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "девочка"],
+                    ["мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "девочка", "девочка", "девочка", "девочка"],
+                    ["девочка", "мальчик", "мальчик", "девочка", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "девочка", "мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "девочка", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "девочка", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "мальчик", "мальчик", "мальчик", "мальчик", "девочка", "девочка"],
+                    ["девочка", "мальчик", "девочка", "девочка", "мальчик", "мальчик", "девочка", "девочка", "девочка", "мальчик", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "мальчик"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "мальчик", "девочка", "девочка", "девочка", "мальчик"],
+                    ["девочка", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "девочка", "мальчик", "мальчик"],
+                    ["мальчик", "мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "мальчик", "девочка", "девочка", "мальчик", "мальчик"],
+                    ["девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "девочка", "девочка", "мальчик", "мальчик", "мальчик", "мальчик"],
+                    ["мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка"],
+                    ["мальчик", "девочка", "мальчик", "мальчик", "мальчик", "девочка", "девочка", "мальчик", "девочка", "девочка", "девочка", "девочка"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик"],
+                    ["девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "девочка", "мальчик", "девочка"],
+                    ["мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "мальчик"],
+                    ["мальчик", "мальчик", "девочка", "мальчик", "мальчик", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "девочка", "девочка"],
+                    ["девочка", "мальчик", "мальчик", "девочка", "девочка", "девочка", "мальчик", "девочка", "мальчик", "девочка", "мальчик", "мальчик"]
+                ];
+                if($('#vozr3_m').val() >= 18 && $('#vozr3_m').val() <= 45){
+                    var text = 'У вас будет ' + chineseArr[$('#vozr3_m').val()-18][$('#month_chinese').val()] + '!';
+                    $htmlStr = '<tr><td><img src="http://rs1037.pbsrc.com/albums/a454/redwine-n-strawberries/Greetings%20Funny%20or%20Flirty/Happy%20Birthday-Anniversary-Congratulaions/02f.gif?w=280&h=210&fit=crop" width="200" height="200"></td><td><h2>'+ text +'</h2><p>Результаты теста не являются медицинским заключением и для уверенности в поле будущего ребенка необходимо обратится к врачу.</p></td><td><button>Сохранить результат</button><br><br><button onclick="location.reload()">Назад</button></td></tr>';
+                    $('#pol3_t1').html($htmlStr);
+                }
+            }
+        </script>
     </head>
     <body>
         <h1>Определение пола ребенка по китайскому календарю</h1>
@@ -15,25 +54,24 @@
                     <td><input type="number" min="18" max="45" id="vozr3_m"></td>
                     <td>Предполагаемый месяц рождения</td>
                     <td>
-                        <select>
-                            <option value="1">Январь</option>
-                            <option value="2">Февраль</option>
-                            <option value="3">Март</option>
-                            <option value="4">Апрель</option>
-                            <option value="5">Май</option>
-                            <option value="6">Июнь</option>
-                            <option value="7">Июль</option>
-                            <option value="8">Август</option>
-                            <option value="9">Сентябрь</option>
-                            <option value="10">Октябрь</option>
-                            <option value="11">Ноябрь</option>
-                            <option value="12">Декабрь</option>
+                        <select id="month_chinese">
+                            <option value="0">Январь</option>
+                            <option value="1">Февраль</option>
+                            <option value="2">Март</option>
+                            <option value="3">Апрель</option>
+                            <option value="4">Май</option>
+                            <option value="5">Июнь</option>
+                            <option value="6">Июль</option>
+                            <option value="7">Август</option>
+                            <option value="8">Сентябрь</option>
+                            <option value="9">Октябрь</option>
+                            <option value="10">Ноябрь</option>
+                            <option value="11">Декабрь</option>
                         </select>
                     </td>
                 </tr>
                 <tr><td colspan="4" align="center"><button onclick="getPolChinese()">Узнать, кто родится</button></td></tr>
             </form>
         </table>
-        <table style="display: none;" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2"><b>Возраст<br> матери</b><b> на момент зачатия</b></td><td style="text-align: left;" colspan="12"><b>Месяц</b><b> зачатия</b></td></tr><tr><td width="6%" class="odd"><b>I</b><b> янв</b></td><td width="7%" class="odd"><b>II </b><b></b><b>фев</b></td><td width="7%" class="odd"><b>III </b><b></b><b>март</b></td><td width="6%" class="odd"><b>IV </b><b></b><b>апр</b></td><td width="6%" class="odd"><b>V </b><b></b><b>май</b></td><td width="7%" class="odd"><b>VI </b><b></b><b>июн</b></td><td width="7%" class="odd"><b>VII</b><b></b><b> июл</b></td><td width="6%" class="odd"><b>VIII </b><b></b><b>авг</b></td><td width="7%" class="odd"><b>IX </b><b></b><b>сент</b></td><td width="6%" class="odd"><b>X </b><b></b><b>окт</b></td><td width="8%" class="odd"><b>XI </b><b></b><b>нояб</b></td><td width="6%" class="odd"><b>XII </b><b></b><b>дек</b></td></tr><tr><td><b>18</b></td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td></tr><tr><td class="odd"><b>19</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td></tr><tr><td><b>20</b></td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>М</td></tr><tr><td class="odd"><b>21</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td></tr><tr><td><b>22</b></td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td></tr><tr><td class="odd"><b>23</b></td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td></tr><tr><td><b>24</b></td><td>М</td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td></tr><tr><td class="odd"><b>25</b></td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td></tr><tr><td><b>26</b></td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td></tr><tr><td class="odd"><b>27</b></td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td></tr><tr><td><b>28</b></td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>М</td><td>М</td><td>М</td><td>М</td><td>Д</td><td>Д</td></tr><tr><td class="odd"><b>29</b></td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td></tr><tr><td><b>30</b></td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>М</td><td>М</td></tr><tr><td class="odd"><b>31</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td></tr><tr><td><b>32</b></td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>М</td></tr><tr><td class="odd"><b>33</b></td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td></tr><tr><td><b>34</b></td><td>Д</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>Д</td><td>М</td><td>М</td></tr><tr><td class="odd"><b>35</b></td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td></tr><tr><td><b>36</b></td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td><td>Д</td><td>М</td><td>М</td><td>М</td><td>М</td></tr><tr><td class="odd"><b>37</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td></tr><tr><td><b>38</b></td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td></tr><tr><td class="odd"><b>39</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td></tr><tr><td><b>40</b></td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td></tr><tr><td class="odd"><b>41</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td></tr><tr><td><b>42</b></td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td></tr><tr><td class="odd"><b>43</b></td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td><td class="odd">М</td></tr><tr><td><b>44</b></td><td>М</td><td>М</td><td>Д</td><td>М</td><td>М</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>М</td><td>Д</td><td>Д</td></tr><tr><td class="odd"><b>45</b></td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">Д</td><td class="odd">М</td><td class="odd">М</td></tr></tbody></table>
     </body>
 </html>

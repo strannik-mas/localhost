@@ -377,4 +377,58 @@
         $out = '<table><tr><td><img src="http://rs1037.pbsrc.com/albums/a454/redwine-n-strawberries/Greetings%20Funny%20or%20Flirty/Happy%20Birthday-Anniversary-Congratulaions/02f.gif?w=280&h=210&fit=crop" width="200" height="200"></td><td><h2>'.$text.'</h2><p>Результаты теста не являются медицинским заключением и для уверенности в поле будущего ребенка необходимо обратится к врачу.</p></td><td><button>Сохранить результат</button><br><br><button onclick="location.reload()">Проверить другую дату</button></td></tr></table>';
         return $out;
     }
+    
+    function getDatesArray($params){
+        $curDay = strtotime($params[0]);
+        $count_m = 4;           //количество месяцев
+//        var_dump($params);
+        $lastDay = strtotime($params[0] . '+' . $count_m . ' month');
+        
+        $menstrArr = array();           //массив дат менструаций
+        $ovulDayArr = array();          //массив дат овуляций
+        $fertDayArr = array();          //массив дат фертильных дней
+        $count_fert = 6;                //количество фертильных дней (начиная с 4 дня до овуляции)
+        $j = 0;
+        while ($curDay < $lastDay){
+            for($i = 0; $i<$params[2]; $i++){
+//                curDay.setDate(d.getDate()+43*1);
+                $curDay = strtotime($params[0] . '+' . ($i + $j*$params[1]) . ' day');
+                $menstrArr[] = date("D, d M Y",$curDay);
+//                $menstrArr[] = $curDay;                
+            }
+            if($params[1] < 25){
+                $curOvulDay = strtotime($params[0] . '+' . (8 + $j*$params[1]) . ' day');
+                $ovulDayArr[] = date("D, d M Y",$curOvulDay);
+                for($k=0; $k<$count_fert; $k++){
+                    $curFertDay = strtotime($params[0] . '+' . (4+$k + $j*$params[1]) . ' day');
+                    if($curFertDay == $curOvulDay)                        continue;
+                    $fertDayArr[] = date("D, d M Y",$curFertDay);
+                }
+            }else if ($params[1] > 30) {
+                $curOvulDay = strtotime($params[0] . '+' . (21 + $j*$params[1]) . ' day');
+                $ovulDayArr[] = date("D, d M Y",$curOvulDay);
+                for($k=0; $k<$count_fert; $k++){
+                    $curFertDay = strtotime($params[0] . '+' . (17+$k + $j*$params[1]) . ' day');
+                    if($curFertDay == $curOvulDay)                        continue;
+                    $fertDayArr[] = date("D, d M Y",$curFertDay);
+                }
+            }else{
+                $curOvulDay = strtotime($params[0] . '+' . (14 + $j*$params[1]) . ' day');
+                $ovulDayArr[] = date("D, d M Y",$curOvulDay);
+                for($k=0; $k<$count_fert; $k++){
+                    $curFertDay = strtotime($params[0] . '+' . (10+$k + $j*$params[1]) . ' day');
+                    if($curFertDay == $curOvulDay)                        continue;
+                    $fertDayArr[] = date("D, d M Y",$curFertDay);
+                }
+            }
+            $j++;
+        }
+        $datesArr = array();
+        $datesArr['menstr'] = $menstrArr;
+        $datesArr['ovul'] = $ovulDayArr;
+        $datesArr['fert'] = $fertDayArr;
+        $datesArr['otl'] = date('d-m-y H:i:s', strtotime($params[3]));
+//        var_dump($datesArr);
+        return json_encode($datesArr);
+    }
 ?>

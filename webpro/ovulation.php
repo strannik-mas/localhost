@@ -68,8 +68,6 @@ return datepicker.regional.ru;
                     type : "GET",
                     url : "func_analizator.php?func=" + func + "&params=" + params,
                     success : function(html) {
-//                        console.log(JSON.parse(html));
-//                        console.log(html);
                         localStorage.setItem('dates', html);
                         drawTable();
                     },

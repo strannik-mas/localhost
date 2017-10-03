@@ -378,12 +378,29 @@
         return $out;
     }
     
-    function getDatesArray($params){
+    function getDatesArray($params){        
         $curDay = strtotime($params[0]);
+        $firstDay = strtotime('first day of ' . $params[0]);
+        if($params[3]){
+            /*расчет для календаря овуляции при смене месяца или года*/
+            
+            $firstDay = strtotime($params[3]);
+            $k = 0;
+            if($curDay < $firstDay){
+                while ($curDay < $firstDay){
+                    $curDay = strtotime($params[0] . '+' . ($k*$params[1]) . ' day');
+                    $k++;
+                }
+            }elseif($curDay > $firstDay){
+                while ($curDay > $firstDay){
+                    $curDay = strtotime($params[0] . '-' . ($k*$params[1]) . ' day');
+                    $k++;
+                }
+            }
+        }
+        $nachDate = date('d.m.Y',$curDay);
         $count_m = 4;           //количество месяцев
-//        var_dump($params);
-        $lastDay = strtotime($params[0] . '+' . $count_m . ' month');
-        
+        $lastDay = strtotime(date('d.m.Y',$curDay) . '+' . $count_m . ' month');
         $menstrArr = array();           //массив дат менструаций
         $ovulDayArr = array();          //массив дат овуляций
         $fertDayArr = array();          //массив дат фертильных дней
@@ -391,32 +408,30 @@
         $j = 0;
         while ($curDay < $lastDay){
             for($i = 0; $i<$params[2]; $i++){
-//                curDay.setDate(d.getDate()+43*1);
-                $curDay = strtotime($params[0] . '+' . ($i + $j*$params[1]) . ' day');
+                $curDay = strtotime($nachDate . '+' . ($i + $j*$params[1]) . ' day');
                 $menstrArr[] = date("D, d M Y",$curDay);
-//                $menstrArr[] = $curDay;                
             }
             if($params[1] < 25){
-                $curOvulDay = strtotime($params[0] . '+' . (8 + $j*$params[1]) . ' day');
+                $curOvulDay = strtotime($nachDate . '+' . (8 + $j*$params[1]) . ' day');
                 $ovulDayArr[] = date("D, d M Y",$curOvulDay);
                 for($k=0; $k<$count_fert; $k++){
-                    $curFertDay = strtotime($params[0] . '+' . (4+$k + $j*$params[1]) . ' day');
+                    $curFertDay = strtotime($nachDate . '+' . (4+$k + $j*$params[1]) . ' day');
                     if($curFertDay == $curOvulDay)                        continue;
                     $fertDayArr[] = date("D, d M Y",$curFertDay);
                 }
             }else if ($params[1] > 30) {
-                $curOvulDay = strtotime($params[0] . '+' . (21 + $j*$params[1]) . ' day');
+                $curOvulDay = strtotime($nachDate . '+' . (21 + $j*$params[1]) . ' day');
                 $ovulDayArr[] = date("D, d M Y",$curOvulDay);
                 for($k=0; $k<$count_fert; $k++){
-                    $curFertDay = strtotime($params[0] . '+' . (17+$k + $j*$params[1]) . ' day');
+                    $curFertDay = strtotime($nachDate . '+' . (17+$k + $j*$params[1]) . ' day');
                     if($curFertDay == $curOvulDay)                        continue;
                     $fertDayArr[] = date("D, d M Y",$curFertDay);
                 }
             }else{
-                $curOvulDay = strtotime($params[0] . '+' . (14 + $j*$params[1]) . ' day');
+                $curOvulDay = strtotime($nachDate . '+' . (14 + $j*$params[1]) . ' day');
                 $ovulDayArr[] = date("D, d M Y",$curOvulDay);
                 for($k=0; $k<$count_fert; $k++){
-                    $curFertDay = strtotime($params[0] . '+' . (10+$k + $j*$params[1]) . ' day');
+                    $curFertDay = strtotime($nachDate . '+' . (10+$k + $j*$params[1]) . ' day');
                     if($curFertDay == $curOvulDay)                        continue;
                     $fertDayArr[] = date("D, d M Y",$curFertDay);
                 }
@@ -427,8 +442,7 @@
         $datesArr['menstr'] = $menstrArr;
         $datesArr['ovul'] = $ovulDayArr;
         $datesArr['fert'] = $fertDayArr;
-        $datesArr['otl'] = date('d-m-y H:i:s', strtotime($params[3]));
-//        var_dump($datesArr);
+        $datesArr['def'] = date("D, d M Y",$firstDay);
         return json_encode($datesArr);
     }
 ?>

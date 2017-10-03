@@ -56,7 +56,30 @@ return datepicker.regional.ru;
                 }); 
                 if(localStorage.getItem('dates'))
                     drawTable();
+                $('#ov_f1').on('submit',function(){
+                   var parameters = $('#datepicker').val() + ',' + $('input[name=cycle]').val() + ',' + $('input[name=menstr]').val();
+                    var func = $('input[name=func]').val();
+                    localStorage.setItem('params', parameters);
+                    newrequest(func, null, parameters);
+                });
             });
+            function newrequest(func,toupdate,params){             
+                $.ajax({
+                    type : "GET",
+                    url : "func_analizator.php?func=" + func + "&params=" + params,
+                    success : function(html) {
+//                        console.log(JSON.parse(html));
+//                        console.log(html);
+                        localStorage.setItem('dates', html);
+                        drawTable();
+                    },
+                    error : function(html){
+                        alert('error!');
+            //            $(toupdate).html(html);
+                        console.log(html);
+                    }
+                });
+            }
             function highlightOvulDays(date) {
                 var objDates = JSON.parse(localStorage.getItem('dates'));
                 var ovulArr = []; 
@@ -82,80 +105,53 @@ return datepicker.regional.ru;
                     return[true, ""];                                
                 }
             }
-            function getDates(){
-                func = $('input[name=func]').val();
-                params = $('#datepicker').val() + ',' + $('input[name=cycle]').val() + ',' + $('input[name=menstr]').val();
-                localStorage.setItem('params', params);
-                $.ajax({
-                    type : "GET",
-                    url : "func_analizator.php?func=" + func + "&params=" + params,
-                    success : function(html) {
-//                        console.log(JSON.parse(html));
-                        localStorage.setItem('dates', html);
-                        drawTable();
-                    },
-                    error : function(html){
-                        alert('error!');
-            //            $(toupdate).html(html);
-                        console.log(html);
-                    }
-                });
-            }
             function drawTable(){
                 var objDates = JSON.parse(localStorage.getItem('dates'));
-                var d = new Date(objDates.menstr[0]);
-                $htmlStr = '<caption><h3>Мой календарь овуляции</h3></caption><tr><td rowspan="3"><a><span class="glyphicon glyphicon-chevron-left"></span></a></td><td>Выбрать месяц</td><td><input type="text" name="month" id="datepicker_month"></td><td rowspan="3"><a><span class="glyphicon glyphicon-chevron-right"></span></a></td></tr><tr><td><div id="datepicker2"></div></td><td><div id="datepicker3"></div></td></tr><tr><td><div id="datepicker4"></div></td><td><div id="datepicker5"></div></td></tr>';
+                var defDay = new Date(objDates.def);
+                $htmlStr = '<caption><h3>Мой календарь овуляции</h3></caption><tr><td rowspan="3"><a id="go_back"><span class="glyphicon glyphicon-chevron-left"></span></a></td><td>Выбрать месяц</td><td><input type="text" name="month" id="datepicker_month"></td><td rowspan="3"><a id="go_forward"><span class="glyphicon glyphicon-chevron-right"></span></a></td></tr><tr><td><div id="datepicker2"></div></td><td><div id="datepicker3"></div></td></tr><tr><td><div id="datepicker4"></div></td><td><div id="datepicker5"></div></td></tr>';
                 $('#ovul_t1').html($htmlStr);
                 $('#datepicker_month').datepicker({
                     inline:true,
-                    defaultDate: new Date(objDates.menstr[0]),
-                    dateFormat: "mm-yy",
-                    beforeShowDay:hideDays
+                    defaultDate: new Date(objDates.def),
+                    dateFormat: "mm-yy"
                 }).on('change',function(){
-                    $.ajax({
-                    type : "GET",
-                    url : "func_analizator.php?func=getDatesArray&params=" + localStorage.getItem('params')+','+'01-'+this.value,
-                    success : function(html) {
-                        console.log(html);
-//                        console.log(JSON.parse(html));
-//                        localStorage.setItem('dates', html);
-//                        drawTable();
-                    },
-                    error : function(html){
-                        alert('error!');
-            //            $(toupdate).html(html);
-                        console.log(html);
-                    }
-                });
+                    newrequest("getDatesArray",null,localStorage.getItem("params")+","+"01-"+this.value);
                 });
                 $('#datepicker2').datepicker({
                     inline:true,
-                    defaultDate: d,
+                    defaultDate: defDay,
                     beforeShowDay:highlightOvulDays
                 });
-                d.setMonth(d.getMonth()+1);
+                $('#datepicker_month').val(defDay.toLocaleDateString("ru",{month:'long', year:'numeric'}));
+                $('#go_forward').on('click', function(){
+                    var tempD = new Date(objDates.def);
+                    tempD.setMonth(tempD.getMonth()+2);
+                    newrequest("getDatesArray",null,localStorage.getItem("params")+","+"01-"+tempD.getMonth()+"-"+tempD.getFullYear());
+                });
+                $('#go_back').on('click', function(){
+                    var tempD = new Date(objDates.def);
+                    newrequest("getDatesArray",null,localStorage.getItem("params")+","+"01-"+tempD.getMonth()+"-"+tempD.getFullYear());
+                });
+                defDay.setMonth(defDay.getMonth()+1);
                 $('#datepicker3').datepicker({
                     inline:true,
-                    defaultDate: d,
+                    defaultDate: defDay,
                     beforeShowDay:highlightOvulDays
                 });
-                d.setMonth(d.getMonth()+1);
+                defDay.setMonth(defDay.getMonth()+1);
                 $('#datepicker4').datepicker({
                     inline:true,
-                    defaultDate: d,
+                    defaultDate: defDay,
                     beforeShowDay:highlightOvulDays
                 });
-                d.setMonth(d.getMonth()+1);
+                defDay.setMonth(defDay.getMonth()+1);
                 $('#datepicker5').datepicker({
                     inline:true,
-                    defaultDate: d,
+                    defaultDate: defDay,
                     beforeShowDay:highlightOvulDays
                 });
                 $htmlStr2 = '<table cellpadding="2"><tr><td class="ov_d" width=25 height=25></td><td>дни овуляции</td><td class="fert_d" width=25 height=25></td><td>фертильные дни</td><td class="menstr_d" width=25 height=25></td><td>дни менструации</td></tr></table><br><br><button onclick="">Сохранить</button><button onclick="localStorage.removeItem(\'dates\'); location.reload()">Рассчитать заново</button>';
-                $('body').append($htmlStr2);
-            }
-            function hideDays(){
-                return[true, "hide_all"];
+                $('#container').html($htmlStr2);
             }
         </script>
         <style>
@@ -177,13 +173,12 @@ return datepicker.regional.ru;
                 font-weight: normal;
                 color: #454545;
             }
-            .hide_all a.ui-state-default{
-                display: none;
-            }
         </style>
     </head>
     <body>
         <h1>Календарь овуляции</h1>
+        <!--проверял тут:-->
+        <!--http://ovulyaciyatut.ru/rasschitat/rasschitat-ovulyatsiyu-kalkulyator.html-->
         <p>Как выяснить благоприятный день для зачатия? Воспользуйтесь календарем овуляции. Укажите дату последней менструации, ее продолжительность и общую длительность цикла. В вашем персональном календаре овуляции будут отмечены фертильные дни, в которые вероятность зачатия достаточно высока, а также дни овуляции, когда вероятность зачатия максимальна.</p>
         <table cellspacing="1" cellpadding="2" id="ovul_t1">
             <form id="ov_f1" onsubmit="return false">
@@ -192,20 +187,19 @@ return datepicker.regional.ru;
                     <tbody>
                         <tr>
                             <td colspan="2">Выберите дату начала последней менструации:</td>
-                            <td colspan="2"><input type="text" name="men_d" id="datepicker" required value="01.10.2017"></td>
-                            <td>
-                                <!--<div id="datepicker5"></div>-->
-                            </td>
+                            <td colspan="2"><input type="text" name="men_d" id="datepicker" required></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Длительность цикла:</td>
-                            <td><input type="number" name="cycle" min="21" max="35" required value="21"></td>
+                            <td><input type="number" name="cycle" min="21" max="35" required></td>
                             <td>Продолжительность менструации:</td>
-                            <td><input type="number" name="menstr" min="3" max="7" value="3"></td>
-                            <td><button onclick="getDates()">Рассчитать</button></td>
+                            <td><input type="number" name="menstr" min="3" max="7"></td>
+                            <td><input type="submit" value="Рассчитать"></td>
                         </tr>
                     </tbody>
             </form>
-        </table>        
+        </table>
+        <div id="container"></div>
     </body>
 </html>

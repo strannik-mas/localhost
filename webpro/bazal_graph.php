@@ -45,23 +45,29 @@ return datepicker.regional.ru;
 } ) );
         </script>
         <script type="text/javascript">
+            var db;
+            var dbName = 'graph';
+            var dbVersion = 1;     
+            var tableName = "dataFromDays_"+dbVersion;
+            var cellWidth = 20;                 //размер ячейки
+            //начало координат на холсте
+            var x_begin = 200;
+            var y_begin = 100;            
             $(function(){
                 $('#datepicker, #datepicker1').datepicker({
                     changeMonth: true,
                     changeYear: true,
                     dateFormat: "dd.mm.yy"
                 });
-                if(localStorage.getItem('graph_data'))
+                if(localStorage.getItem('database'))
                     drawGraph();
                 $('#bazal_f1').on('submit', function(){
-                    
-                    var cellWidth = 20;                 //размер ячейки
                     var kol_x = parseInt($('input[name=cycle]').val())+1;
+                    //19-из-за пустой строки и добавочных пунктов
                     var kol_y = 19+(parseFloat($('input[name=temp]').attr('max'))-parseFloat($('input[name=temp]').attr('min')))/parseFloat($('input[name=temp]').attr('step'));
-                    var gridWidth = cellWidth*kol_x;
                     var gridHeight = cellWidth*kol_y;
-                    var x_begin = 200;
-                    var y_begin = 100;
+                    var gridWidth = cellWidth*kol_x;
+                    
                     var canvasWidth = gridWidth+x_begin*2;             //ширина холста
                     var canvasHeight = gridHeight+y_begin*2;             //высота холста
                     var color = '#000'
@@ -72,14 +78,74 @@ return datepicker.regional.ru;
                     $('#cycle_length').text('Длина цикла: ' + $('input[name=cycle]').val() + ' дней');
                     //значения по умолчанию
                     var now = new Date();
-                    $('#datepicker1').val((parseInt(now.getDay())<=9 ? '0' + now.getDay(): now.getDay()) +'.'+((parseInt(now.getMonth())+1)<=9 ? '0'+ (parseInt(now.getMonth())+1) : (parseInt(now.getMonth())+1)) +'.'+now.getFullYear());
+//                    console.log(now.getDate());
+                    $('#datepicker1').val((parseInt(now.getDate())<=9 ? '0' + now.getDate(): now.getDate()) +'.'+((parseInt(now.getMonth())+1)<=9 ? '0'+ (parseInt(now.getMonth())+1) : (parseInt(now.getMonth())+1)) +'.'+now.getFullYear());
                     $('input[name=cycle_day]').val(1);
                     $('input[name=temp]').val(36.4);
                     $('input[name=cron]').val((parseInt(now.getHours())<=9 ? '0' + now.getHours() : now.getHours()) +":"+(parseInt(now.getMinutes())<=9 ? '0' + now.getMinutes() : now.getMinutes()));
+                    $('input[name=sleep_length]').val(8);
                     if($('input[name=cycle_day]').val()<4)
                         $('select[name=menstr_day] option').eq(2).attr("selected", "selected");
-                    
+                    //функция отрисовки сетки и разметки координатных осей
                     grid(gridWidth, gridHeight, x_begin, y_begin, kol_x, kol_y, cellWidth, color);
+                });
+                //сохранение данных о дне (точки на графике) в indexedDB
+                $('#bazal_f2').on('submit', function(){           
+                    //объект записи в бд
+                    var dayData = {
+                        cycle_day : $('input[name=cycle_day]').val(),
+                        cur_date : $('input[name=cur_date]').val(),
+                        temp : $('input[name=temp]').val(),
+                        cron : $('input[name=cron]').val(),
+                        uchit : $('input[name=uchit]').is(':checked'),
+                        ovul_date : $('input[name=ovul_date]').is(':checked'),
+                        migren : $('select[name=migren]').val(),
+                        givot : $('select[name=givot]').val(),
+                        menstr_day : $('select[name=menstr_day]').val(),
+                        sleep_length : $('input[name=sleep_length]').val(),
+                        sleep_cond : $('input[name=sleep_cond]').val(),
+                        illness : $('input[name=illness]').val(),
+                        sex : $('input[name=sex]').is(':checked'),
+                        alcohol : $('input[name=alcohol]').is(':checked'),
+                        snotv : $('input[name=snotv]').is(':checked'),
+                        pill_name : $('input[name=pill_name]').val(),
+                        pill_rec : $('input[name=pill_rec]').val(),
+                        pill_doza : $('input[name=pill_doza]').val(),
+                        pill_desc : $('input[name=pill_desc]').val(),
+                        pill_reason : $('input[name=pill_reason]').val(),
+                        pill_eff : $('input[name=pill_eff]').val(),
+                        comment : $('textarea[name=comment]').val(),
+                    };
+//                    console.log(dayData);
+                    var openRequest = indexedDB.open(dbName, dbVersion);
+                    openRequest.onupgradeneeded = function (e){
+                        //тут только создаем таблицу данных для текущего дня, если её нет
+                        var thisDB = e.target.result;
+                        if(!thisDB.objectStoreNames.contains(tableName))
+                            thisDB.createObjectStore(tableName, {keyPath: "cycle_day"});
+                        console.log("Upgrading");
+                    };
+                    openRequest.onsuccess = function(e){
+                        db = e.target.result;
+                        console.log("Success!!!");
+                        var transaction = db.transaction([tableName], "readwrite");
+                        var store = transaction.objectStore(tableName);
+                        var request = store.add(dayData);
+                        request.onsuccess = function(e){
+                            console.log("Record added");
+                            drawGraph();
+                        };
+                        request.onerror = function(e){
+                            var err = e.target.error;
+                            console.log("Error: ", err.name+": "+err.message);
+                            console.dir(err);
+                        };  
+                    };
+                    openRequest.onerror = function(e){
+                        var err = e.target.error;
+                        console.log("Error: ", err.name+": "+err.message);
+                    };
+                                      
                 });
                 var icons = {
                     header: "ui-icon-circle-plus",
@@ -104,15 +170,11 @@ return datepicker.regional.ru;
                 var tempDateArr = $('#datepicker').val().split('.');
                 var beginDay = new Date(tempDateArr[2], tempDateArr[1]-1, tempDateArr[0]);
                 var textOrd = '';
-                var textOrdArr = [];
-                $('#samoch option').each(function(index,element){                     if(element.value !== 'нет')
-                        textOrdArr.push(element.value);
-                });
-                textOrdArr.push('бесс. ночь', 'сон в необ. усл.', 'болезнь', 'пол. акт', 'алкоголь', 'снотворное');    
+                var textOrdArr = ["гол. боль: слабая","гол. боль: сильная","гол. боль: мигрень","боль живота: тупая","боль живота: резкая","боль живота: ноющая","боль живота: другое","выд-я скудные","выд-я умеренные","выд-я обильные",'бесс. ночь', 'сон в необычн. усл.', 'болезнь', 'пол. акт', 'алкоголь', 'снотворное'];
+                var now = new Date();
 //                console.log(textOrdArr);
                 
                 ctx.font = fontSize + fontName;
-//                console.log(kolichestvo_x);
                 for (var i = 0; i <= kolichestvo_x; i++) {
                     //вертикальные линии
                     ctx.beginPath();
@@ -123,12 +185,21 @@ return datepicker.regional.ru;
                     else {
                         ctx.lineWidth = 0.5;
                         //рисуем текст к сетке на оси абсцисс
-                        ctx.fillText(i, i * w+xb-5, ch+yb+20);
-                        ctx.fillText(beginDay.getDate(), i * w+xb-5, ch+yb+30);
+                        ctx.fillText(i, i * w+xb-5, ch+yb+40);
+                        ctx.fillText(beginDay.getDate(), i * w+xb-5, ch+yb+50);
+                        
                         beginDay.setDate(beginDay.getDate()+1);
                     }
                     ctx.strokeStyle = c;
                     ctx.stroke(); 
+                    if(beginDay.getDate() == now.getDate() && beginDay.getMonth() == now.getMonth()){
+                        ctx.beginPath();
+                        ctx.globalAlpha = 0.5;
+                        ctx.fillStyle = "#fff990";
+                        ctx.fillRect(i * w+xb+7, ch+yb+20, w, w*2);
+                        ctx.fillStyle = '#000000';
+                        ctx.globalAlpha = 1;
+                    }
                 }
                 for (var i = 0; i <= kolichestvo_y; i++) {
                     //горизонтальные линии
@@ -153,7 +224,85 @@ return datepicker.regional.ru;
                     ctx.strokeStyle = c;
                     ctx.stroke();
                 }
+            }
+            function deleteGraph(){
+                indexedDB.deleteDatabase('graph');
+                
+            }
+            function drawGraph(){
+                var canvas = document.getElementById("graph");
+                var ctx = canvas.getContext('2d');                
+                var transaction = db.transaction([tableName], "readonly");
+                var store = transaction.objectStore(tableName);
+                var cursor = store.openCursor();
+                var i = 0;
+                cursor.onsuccess = function(e){
+                    var res = e.target.result;
+                    if(res){
+                        var obj = res.value;
+                        var y0 = y_begin + cellWidth*(((parseFloat($('input[name=temp]').attr('max')) - parseFloat(obj.temp))/parseFloat($('input[name=temp]').attr('step')))+1);
+                        console.log("Key:", res.key, y0);
+                        console.dir(obj);
+                        ctx.lineWidth = 3;
+                        //точки графика
+                        addPoint(ctx, res.key*cellWidth+x_begin, y0, "#08088A");
+                        //отрисовка точек дополнительных полей
+                        if(obj.migren !== '0'){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*obj.migren, "#FF00BF");
+                        }
+                        if(obj.givot !== '0'){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*obj.givot, "#B43104");
+                        }
+                        if(obj.sleep_length == '0'){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*38, "#2EFEF7");
+                        }
+                        if(obj.sleep_cond){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*39, "#D7DF01");
+                        }
+                        if(obj.illness){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*40, "#0B4C5F");
+                        }
+                        if(obj.sex){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*41, "#FF00FF");
+                        }
+                        if(obj.alcohol){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*42, "#40FF00");
+                        }
+                        if(obj.snotv){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*43, "#819FF7");
+                        }
+                        
+                        //заливка при критических днях
+                        if(obj.menstr_day !== '0'){
+                            addPoint(ctx, res.key*cellWidth+x_begin, y_begin+cellWidth*obj.menstr_day, "#DF01A5");
+                            //19-из-за пустой строки и добавочных пунктов
+                            var kol_y = 19+(parseFloat($('input[name=temp]').attr('max'))-parseFloat($('input[name=temp]').attr('min')))/parseFloat($('input[name=temp]').attr('step'));
+                            var height = cellWidth*kol_y;
+                            ctx.beginPath();
+                            ctx.globalAlpha = 0.3;
+                            ctx.fillStyle = "#fadaee";
+                            ctx.fillRect(x_begin+i*cellWidth, y_begin, cellWidth, height);
+                            ctx.fillStyle = '#000000';
+                            ctx.globalAlpha = 1;
+                        }
+                        i++;
+                        res.continue();
+                    }else{
+                        console.log(res);
+                    }
 
+                };
+                cursor.onerror = function(e){
+                    var err = e.target.error;
+                    console.log("Error: ", err.name+": "+err.message);
+                };
+            }
+            function addPoint(context, x, y, color){
+                context.beginPath();
+                context.moveTo(x, y);
+                context.strokeStyle = color;
+                context.arc(x, y,5,0,2*Math.PI, false);
+                context.stroke();
             }
         </script>
         <style>
@@ -253,27 +402,27 @@ return datepicker.regional.ru;
                         <div id="samoch">
                             <label>Головная боль: 
                                 <select name="migren">
-                                    <option value="нет" selected>нет</option>
-                                    <option value="гол. боль: слабая">слабая</option>
-                                    <option value="гол. боль: сильная">сильная</option>
-                                    <option value="гол. боль: мигрень">мигрень</option>
+                                    <option value="0" selected>нет</option>
+                                    <option value="28">слабая</option>
+                                    <option value="29">сильная</option>
+                                    <option value="30">мигрень</option>
                                 </select>
                             </label><br>
                             <label>Боль внизу живота: 
                                 <select name="givot">
-                                    <option value="нет" selected>нет</option>
-                                    <option value="боль живота: тупая">тупая</option>
-                                    <option value="боль живота: резкая">резкая</option>
-                                    <option value="боль живота: ноющая">ноющая</option>
-                                    <option value="боль живота: свой вариант">свой вариант</option>
+                                    <option value="0" selected>нет</option>
+                                    <option value="31">тупая</option>
+                                    <option value="32">резкая</option>
+                                    <option value="33">ноющая</option>
+                                    <option value="34">свой вариант</option>
                                 </select>
                             </label><br>
                             <label>Критические дни: 
                                 <select name="menstr_day">
-                                    <option value="нет" selected>нет</option>
-                                    <option value="выд-я скудные">скудные</option>
-                                    <option value="выд-я умеренные">умеренные</option>
-                                    <option value="выд-я обильные">обильные</option>
+                                    <option value="0" selected>нет</option>
+                                    <option value="35">скудные</option>
+                                    <option value="36">умеренные</option>
+                                    <option value="37">обильные</option>
                                 </select>
                             </label><br>
                             <label>Длительность сна: 
@@ -313,7 +462,10 @@ return datepicker.regional.ru;
                             <textarea name="comment" rows="4" cols="20"></textarea>
                         </div>
                     </div>
-                    <div style="clear: both; text-align: center; vertical-align: bottom"><input type="submit" value="Сохранить"></div>
+                    <div style="clear: both; text-align: center; vertical-align: bottom">
+                        <a href="" onclick="return deleteGraph()">Удалить график</a>
+                        <input type="submit" value="Сохранить">
+                    </div>
                 </fieldset>
             </form>
         </div>

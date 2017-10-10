@@ -378,6 +378,41 @@
         return $out;
     }
     
+    function getSrok($params){
+        $endingWeekArr = array('неделя', 'недели', 'недель');
+        $endingMonthArr = array('месяц', 'месяца', 'месяцев');
+        $time = date_create('now');
+//        var_dump($params);
+        //вычисляем сколько недель прошло с последней менструации
+        $w = date_diff($time, date_create($params[0]))->format('%a');
+        $w = floor($w/7);
+        //вычисляем сколько месяцев прошло с последней менструации
+        $m = $vozrFather = date_diff($time, date_create($params[0]))->format('%m');
+        $weekStr = getEnding($w, $endingWeekArr);
+        $monthStr = getEnding($m, $endingMonthArr);
+        $out = '<tr><td><h3>' . $w . '</h3></td><td>&hArr;</td><td><h3>' . $m . '</h3></td></tr><tr><td>' . $weekStr . '</td><td></td><td>' . $monthStr . '</td></tr>';
+        return $out;
+    }
+    
+    function getEnding($n, $arr){
+        $n = $n % 100;
+        if($n >= 11 && $n <= 19){
+            $ending = $arr[2];
+        }else{
+            $i = $n % 10;
+            switch ($i){
+                case 1: $ending = $arr[0];
+                    break;
+                case 2:
+                case 3:
+                case 4: $ending = $arr[1];
+                    break;
+                default : $ending=$arr[2];                    
+            }
+        }
+        return $ending;
+    }
+    
     function getDatesArray($params){        
         $curDay = strtotime($params[0]);
         $firstDay = strtotime('first day of ' . $params[0]);

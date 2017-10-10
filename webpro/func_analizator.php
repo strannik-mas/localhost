@@ -382,12 +382,23 @@
         $endingWeekArr = array('неделя', 'недели', 'недель');
         $endingMonthArr = array('месяц', 'месяца', 'месяцев');
         $time = date_create('now');
-//        var_dump($params);
-        //вычисляем сколько недель прошло с последней менструации
-        $w = date_diff($time, date_create($params[0]))->format('%a');
-        $w = floor($w/7);
-        //вычисляем сколько месяцев прошло с последней менструации
-        $m = $vozrFather = date_diff($time, date_create($params[0]))->format('%m');
+        if($params[1]){
+            $w = $params[1];
+            $m = date_diff($time, date_create(date('d.m.Y', strtotime("+". -$w ." week"))))->format('%m');
+        }
+        if($params[2]){
+            $m = $params[2];
+            $w = date_diff($time, date_create(date('d.m.Y', strtotime("+" . -$m . " month"))))->format('%a');
+            $w = floor($w/7);
+        }
+        if($params[0]){
+            //вычисляем сколько месяцев прошло с последней менструации
+            $m = date_diff($time, date_create($params[0]))->format('%m');
+            //вычисляем сколько недель прошло с последней менструации
+            $w = date_diff($time, date_create($params[0]))->format('%a');
+            $w = floor($w/7);
+        }
+        
         $weekStr = getEnding($w, $endingWeekArr);
         $monthStr = getEnding($m, $endingMonthArr);
         $out = '<tr><td><h3>' . $w . '</h3></td><td>&hArr;</td><td><h3>' . $m . '</h3></td></tr><tr><td>' . $weekStr . '</td><td></td><td>' . $monthStr . '</td></tr>';

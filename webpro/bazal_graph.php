@@ -64,9 +64,9 @@ return datepicker.regional.ru;
                 var fontName = "Courier"; 
                 var fontSize = "10pt";
             }
-            var menstrDaysCount = 0 //количество дней месячных                
-            var middle = 0;         //для среднего значения
-            var middle2 = 0;         //для среднего значения
+            var menstrDaysCount = 0; //количество дней месячных                
+            var middle = 0;         //для среднего значения температуры
+            var middle2 = 0;         //для среднего значения температуры
             var curDay = 0;                     //текущий день
             var x_ovul = 0;                     //координата овуляции
             const tableGraphParamsName = 'graph_params';    //имя таблицы существующих графиков и их параметров

@@ -66,9 +66,12 @@
                     */
                 });
                 if(sum !== 0){
+                    $('.diagramm').show();
                     sum_R = Math.round(sum_R*100/sum);
                     sum_L = Math.round(sum_L*100/sum);
                     sum_C = Math.round(sum_C*100/sum);
+                }else {
+                    $('.diagramm').hide();
                 }                
                 console.log(sum, sum_R, sum_L, sum_C);
                 console.dir(hours);
@@ -192,9 +195,11 @@
     <body>
         <div>
             <div class="weekdays"></div>
-            <div id="container_pie1" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-            <div id="container_pie2" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-            <div id="container_pie3" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            <div class="diagramm">
+                <div id="container_pie1" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <div id="container_pie2" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <div id="container_pie3" style="float: left; min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>            
             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
     </body>

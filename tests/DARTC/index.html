@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Отправка сообщения</title>
+    </head>
+    <body>
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method='post'>
+            <input type="text" name="username" value="" />
+            <input type="text" name="email" value="" />
+            <input type="text" name="url" value="" />
+            <textarea name="message" rows="5" cols="20">
+            </textarea>
+            <input type="submit" value="Отправить" />
+        </form>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS • TodoMVC</title>
+  <link rel="stylesheet" href="base.css">
+</head>
+<body ng-app="todomvc">
+  
+  <div greetings></div>
+ 
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+<script>
+  angular.module('todomvc', []);
+  angular.module('todomvc').
+    directive('greetings', function(){
+      return {
+        scope: true,
+        restrict: 'A',
+        template: '<h1>Hello {{name}}!</h1>',
+        link: function(scope){
+          scope.name = 'Alice';
+        }
+      };
+    });
+</script>
+</body>
+</html>

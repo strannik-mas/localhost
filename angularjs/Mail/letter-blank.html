@@ -1,0 +1,14 @@
+<div class="panel panel-default" ng-show="mailController.showletter">
+  <div class="panel-heading">
+    <button id="close"  type="button" class="btn btn-danger btn-xs" ng-click="mailController.close()">
+      <span class="glyphicon glyphicon-remove-circle"></span>
+    </button>
+    <address>
+      <b>{{mailController.subject}}</b>
+      <p>{{mailController.name}}   
+        <a href="mailto:{{mailController.email}}">E-mail: {{mailController.email}}</a>
+      </p>
+    </address>
+  </div>
+  <div class="panel-body">{{mailController.message}}</div>
+</div>

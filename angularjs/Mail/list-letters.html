@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Ящик мыло</div>
+  <div class="panel-body">
+    <table border='1' cellpadding="2">
+      <thead>
+        <tr>
+          <th colspan="2">№</th>
+          <th>Имя</th>
+          <th>Адрес</th>
+          <th>Тема</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="letter in mailController.letters">
+          <td>{{this.$index+1}}</td>
+          <td>
+            <div ng-click="showletter=true">
+              <button class="btn btn-default btn-xs" ng-click = "mailController.show(this.letter.name, this.letter.email, this.letter.subject, this.letter.message)"><span class="glyphicon glyphicon-envelope"></span></button>
+            </div>
+          </td>
+          <td>{{letter.name}}</td>
+          <td>{{letter.email}}</td>
+          <td>{{letter.subject}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

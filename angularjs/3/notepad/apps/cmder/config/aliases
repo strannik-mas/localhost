@@ -1,0 +1,10 @@
+e.=explorer .
+ie.="C:\Program Files\Internet Explorer\iexplore.exe"
+gl=git log --oneline --all --graph --decorate  $*
+ls=ls --color $*
+pwd=cd
+~pub=cd c:\users\public
+~cd=cd %HOME%
+~user= cd %USERPROFILE%
+~data= cd %USERPROFILE%\AppData
+clear=cls

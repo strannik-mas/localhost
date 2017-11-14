@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="MyMail">
+
+  <head>
+    <script data-require="angular.js@1.6.5" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+
+  <body ng-controller="MailController as mailController">
+    <div class="container">
+      <list-letters></list-letters>
+      <letter-blank></letter-blank>
+    </div>
+    <script>
+      var app = angular.module('MyMail', []);
+      app.directive('listLetters', function(){
+        return {
+          restrict: 'E',
+          templateUrl: 'list-letters.html'
+        };
+      });
+      app.directive('letterBlank', function(){
+        return {
+          restrict: 'E',
+          templateUrl: 'letter-blank.html'
+        };
+      });
+      app.controller("MailController", function(){
+        this.letters = [{
+          name: 'Иванов Иван',
+          email: 'ii@mail.ru',
+          subject: 'Невероятно, но факт: эпизодический хомяк зыбок',
+          message: 'По всей видимости, недокуренный виски расширяет рыцаря. Базальтовый ксилофон бархатист. Бережная волчица философски настроена. Бетонный павиан напыщен и действует тактически. Имманентный крейсер мудр. Разумеется, выдра бархатиста. Радужный кадавр свободен и торжественен. Землистая мулатка шикарна и бархатиста. Конгруэнтная икра трансцендентальна. К своему удивлению мы замечаем, что название уверенного мартини трагически открывает драматичное будущее хомяка.'
+        },
+        {
+          name: 'Сидоров Сидор',
+          email: 'sidor@mail.ru',
+          subject: 'Угольный дельтапланерист саркастичен',
+          message: 'Неспроста свинцовый сосуд мгновенно открывает квазиупругую колбу. Карусель быстра и кратковременна. Часто бывает, что ядерная лапка груба и продуманна. Очевидно, феноменальная шестерня брезентового комплекта бережно увеличивает тайную лампу. Изящное значение резко и метастабильно. Платиновая инерция перегоревшего изолятора образовывает разделение. Свет преднамерен и замысловат. Шланг предумышленен. Деревянное открытие периодично. Базальтовый проектировщик груб. Замкнутый болт наполняет шип. Нагруженность эпизодична и кратковременна.'
+        },
+        {
+          name: 'Пупкин Вася',
+          email: 'vasya@mail.ru',
+          subject: 'Конгруэнтная икра трансцендентальна',
+          message: 'Задумчивое довольствие миролюбиво. Экипаж груб. Далее мы видим, что заповедник исчерпывает кроликa. Будничное благополучие отрадно. Армада звездного букета эксцентрично поглядывает на букмекера скотоводства. Саксофон напыщен. Невероятно, но факт: миролюбивое стекло тайно забирается на освещение хрустального довольствия. Фруктовый перевал задумчив. Лунный паллиатив затаён и романтичен. Эксцентричная ящерица находит адекватную купюру.'
+        }
+        ];
+        this.show = (name, addr, sub, text) => {
+          this.showletter = true;
+          this.name = name;
+          this.email = addr;
+          this.subject = sub;
+          this.message = text;
+        };
+        this.close = () => this.showletter = false;
+      });
+      
+    </script>
+  </body>
+
+</html>
+

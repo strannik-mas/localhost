@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userCards">
+<head>
+  <meta charset="UTF-8">
+  <title>Карточки пользователей</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body ng-controller="UserController as userController">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <user-card></user-card>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+  var app = angular.module('userCards', []);
+  app.directive('userCard', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'user-card.html'
+    };
+  });
+  app.controller('UserController', function(){
+    this.user = {
+      fullName: 'Иванов Иван',
+      avatarUrl: 'https://randomuser.me/api/portraits/thumb/men/57.jpg',
+      birthdate: '1976-10-10',
+      gender: 'мужской',
+      address: 'ул. Звенигороская, 47б',
+      email: 'ivanov@mail.ru'
+    };
+  });
+</script>
+</body>
+</html>
+
+

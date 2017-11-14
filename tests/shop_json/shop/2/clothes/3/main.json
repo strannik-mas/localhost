@@ -1,0 +1,16 @@
+{
+    "name": "Платье Shop 2",
+    "description": "",
+    "clothes": {
+        "name": "Платье "
+    },
+    "prices": {
+        "price": "125 грн"
+    },
+    "images": [
+		{
+            "image": "shop\/2\/clothes\/3\/img\/001.png",
+            "isMain": true
+        }
+	]
+}

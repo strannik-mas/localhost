@@ -5,12 +5,14 @@
         <title>Отправка сообщения</title>
     </head>
     <body>
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" method='post'>
+        <form enctype="multipart/form-data" action="<?php $_SERVER['PHP_SELF'] ?>" method='post'>
+            <input type="hidden" name="MAX_FILE_SIZE" value="100" />
             <input type="text" name="username" value="" />
             <input type="text" name="email" value="" />
             <input type="text" name="url" value="" />
             <textarea name="message" rows="5" cols="20">
             </textarea>
+            <input type="file" name="textfile"/>
             <input type="submit" value="Отправить" />
         </form>
     </body>

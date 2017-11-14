@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS • TodoMVC</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body ng-app="todomvc">
+  <greetings>
+	<input type="text" ng-model="name" ng-model-options="{updateOn: 'default blur', debounce: {'default':1500, 'blur':0}}">
+	<!-- синхронизация -->
+	{{name}}
+	<button type="button" class="btn btn-info" ng-click="showhi(name)">привед</button>
+	<p ng-show="show">Привед {{name}}</p>
+  </greetings>
+ 
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+<script>
+  angular.module('todomvc', []);
+  angular.module('todomvc').
+    directive('greetings', function(){
+      return {
+        scope: true,
+        restrict: 'E',
+        link: function(scope){
+		  scope.showhi = function(name){
+			alert('привед ' + name);
+			scope.show = true;
+		  };
+        }
+      };
+    });
+</script>
+</body>
+</html>

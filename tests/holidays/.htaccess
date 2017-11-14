@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule !\.(js|gif|jpg|png|css)$ holiday_calc.phtml [QSA,L]

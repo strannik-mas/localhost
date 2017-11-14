@@ -1,0 +1,26 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{userController.user.fullName}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center">
+        <img ng-src="{{userController.user.avatarUrl}}"
+             class="img-circle img-responsive"></div>
+
+      <div class=" col-md-9 col-lg-9 ">
+        <table class="table table-user-information">
+          <tbody>
+          <tr><td>Дата рождения</td><td>{{userController.user.birthdate}}</td></tr>
+          <tr><td>Пол</td><td>{{userController.user.gender}}</td></tr>
+          <tr><td>Адрес</td><td>{{userController.user.address}}</td></tr>
+          <tr><td>Email</td><td><a ng-href="mailto:{{userController.user.email}}">{{userController.user.email}}</a></td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+  </div>
+
+</div>

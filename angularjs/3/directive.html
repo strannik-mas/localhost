@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="direct1">
+<head>
+  <meta charset="UTF-8">
+  <title>Карточки пользователей</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<main>
+	<newhtml></newhtml>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script>
+	var app = angular.module('direct1', []);
+	app.directive('newhtml', function(){
+		return {
+			restrict: "E",
+			scope: true,
+			templateUrl: "u-card.html",
+			link: function(scope){
+				scope.users = [{
+					name : 'Иванов Ivan',
+					birthday : '1976-12-19',
+					sex : 'мужской',
+					address : 'ул. Звенигороская, 47б',
+					email : 'ivanov@mail.ru'
+				},{
+					name : 'Петров Пётр',
+					birthday : '1980-1-10',
+					sex : 'мужской',
+					address : 'ул. Звенигороская, 47в',
+					email : 'petrov@mail.ru'
+				},{
+					name : 'Sidorov Ivan',
+					birthday : '1976-05-19',
+					sex : 'мужской',
+					address : 'ул. Звенигороская, 38',
+					email : 'sidorov@mail.ru'
+				}];
+			}
+		};
+	});
+	app.directive('mailto', function(){
+	return {
+		restrict: 'E',
+		template: `<tr>
+			<td>Email </td><td><a href="mailto:>{{user.email}}</">{{user.email}}</a></td>
+		</tr>`,
+		
+	};
+		
+	} );
+</script>
+</body>
+</html>
+
+

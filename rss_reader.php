@@ -30,7 +30,7 @@ foreach ($sxml->channel->item as $news){
     <em>Опубликовано: {$news->pubdate}</em>
     </p>
     <p align='right'>
-     <a href="$news->link">Читать далее</a>
+     <a href="$news->linkNews">Читать далее</a>
     </p>
 RSS;
 }

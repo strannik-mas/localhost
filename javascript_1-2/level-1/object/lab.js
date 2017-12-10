@@ -1,10 +1,10 @@
 // Object.prototype.z = 33;
-function User(n,a){
+/*function User(n,a){
 	this.name = n;
 	this.age = a;
 	this.admin = false;
-	/* this.say = function(w){
-		print(this.name, ":
+	 this.say = function(w){
+		print(this.name);
 	}; */
 }
 /*

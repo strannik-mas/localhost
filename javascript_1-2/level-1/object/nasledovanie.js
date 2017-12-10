@@ -102,3 +102,8 @@ function isAcceptableEmail(email){
 
 log(isAcceptableEmail("john@yandex.ru"));
 log(isAcceptableEmail("john@mail.ru"));
+
+
+for (let i=0;i<=10;i++){ 
+	console.log(i+':'+ ((i * 0.1).toFixed(2) == (i / 10).toFixed(2))); 
+}

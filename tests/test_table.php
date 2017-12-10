@@ -120,7 +120,7 @@
             
             $out .= '</tr>';
         }
-        
+        $out .= '</tbody></table>';
         return $out;
     }
 ?>    

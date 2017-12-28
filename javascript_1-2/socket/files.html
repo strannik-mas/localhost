@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Файлы: демонстрация</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .mini{
+                height: 75px;
+                border: 1px solid #000;
+                margin: 10px 6px 0 0;
+            }
+        </style>
+        <script>
+            function onFileSelect(e){
+                console.log('kuku');
+                var file = e.target.files[0];
+//                file.type.match('image.*');//отобрать только картинки
+                var reader = new FileReader();
+                reader.onload = function(f){
+                    console.log(f.target.result);
+                }
+//                Blob
+//                reader.readAsDataURL(file);
+                reader.readAsArrayBuffer(file);
+            }
+            window.onload = function(){
+                document.getElementById("files").addEventListener('change', onFileSelect, false);
+            };
+        </script>
+    </head>
+    <body>
+        <input type="file" id="files" name="files[]" multiple>
+        <output id="list"></output>
+        <div></div>
+    </body>
+</html>

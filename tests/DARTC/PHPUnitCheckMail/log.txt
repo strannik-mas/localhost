@@ -1,0 +1,5 @@
+[20-12-2017 22:54]Received: by 10.31.153.71 with SMTP id b68csp5394744vke;
+[20-12-2017 22:54]X-Received: by 10.25.213.138 with SMTP id m132mr4280679lfg.107.1513784958860;
+[20-12-2017 22:54]Received: from frv157.fwdcdn.com (frv157.fwdcdn.com. [212.42.77.157])
+[20-12-2017 22:54]Received-SPF: pass (google.com: domain of privat_m@ukr.net designates 212.42.77.157 as permitted sender) client-ip=212.42.77.157;
+[20-12-2017 22:54]Received: from [178.165.65.61] (helo=OpenServer)

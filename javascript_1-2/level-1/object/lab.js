@@ -5,8 +5,8 @@
 	this.admin = false;
 	 this.say = function(w){
 		print(this.name);
-	}; */
-}
+	}; 
+}*/
 /*
 var u1 = new User("Jogn", 15);
 u1.admin = true;

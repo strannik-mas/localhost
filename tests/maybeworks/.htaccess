@@ -1,0 +1,9 @@
+RewriteEngine on
+#все запросы, которые содержат web перенаправляем
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule (.*) /web/$1
+
+#запрашиваемый файл не файл и не директория:
+RewriteCond %{REQUEST_FILENAME}	!-f
+RewriteCond %{REQUEST_FILENAME}	!-d
+RewriteRule (.*) /web/index.php

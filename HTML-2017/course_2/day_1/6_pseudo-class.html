@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Селекторы псевдоклассов</title>
+<style type="text/css">
+/*:link :visited :focus :active :hover*/
+a:link{color:green}
+a:visited{color:orange}
+a:active{color:lime;
+font-size:1.5em; /*кроме цвета ничего не меняется*/
+}
+:focus{border:3px solid #f63;}
+</style>
+</head>
+<body>
+	<p>Первый параграф в body</p>
+	<p>Второй параграф в body</p>
+	<div>
+		<p>Первый параграф в div</p>
+		<p>Второй параграф в div</p>
+	</div>
+	<p>Текст и <a href="#">ссылка</a> в параграфе</p>
+	<input type="text">
+</body>
+</html>

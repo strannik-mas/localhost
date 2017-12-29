@@ -47,7 +47,7 @@ class Chat implements MessageComponentInterface {
                     $users = Yii::$app->db->createCommand("SELECT username, avatar_path, avatar_filename, mute, ban FROM users WHERE status=1")->queryAll();
                 else 
                     $users = Yii::$app->db->createCommand("SELECT username, status, avatar_path, avatar_filename, mute, ban FROM users")->queryAll();
-                var_dump($users);
+                // var_dump($users);
                 $from->send(json_encode($users));
             }
             //выключатель

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Селекторы атрибутов</title>
+<style type="text/css">
+[title]{
+	background-color:#FFA;
+}
+[title="Александр Пушкин"]{
+	font-size:2em;
+}
+/* селектор по атрибуту ищет слово через пробел в указанном атрибуте */
+[title~="Александр"]{
+	text-transform:uppercase;
+}
+/*селектор работает на атрибутах из нескольких слов, записанных через знак "-"*/
+[title|="привет"]{
+	background-color:#F45;
+}
+/*селектор по началу фразы*/
+[title^="Алекс"]{
+	background-color:#A45;
+}
+/*селектор по концу фразы*/
+[title$="чкин"]{
+	background-color:#bc5;
+}
+/*селектор везде во фразе*/
+[title*="Пуш"]{
+	color:lime;
+}
+[title*="сандр"][title$="як"]{
+	color:purple;
+}
+[href$="html"]{
+	background: url(../img/ico_mini_v.png) no-repeat;
+	padding-left: 18px;
+	margin-right: 5px;
+}
+[href$="txt"]{
+	background: url(../img/ico_mini_v.png) no-repeat;
+	background-position:0 -20px;
+	padding-left: 18px;
+	margin-right: 5px;
+}
+[href$="xml"]{
+	background: url(../img/ico_mini_v.png) no-repeat;
+	background-position:0 -40px;
+	padding-left: 18px;
+	margin-right: 5px;
+}
+</style>
+</head>
+<body>
+	<p><a href="selectors.html">Просто</a> <a href="new.txt">текст</a> в <a href="/docs/test.xml">параграфе</a></p>
+	<p title="привет-земля">Параграф с пустым title</p>
+	<p title="Александр Овечкин">Параграф с title "Александр Овечкин"</p>
+	<div title="Александр Пушкин">Блок с title "Александр Пушкин"</div>
+	<p title="Александрийский маяк">Параграф с title "Александрийский маяк"</p>
+</body>
+</html>

@@ -1,5 +1,5 @@
 $(function(){
-    console.log($('#name').text());
+    // console.log($('#name').text());
     function Message(name){
         this.name = name;
         this.message;
@@ -63,7 +63,7 @@ $(function(){
     $('.logout').on('click', userLogout);
     
 //    console.log($.cookie('access_token'));
-    var socket = new WebSocket("ws://localhost:8080");
+    var socket = new WebSocket("ws://maybechat.ddns.net:8080");
 //    socket.readyState.onchange = () => {
 //        alert(socket.readyState);
 //    };
@@ -110,13 +110,13 @@ $(function(){
                     $('.uname').css('color', sessionStorage.getItem('nickcolor'));
                     $('.message').css('color', sessionStorage.getItem('msgcolor'));
                 }else if(msg instanceof Array){
-                    console.dir(msg);
+                    // console.dir(msg);
                     $('#online_users').html('');
                     msg.forEach(v => {
                         if(v.status){
                             $('#online_users').append(`<li class="left clearfix">
                             <span class="chat-img pull-left">
-                                <img src="/tests/maybeworks/web` + v.avatar_path + v.avatar_filename + `" alt="` + v.username + `" class="img-circle">
+                                <img src="/web` + v.avatar_path + v.avatar_filename + `" alt="` + v.username + `" class="img-circle">
                             </span>
                             <div class="chat-body clearfix">
                                 <div class="header_sec"><strong class="primary-font">` + v.username + `</strong></div>
@@ -163,7 +163,7 @@ $(function(){
                             //юзеры
                             $('#online_users').append(`<li class="left clearfix">
                             <span class="chat-img pull-left">
-                                <img src="/tests/maybeworks/web` + v.avatar_path + v.avatar_filename + `" alt="` + v.username + `" class="img-circle">
+                                <img src="/web` + v.avatar_path + v.avatar_filename + `" alt="` + v.username + `" class="img-circle">
                             </span>
                             <div class="chat-body clearfix">
                                 <div class="header_sec"><strong class="primary-font">` + v.username + `</strong></div>

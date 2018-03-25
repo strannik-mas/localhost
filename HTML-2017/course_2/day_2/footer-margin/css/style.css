@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+}
+html {
+    background: #369;
+}
+#wrapper{
+    min-width: 700px;
+    max-width: 900px;
+    background-color: #0f0;
+    margin: auto;
+}
+html,body,#wrapper{
+    height: 100%;
+    margin: 0;
+}
+#main{
+    min-height: 100%;
+    margin-bottom: -100px;
+    background-color: #9c0;
+} 
+#all{
+    padding-bottom: 100px;
+    /* background-color: #ff0; */
+}
+#footer {
+    height: 100px;
+    background-color: #999;
+}

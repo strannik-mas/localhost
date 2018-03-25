@@ -1,0 +1,8 @@
+*html .border, *html .border .bottom{
+ /*background-image:none;
+ 
+ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+ src='i/border2.png',
+ sizingMethod='crop'
+ );*/
+}

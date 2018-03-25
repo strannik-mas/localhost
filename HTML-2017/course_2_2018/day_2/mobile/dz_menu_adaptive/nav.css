@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  border: 0;
+  outline: 0; }
+
+nav {
+  background: #f00; }
+
+nav ul {
+  list-style: none;
+  text-align: right; }
+
+nav li {
+  display: inline-block; }
+
+nav li.current a {
+  background: #ff67ec;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+nav li a {
+  display: inline-block;
+  font-size: 16px;
+  padding: 0 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  line-height: 50px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff01df; }
+
+nav li a:hover {
+  background: #9a0087; }
+
+@media only screen and (max-width: 1024px) {
+  nav {
+    position: relative;
+    min-height: 50px; }
+
+  nav ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid #aaa;
+    width: 120px;
+    background: #fafafa url(icon-menu.png) no-repeat 10px 11px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+
+  nav li {
+    display: none; }
+
+  nav li.current {
+    display: block; }
+
+  nav ul:hover {
+    background-image: none; }
+
+  nav ul:hover li {
+    display: block; }
+
+  nav ul:hover li.current {
+    background: url(icon-check.png) no-repeat 10px 7px; } }
+
+/*# sourceMappingURL=nav.css.map */

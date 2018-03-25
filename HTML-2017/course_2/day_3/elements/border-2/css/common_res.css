@@ -1,0 +1,22 @@
+body{
+ padding: 200px 0 0 200px;
+ background: #369
+}
+.border{
+ width: 200px;
+ padding-top: 24px;
+ background:url(../i/border2.png) no-repeat;
+ overflow: hidden;
+}
+.border .out{
+ padding: 20px;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  background: #fea
+}
+.border .bottom{
+ width: 200%;
+ height: 27px;
+ background: url(../i/border2.png) no-repeat bottom;
+ margin-left: -100% ;/*двигаем элемент на половину ширины контейнера*/
+}

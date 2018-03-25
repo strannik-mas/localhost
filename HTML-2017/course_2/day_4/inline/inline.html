@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display inline</title>
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<style>
+html{
+    font-size: 2em;
+}
+.left{
+    /*display: inline;*/
+    float: right;
+    width: 200px;
+    height: 50px;
+    background: #ccf;
+}
+span{
+    background: #cfc;  
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    /* font: bold 1em Arial,sans-serif; */
+    font-family: 'Lobster', cursive;    }
+/* input:invalid{
+    background: red;
+}
+input:valid{
+    background: green;
+} */
+input[type="text"]{
+
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+input[type="text"]:focus{
+    outline: 0;
+    box-shadow: inset 0px 0px 2px #555;
+}
+.row {
+    border: 1px solid #000;
+    border-radius: 20px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    background: url(smile.jpg) 10px 15px no-repeat;
+}
+.row input[type="text"]{
+    border: 0;
+    outline: 0;
+    margin: 10px;
+}
+.checkbox {
+    padding-left: 20px;
+    background: url(check.gif) no-repeat;
+    font: 12px Arial,sans-serif;
+}
+.checkbox:hover {
+    background-position: 0 -42px;
+}
+</style>
+
+</head>
+<body>
+    <div class="row">
+        <!-- <input type="color"> -->
+        <input type="text" pattern="\d+">
+        <input type="button" value="Нажать">
+    </div>
+    <div class="checkbox">variant 0</div>
+    <input type="text">
+    <br>
+    <input type="checkbox">variant 1</input><br>
+    <input type="checkbox">variant 2</input><br>
+    <input type="checkbox">variant 3</input><br>
+    <span>Since conditional comments use the HTML comment structure, they can only be included in HTML files, and not in CSS files. I'd have preferred to put the special styles in the CSS file, but that's impossible. You can also put an entire new tag in the conditional comment referring to an extra style sheet. По всей видимости, недокуренный виски расширяет рыцаря. Базальтовый ксилофон бархатист. Бережная волчица философски настроена. Бетонный павиан напыщен и действует тактически. Имманентный крейсер мудр. Разумеется, выдра бархатиста. Радужный кадавр свободен и торжественен. Землистая мулатка шикарна и бархатиста. Конгруэнтная икра трансцендентальна. К своему удивлению мы замечаем, что название уверенного мартини трагически открывает драматичное будущее хомяка.</span>
+    <div class="left">  </div>
+</body>
+</html>

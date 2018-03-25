@@ -1,0 +1,45 @@
+html {
+    background-color: #cfc;
+    font: 1.2em sans-serif;
+}
+body {
+    margin: 0;
+}
+html,body,#wrapper {
+    height: 100%;
+}
+#wrapper {
+    min-width: 800px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: url(../i/left.jpg) repeat-y;
+}
+#main {
+    min-height: 100%;
+    margin-bottom: -100px;
+    background: url(../i/right.jpg) 100% 0 repeat-y;
+}
+#all {
+    padding-bottom: 100px;
+    background: url(../i/left.jpg) repeat-y;
+    overflow: hidden;
+}
+#footer {
+    height: 100px;
+    background-color: #fac;
+}
+/*columns*/
+#left, #right {
+    width: 200px;
+}
+#left {
+    float: left;
+    /* background-color: #f96; */
+}
+#right {
+    float: right;
+    /* background-color: #69c; */
+}
+#center {
+    margin: 0 200px;
+}

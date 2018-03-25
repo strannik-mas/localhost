@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    border: 0;
+    outline: 0;
+}
+
+@mixin adaptive($media) {
+    @if $media == smart {
+        @media only screen and(max-width: 480px) {@content}
+    }
+
+    @else if $media == tablet {
+        @media only screen and (min-width: 480px) and (max-width: 1024px) {@content}
+    }
+
+    @else if $media == pc {
+        @media only screen and (min-width: 1025px) {@content}
+    }
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: #f00;
+
+    &:hover {
+        background: orange;
+    }
+
+    @include adaptive(smart){
+        width: 100%;
+        background: orange;
+
+        &:active {
+            background: lime;
+        }
+    }
+
+
+}

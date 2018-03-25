@@ -1,0 +1,34 @@
+.column-common, .column-one, .column-big, .column-middle, .column-small {
+  height: 200px;
+  box-shadow: 0 0 5px #123;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+.wrapper {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.column-one {
+  width: 1004px;
+  background: lime;
+}
+
+.column-big {
+  width: 492px;
+  background: grey;
+}
+
+.column-middle {
+  width: 321.3333333333px;
+  background: yellowgreen;
+}
+
+.column-small {
+  width: 236px;
+  background: #45f;
+}
+
+/*# sourceMappingURL=layout.css.map */

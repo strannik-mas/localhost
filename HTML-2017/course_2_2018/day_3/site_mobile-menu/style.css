@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  border: 0;
+  outline: 0; }
+
+header {
+  height: 80px;
+  background: lightcyan; }
+
+.logo {
+  font-size: 24px;
+  position: relative;
+  top: 10px;
+  left: 10px; }
+
+.menu-button {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 48px;
+  background: linear-gradient(#fff, #00ff00);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: none;
+  cursor: pointer; }
+  .menu-button::selection {
+    background: transparent; }
+  .menu-button:hover {
+    background: linear-gradient(#00ff00, #fff); }
+  @media only screen and (max-width: 480px) {
+    .menu-button {
+      display: block; } }
+  @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    .menu-button {
+      display: block; } }
+
+.left-to-rigth, .menu-element {
+  display: inline-block;
+  vertical-align: top; }
+
+.menu {
+  display: block; }
+  @media only screen and (max-width: 480px) {
+    .menu {
+      display: none; } }
+  @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    .menu {
+      display: none; } }
+
+.menu-element {
+  width: 150px;
+  height: 80px;
+  background: lightgray;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-right: 10px; }
+  @media only screen and (max-width: 480px) {
+    .menu-element {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px; } }
+  @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    .menu-element {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px; } }
+
+.menu-link {
+  font-size: 16px;
+  display: block;
+  background-color: orange;
+  height: 80px;
+  width: 150px;
+  text-align: center;
+  line-height: 80px;
+  text-decoration: none; }
+  .menu-link:hover {
+    background: #ffb733; }
+  .menu-link:active {
+    background: #cc8400; }
+  @media only screen and (max-width: 480px) {
+    .menu-link {
+      width: 100%;
+      text-align: center;
+      line-height: 80px; } }
+  @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    .menu-link {
+      width: 100%;
+      text-align: center;
+      line-height: 80px; } }
+
+main {
+  height: 200px;
+  background: yellow; }
+
+.show {
+  display: block; }
+
+/*# sourceMappingURL=style.css.map */

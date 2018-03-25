@@ -1,0 +1,125 @@
+.menu-button {
+    width: $menu-element-height;
+    height: $menu-element-height;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: $menu-element-height;
+    background: linear-gradient(#fff, #555);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+    cursor: pointer;
+
+    &::selection {
+        background: transparent;
+    }
+
+    &:hover {
+        background: linear-gradient(#555, #fff);
+    }
+
+    @include adaptive(smart) {
+        display: block;
+    }
+
+    @include adaptive(iphoneX) {
+        display: block;
+    }
+
+    @include adaptive(tablet) {
+        display: block;
+    }
+}
+
+.left-to-rigth {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.menu {
+    display: block;
+
+    @include adaptive(smart) {
+        display: none;
+    }
+
+    @include adaptive(iphoneX) {
+        display: none;
+    }
+
+    @include adaptive(tablet) {
+        display: none;
+    }
+}
+
+.menu-element {
+    @extend .left-to-rigth;
+    width: $menu-element-width;
+    height: $menu-element-height;
+    background: lightgray;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-right: 10px;
+
+    @include adaptive(smart) {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.menu-link {
+    font-size: 16px;
+    display: block;
+    background-color: $link-color;
+    height: $menu-element-height;
+    width: $menu-element-width;
+    text-align: center;
+    line-height: $menu-element-height;
+    text-decoration: none;
+
+    &:hover {
+        background: lighten($link-color, 10%);
+    }
+
+    &:active {
+        background: darken($link-color, 10%);
+    }
+
+    @include adaptive(smart) {
+        width: 100%;
+        text-align: center;
+        line-height: $menu-element-height;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        text-align: center;
+        line-height: $menu-element-height;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        text-align: center;
+        line-height: $menu-element-height;
+    }
+}
+
+.show {
+    display: block;
+}

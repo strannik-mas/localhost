@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 0; }
+
+.button {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(white, lightseagreen);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 32px;
+  text-align: center;
+  line-height: 48px;
+  cursor: pointer; }
+  .button:hover {
+    background: linear-gradient(lightseagreen, white); }
+  .button::selection {
+    background: transparent; }
+
+.menu {
+  width: 200px;
+  display: none; }
+
+.button-toggled {
+  background: linear-gradient(lightseagreen, yellow); }
+  .button-toggled:hover {
+    background: #999900; }
+
+.show {
+  display: block; }
+
+.menu-element {
+  background: lightgray;
+  border-bottom: 1px solid #666; }
+
+.menu-link {
+  font-size: 16px; }
+
+/*# sourceMappingURL=styles.css.map */

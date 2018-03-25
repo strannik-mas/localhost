@@ -1,0 +1,58 @@
+body{
+ padding: 200px;
+ background: #f60
+}
+.border{
+ margin: 0 0 50px;
+ background: #ffc;
+ position: relative;
+ overflow: hidden;
+}
+.border .content{
+ padding: 20px;
+ border: 2px solid #000;
+}
+.border .png{
+    background: url(../i/border5.png) no-repeat;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    
+}
+.border .lt{
+    top: -12px;
+    left: -12px;
+}
+.border .rt{
+    top: -12px;
+    right: -12px;
+}
+.border .lb{
+    left: -12px;
+    bottom: -12px;
+}
+.border .rb{
+    right: -12px;
+    bottom: -12px;
+}
+
+.wide{
+
+}
+.wide .content{
+
+}
+.wide .png{
+
+}
+.wide .lt, .wide .rt{
+
+}
+.wide .lb, .wide .rb{
+
+}
+
+
+
+
+

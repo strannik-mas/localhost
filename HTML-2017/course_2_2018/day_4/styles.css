@@ -1,0 +1,8 @@
+.abc {
+  background: red;
+  width: 100px;
+  height: 200px; }
+  .abc:hover {
+    background: orange; }
+
+/*# sourceMappingURL=styles.css.map */

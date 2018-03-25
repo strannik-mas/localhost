@@ -1,0 +1,5 @@
+#menu li {
+ float:left;
+ width: expression(100 / parentNode.childNodes.length + '%');
+ margin-right:expression(this == parentNode.lastChild ? '-1px' : '0');
+}

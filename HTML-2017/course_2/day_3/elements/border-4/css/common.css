@@ -1,0 +1,80 @@
+body{
+ padding: 200px;
+ background: #f60
+}
+.border{
+ margin: 0 0 50px;
+ background: #ffc;
+ position: relative;
+ overflow: hidden;
+}
+.border .content{
+ padding: 20px;
+ border: 2px solid #000;
+}
+.border .png{
+    background: url(../i/sprite.png) no-repeat;
+    position: absolute;
+    /* height: 28px;
+    width: 28px; */
+    height: 68px;
+    width: 40px;
+    clip: rect(0 28px 28px 0);
+}
+.border .lt{
+    top: -14px;
+    left: -14px;
+}
+.border .rt{
+    top: -14px;
+    right: -28px;
+}
+.border .lb{
+    left: -14px;
+    bottom: -52px;
+}
+.border .rb{
+    right: -28px;
+    bottom: -52px;
+}
+
+.wide{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,ffffff+39,aab51c+64,7db9e8+100 */
+    background: rgb(30,87,153); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%, rgba(255,255,255,1) 39%, rgba(170,181,28,1) 64%, rgba(125,185,232,1) 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%,rgba(255,255,255,1) 39%,rgba(170,181,28,1) 64%,rgba(125,185,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, rgba(30,87,153,1) 0%,rgba(255,255,255,1) 39%,rgba(170,181,28,1) 64%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.wide .content{
+ border: 4px solid #000;
+}
+.wide .png{
+    background: url(../i/sprite.png) no-repeat;
+    position: absolute;
+    height: 68px;
+    width: 40px;
+    clip: rect(28px 40px 68px 0);
+}
+.wide .lt{
+    top: -48px;
+    left: -20px;
+}
+.wide .rt{
+    top: -48px;
+    right: -20px;
+}
+.wide .lb{
+    left: -20px;
+    bottom: -20px;
+} 
+.wide .rb{
+    bottom: -20px;
+    right: -20px;
+}
+
+
+
+
+
+

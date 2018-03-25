@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 0;
+}
+
+.simple-button {
+  display: inline-block;
+  background: lime;
+  margin: 4px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 24px;
+  border: 1px solid #bcbcbc;
+  box-shadow: 0 0 5px #eee;
+  font-family: Helvetica, Geneva, sans-serif;
+  color: #999999;
+}
+.simple-button:hover {
+  background: #009900;
+}
+.simple-button:active {
+  background: #66ff66;
+}
+
+.attention-button {
+  display: inline-block;
+  background: yellow;
+  margin: 4px;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 40px;
+  border: 1px solid #bcbcbc;
+  box-shadow: 0 0 5px #eee;
+  font-family: Helvetica, Geneva, sans-serif;
+  color: #999999;
+}
+.attention-button:hover {
+  background: #999900;
+}
+.attention-button:active {
+  background: #ffff66;
+}
+
+.danger-button {
+  display: inline-block;
+  background: red;
+  margin: 4px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 24px;
+  border: 1px solid #bcbcbc;
+  box-shadow: 0 0 5px #eee;
+  font-family: Helvetica, Geneva, sans-serif;
+  color: #999999;
+}
+.danger-button:hover {
+  background: #990000;
+}
+.danger-button:active {
+  background: #ff6666;
+}
+
+.buy-button {
+  display: inline-block;
+  background: orange;
+  margin: 4px;
+  width: 400px;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 48px;
+  border: 1px solid #bcbcbc;
+  box-shadow: 0 0 5px #eee;
+  font-family: Helvetica, Geneva, sans-serif;
+  color: #999999;
+}
+.buy-button:hover {
+  background: #996300;
+}
+.buy-button:active {
+  background: #ffc966;
+}
+
+.column-common, .column-one, .column-big, .column-middle, .column-small {
+  height: 200px;
+  box-shadow: 0 0 5px #123;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+.wrapper {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.column-one {
+  width: 1004px;
+  background: lime;
+}
+
+.column-big {
+  width: 492px;
+  background: grey;
+}
+
+.column-middle {
+  width: 321.3333333333px;
+  background: yellowgreen;
+}
+
+.column-small {
+  width: 236px;
+  background: #45f;
+}
+
+/*# sourceMappingURL=style.css.map */

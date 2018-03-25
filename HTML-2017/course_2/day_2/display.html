@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Правило display</title>
+<style type="text/css">
+h1{
+    background: #ccf;
+    display: inline;
+}
+span{
+    background: #cfc;
+    display: block;
+}
+em{
+    display: none;
+}
+span:hover em{
+    display: inline-block;
+    height: 50px;
+}
+p{
+    background: #fcc;
+    display: list-item;
+    /* list-style-type: decimal; */
+}
+
+</style>
+</head>
+<body>
+	<h1>H1 - блочный элемент</h1>
+	<span>SPAN - строчный <em>элемент</em></span>
+	<blockquote>
+	<p>Первый параграф</p>
+	<p>Второй параграф</p>
+	<p>Третий параграф</p>
+	</blockquote>
+</body>
+</html>

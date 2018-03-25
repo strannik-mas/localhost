@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Margin collapse вложенных элементов</title>
+<style type="text/css">
+
+
+
+#out{
+    /* border: 1px solid #000; */
+    /* border: 1px solid transparent; */
+    /* padding: 1px; */
+    overflow: hidden;
+    background-color: #f63;
+    
+}
+
+#in{
+    margin: 300px;
+    padding: 100px;
+    background-color: #369;
+}
+</style>
+<!--[if lte IE 9]>
+<style type="text/css">
+#out{
+
+}
+h1{color: red;}
+</style>
+<![endif]-->
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<h1>Срочно обновите браузер</h1>
+<![endif]-->
+	<div id="out">
+	  <div id="in">
+	    in
+	  </div>
+	</div>
+</body>
+</html>

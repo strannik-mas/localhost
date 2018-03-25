@@ -1,0 +1,38 @@
+/*Версия 7*/
+#menu ul{
+ 
+}
+#menu li{
+ float: left; /*mod6 menu menu4*/
+  width: expression(100 / parentNode.childNodes.length + '%');
+ margin-right:expression(this == parentNode.lastChild ? '-12px' : '0');
+}
+#menu a{
+ padding: 0;
+ background-image:url(../i/menu.png);
+ background-repeat: no-repeat; 
+ cursor: pointer;
+}
+#menu span{
+ display: inline-block;
+ height: inherit;
+ padding: 0 10px;
+ background:url(../i/menu.png)no-repeat 100% -26px; 
+}
+
+
+#footer{
+ zoom: expression(runtimeStyle.zoom = 1,
+		innerHTML += '<b class="ie_png ie_lt"></b> <b class="ie_png ie_rt"></b>');
+}
+#footer .ie_png{
+ position: absolute;
+ top: -35px;
+ left: -35px;
+ width: 70px;
+ height: 70px;
+ background: url(../i/border.png) no-repeat;
+}
+#footer .ie_rt{
+ margin-left: 100%;
+}

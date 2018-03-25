@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DZ 2</title>
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+<link type="text/css" href="css/jquery.mCustomScrollbar.css" rel="stylesheet" media="all" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<link type="text/css" href="css/styles.less" rel="stylesheet/less" />
+<script src="js/less.min.js"></script>
+
+
+<style type="text/css">
+div{
+    background: #ccf;
+    /*width: 200px;
+    height: 200px;
+     overflow: hidden; 
+    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;*/
+}
+p {
+    background: #cfc;
+    width: 1000px;
+}
+.gallery {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    text-align: center;
+}
+.gallery img {
+    margin: 5px 10px;
+    border: 3px solid #fcf;
+    width: 80px;
+    height: 60px;
+    box-shadow: -3px 5px 5px orange;
+}
+.gallery img:hover {
+    box-shadow: 2px 4px 10px #00f;
+    width: 800px;
+    height: 600px;
+}
+/* Styles specific to this particular page */
+.scroll-pane
+{
+	width: 100%;
+	height: 200px;
+	overflow: auto;
+}
+.horizontal-only
+{
+	height: auto;
+	max-height: 200px;
+}
+#scrollbar{
+    margin: 10px auto;
+    width: 300px;
+    height: 300px;
+}
+.mCustomScrollbar {
+    height: 730px;
+}
+.mCustomScrollbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #bababa;
+    width: 12px;
+    height: 12px;
+    border-radius: 40%}
+.mCustomScrollbar .mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #ccc;
+}
+
+/*кнопка в styles.less*/
+
+</style>
+<script>
+    $(function()
+    {
+        //console.log($('.scroll-pane'));
+        $('.scroll-pane').jScrollPane();
+        $('#scrollbar').mCustomScrollbar("scrollTo", "bottom", {
+            scrollEasing: "easeOut"
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="gallery">
+        <img src="../img/avatar_yoda.png">
+        <img src="../img/avatar_yoda.png">
+        <img src="../img/avatar_yoda.png">
+        <img src="../img/avatar_yoda.png">
+    </div>
+	<h1>ДЗ 2 день</h1>
+    <div class="scroll-pane horizontal-only">
+        <p>Центр«Специалист» предлагает Вам авторизованный курс Microsoft «М50564A Расширенные возможности HTML5». Язык HTML5 — ответ веб-разработчиков на давно назревшие требования обычных пользователей в международной паутине. Революционным отличием HTML5 от предыдущих технологий является интеграция в HTML5 не только HTML4, но и XHTML1, а также DOM2HTML (особенно JavaScript).<a href="http://www.specialist.ru/course/m50564">HTML5</a> идеально приспособлен для работы с новейшими мультимедийными веб-приложениями. С использованием HTML5 Ваши сайты и приложения станут более интерактивными и захв
+        </p>
+    </div>
+    <div class="mCustomScrollbar" id="scrollbar">
+        <div id="result">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, officiis voluptatem earum deleniti magni libero placeat ad beatae explicabo omnis sint facere laborum vel amet quis quas mollitia asperiores eligendi minus nesciunt illum atque cum molestias fugiat tempore sunt maiores doloribus quo dolor adipisci vero nam velit numquam ipsum incidunt dicta eveniet et reiciendis quidem rem suscipit unde debitis reprehenderit possimus aut ab repellat ducimus similique fugit voluptas. Et, suscipit veritatis magnam nulla veniam ea qui? Eos, fuga, et, repellendus ipsum nobis voluptatibus eligendi quod rerum porro quas officiis nostrum voluptatem architecto earum voluptatum non autem laboriosam veritatis quidem excepturi tenetur placeat molestiae odio veniam sunt cum incidunt nam quam qui sapiente commodi perspiciatis illum neque mollitia animi ad aperiam esse. Quisquam, neque, dolorum totam consequatur quidem commodi deleniti! Dolor accusamus soluta autem perspiciatis beatae ipsum cum sint quod ullam recusandae. Laborum, itaque harum dolorem iusto eveniet iure distinctio qui architecto aliquam enim in commodi adipisci ducimus animi non? Commodi, possimus aliquid delectus architecto assumenda non labore. Quia, cumque nostrum vitae veniam excepturi deserunt inventore quo odit officiis numquam sequi illo ipsa est necessitatibus soluta provident eos quis velit incidunt qui ea libero repellat perspiciatis nobis pariatur. Hic, praesentium, amet placeat sed dolorum aliquid tempore veniam consequuntur rerum quo perspiciatis culpa provident asperiores eum dolorem voluptatibus repellat consequatur non! Dolorum, magnam, debitis officia libero modi voluptatibus facilis eum eius officiis optio. Quia, animi explicabo et doloribus soluta delectus asperiores totam saepe repudiandae nesciunt. Ratione, delectus, optio rem tempore impedit corrupti recusandae dolore ipsum possimus explicabo culpa a dolores inventore harum unde porro deleniti natus in ipsam iste totam laborum tenetur doloremque! Ut, molestias, eaque error atque cumque neque quod cupiditate quas reiciendis eius ducimus voluptatum obcaecati. Fuga, blanditiis minima voluptate enim animi eum quibusdam mollitia atque error ad asperiores molestias delectus vero repellat quis commodi perspiciatis ex consequuntur! Aliquid nulla delectus maiores aperiam inventore eum provident minus obcaecati quos rerum. Explicabo, mollitia, facilis sit dolore facere veniam eius magni perferendis temporibus saepe eligendi illo placeat accusamus id ut similique asperiores nesciunt voluptas alias itaque repudiandae libero consectetur doloribus porro laboriosam ullam velit expedita ratione ipsam minima molestias eveniet est quisquam praesentium ipsa officia minus quam deserunt consequatur nulla quae possimus inventore obcaecati repellendus aliquid aliquam. Ipsum, laborum distinctio deserunt quae harum soluta consequuntur praesentium iste vero deleniti. Doloremque, quibusdam ab nesciunt veniam reiciendis delectus qui. Ratione, beatae, nesciunt, deleniti, recusandae fugiat ipsum alias perferendis molestias velit inventore porro aliquam tempore totam nobis sequi aut soluta commodi corporis quis delectus. Aliquam, incidunt, officia architecto pariatur doloremque nisi perspiciatis. Sit, obcaecati odio eveniet ipsum libero. Fuga, nobis, possimus impedit maxime error sit ducimus officiis optio ipsum inventore expedita qui a nesciunt odio placeat provident vel rem? Modi, totam, in fugiat laboriosam quibusdam debitis corporis cumque dolorem error voluptates similique distinctio? Itaque, suscipit, pariatur, officia temporibus laboriosam autem aut earum reprehenderit non modi nisi ad accusamus minima? Voluptate, aliquid fuga dolorem non libero repudiandae aperiam accusantium nostrum commodi facere! Eveniet iure facilis illo.</div>
+    </div>
+    <div><button>Send</button></div>
+</body>
+</html>

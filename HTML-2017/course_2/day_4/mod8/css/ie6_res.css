@@ -1,0 +1,27 @@
+#main{
+ height: 100%
+}
+#all{
+ zoom:1;
+}
+
+#footer .ie_png{
+ background-image:none;
+ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+ src='i/border.png',
+ sizingMethod='crop'
+ );
+}
+#menu a{
+ position: relative;
+ background-image: none;
+ zoom: expression(runtimeStyle.zoom = 1,
+		innerHTML += '<b class="ie_png ie_lt"></b> <b class="ie_png ie_rt"></b>');
+}
+
+#menu span{
+ background-image: none;
+}
+#menu a .ie_png{
+
+}

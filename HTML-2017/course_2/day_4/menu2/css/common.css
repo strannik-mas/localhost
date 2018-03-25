@@ -1,0 +1,100 @@
+#menu{
+ width: 800px;
+ height: 200px;
+ margin: auto;
+ background: #f0f0f0;
+}
+#menu ul{
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ width: 100%;
+ display: table;
+}
+#menu li {
+  /* float: left; */
+  position: relative;
+  display: table-cell;
+  text-align: center;
+}
+
+#menu li a{
+ height: 50px;
+ /* padding: 0 20px; */
+ width: 100%;
+ background: #69c;
+ color: #fff;
+ /* float: left; */ 
+ display: inline-block;
+ line-height: 50px;
+ text-decoration:none;
+ text-transform:uppercase;
+ font-family: serif
+ 
+}
+#menu li a:hover{
+    background: #699;
+    
+}
+
+#menu li ul{
+    display: none;
+    transition: height .5s .5s ease-out;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+}
+#menu li li{
+    float: none;
+    display: block;
+}
+#menu li:hover ul{
+    display: block;
+    position: relative;
+    height: 150px;
+}
+#menu li li a{
+    float: none;
+    display: block;
+    background-color: #f65;
+    white-space: nowrap;
+}
+#menu li li a:hover {
+    background-color: #f09;
+}
+/* 
+#test {
+    position: absolute;
+    padding: 20px;
+    background-color: #ffc;
+    top: 200px;
+    left: 300px;
+    width: 100px;
+    height: 50px;
+    transition: all .5s .8s ease-out;
+    
+}
+
+#test:hover {
+    animation: myclip .5s infinite;
+    color: #fff;
+    background-color: #333;
+    height: 100px;
+    width: 200px;
+    border-radius: 10px;
+}
+@keyframes myclip {
+    from{
+        left: 50px;
+        transform: rotate(10deg);
+    }
+    to {
+        left: 150px;
+        transform: rotate(100deg)
+        scale(2) skew(10deg, 20deg) 
+        translate(100px, 30px);
+    }
+} */

@@ -1,0 +1,37 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    cursor: default;
+}
+
+*::selection {
+    background: transparent;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: serif;
+}
+
+body {
+    background: orange;
+}
+
+aside, main {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 500px;
+}
+
+aside {
+    width: 200px;
+    background: #f00;
+}
+
+main {
+    width: calc(100% - 200px);
+    min-width: 200px;
+    background: lightseagreen;
+}

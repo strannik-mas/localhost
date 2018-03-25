@@ -1,0 +1,35 @@
+@color: #272;
+@color2: #396;
+.borderMy(@w, @bcolor, @brad:2px){
+    border: @w solid @bcolor;
+    border-radius: @brad;
+}
+.grad(@deg, @c1, @c2){
+    background: -webkit-linear-gradient(@deg, @c1, @c2);
+    background: -moz-linear-gradient(@deg, @c1, @c2);
+    background: -ms-linear-gradient(@deg, @c1, @c2);
+}
+h1{
+    /* background-color: @color+12; 
+    background-color: @color+#777;*/
+    .grad(20deg, @color+#555, #fff);
+    color: lighten(@color, 20%);
+    .borderMy(5px, @color, 5px);
+    padding: 5px;
+    /* color: darken(@color, 20%); */
+}
+p{
+    background: lighten(@color2, 30%);
+    .grad(30deg, @color2 - #555, #fff);
+    color: @color2 - #555;
+    .borderMy(2px, @color2, 5px);
+}
+button {
+    height: 50px;
+    width: 80px;
+    .grad(90deg, #ff2, #fff);
+}
+button:hover {
+    .grad(90deg, #ff2-#222, #fff);
+    .borderMy(2px, @color2, 3px);
+}

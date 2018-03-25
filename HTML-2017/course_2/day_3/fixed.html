@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Позиционирование fixed</title>
+<style type="text/css">
+#out{
+ background: #ccf;
+ margin: 0 0 0 200px;
+ height: 3000px;
+}
+
+#out span{ 
+    background-color: #ffc;
+    position: fixed;
+    width: 100px;
+    height: 300px;
+    left: 0;
+    top: calc(50% - 150px);
+}
+</style>
+</head>
+<body>
+<div id="out">Начало <span>вставка</span> и продолжение текста</div>
+
+</body>
+</html>

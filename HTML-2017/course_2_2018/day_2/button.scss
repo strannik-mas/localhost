@@ -1,0 +1,15 @@
+.simple-button {
+    @include button();
+}
+
+.attention-button {
+    @include button(yellow, 1, 300px, 100px);
+}
+
+.danger-button {
+    @include button(red);
+}
+
+.buy-button {
+    @include button(orange, 2);
+}

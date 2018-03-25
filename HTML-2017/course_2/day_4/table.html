@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Таблица</title>
+<style type="text/css">
+.left{
+ /*display: none;*/
+ float: left;
+ width: 200px;
+ height: 50px;
+ background: #ccf
+}
+
+table{
+    width: 30%;
+    /* table-layout: fixed; */
+    
+    border-collapse: separate;
+    border-collapse: collapse;
+    border-spacing: 10px 20px;
+}
+
+td{
+ padding: 10px;
+ border: 1px solid #369;
+}
+.group{
+    background-color: #ffc;
+    border: 5px solid #369;
+}
+.single{
+    background-color: #fcf;
+    border: 5px solid #f69;
+}
+.middle{
+    background-color: #cfc;
+    border: 8px solid navy;
+}
+.bottom{
+    background-color: #ccf;
+    border: 8px solid lime;
+}
+caption {
+    border: 2px solid #999;
+    margin: 20px;
+    padding: 10px;
+    background: #ffc;
+    caption-side: left;
+}
+tr:nth-child(2n){
+    background-color: #ff2;
+}
+</style>
+</head>
+<body>  
+  <div class="left">  </div>
+  <table>
+	<caption>Заголовок</caption>
+	<colgroup width="300" class="group">
+	  <col span="4">
+	  <col width="100" class="single">
+	</colgroup>
+	<colgroup width="50" span="5"></colgroup>	
+	<thead>
+		<tr>
+		 <td>head1</td>
+		 <td>head2</td>
+		 <td>head3</td>
+		 <td>head4</td>
+		 <td>head5</td>
+		 <td>head6</td>
+		 <td>head7</td>
+		 <td>head8</td>
+		 <td>head9</td>
+		</tr>
+	</thead>	
+	<tfoot>
+		<tr>
+		 <td>foot1</td>
+		 <td>foot2</td>
+		 <td>foot3</td>
+		 <td>foot4</td>
+		 <td>foot5</td>
+		 <td>foot6</td>
+		 <td>foot7</td>
+		 <td>foot8</td>
+		 <td>foot9</td>
+		</tr>
+	</tfoot>	
+	<tbody class="middle">
+		<tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td class="bottom">5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+		<tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+		<tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+        <tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+        <tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+        <tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+        <tr>
+		 <td>1</td>
+		 <td>2</td>
+		 <td>3</td>
+		 <td>4</td>
+		 <td>5</td>
+		 <td>6</td>
+		 <td>7</td>
+		 <td>8</td>
+		 <td>9</td>
+		</tr>
+	</tbody>
+  </table>
+</body>
+</html>

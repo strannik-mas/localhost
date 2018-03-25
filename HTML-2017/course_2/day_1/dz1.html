@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>ДЗ</title>
+    <style>
+        [href*="vk.com"]:before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: url(../img/vk.ico) no-repeat;
+        }
+        div:target {
+            background: rgba(0,0,0,0.4);
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            top: 100px;
+            left: 0;
+        }
+        .popup_back{
+            display: inline-block;
+            border: 5px solid #00f;
+            border-radius: 5px;
+            max-height: 94%;
+            max-width: 94%;
+            margin: 1% 0 0 0;
+            font-size: 0;
+        }
+        .popup_img {
+            position: relative;
+            margin: 0 auto;
+            z-index: 2;         
+        }
+        /*popup message*/
+        .popup_msg{
+            display: none;
+            color: #fff;
+            position: absolute;
+            height: 150px;
+            width: 300px;
+            z-index: 1;
+            top:10px;            right: 0;
+            border: 5px solid #0af;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.7);                
+        }
+        .popup_msg p {
+            margin: 2px 5px;
+            padding: 5px;
+        }
+        .head_msg:after {
+            content: ".";
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear:both;
+        }
+        .close_img {
+            position: relative;
+            margin: 5px;
+            z-index: 2;
+            float: right;
+        }
+        .content_msg img{
+            margin-left: 10px;
+            float: left;
+            width:80px;
+            height: 50px;
+            
+        }
+        .content_msg p {
+            margin-left: 95px;
+        }
+        #pop:hover div.popup_msg {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+	<ol>
+		<li>* Прочитать главу "Филосовия CSS-дизайна"</li>
+		<li>* Получить FTP-учетку</li>
+		<li>Написать CSS-код, который будет оформлять все ссылки, ведущие на http://vk.com (селекторы по атрибутам, псевдо-элементы)</li>
+		<li>Изучить сокращения Zen Coding/Emmet</li>
+		<li>Сверстать эффект лайтбокса (без чужих скриптов/css)http://vk.com/jsspec?z=photo1033495_323470367%2Fwall-56610948_229</li>
+		<li>Сверстать "всплывающее" сообщение в ВК</li>
+	</ol>
+    <p>Текст и <a href="">ссылка</a> в параграфе</p>
+    <p>Текст и <a href="http://vk.com">ссылка</a> в параграфе</p>
+    <p>Мой аккаунт <a href="https://vk.com/id454045868">ВК</a> в ВКОНТАКТЕ</p>
+    <div id='pop'>
+        <h2>Наведи на меня</h2>
+        <div class="popup_msg">
+            <div class="head_msg">
+                <a href=""><img src="../img/close.png" alt="Закрыть" class="close_img"></a>
+                <p>Новое сообщение</p>
+            </div>
+            <div class="content_msg">
+                <img src="../img/avatar_yoda.png" alt="userAvatar">
+                <p>Пора становиться мастером-синьором</p>
+            </div>            
+            
+        </div>
+    </div>    
+        
+    <a href="#light"><img src="../img/avatar_vader_2.jpg" alt="lightbox"width="30" height="20"></a>
+    <div id="light">
+        <a class="popup_back" href="file:///D:/domains/localhost/HTML-2017/course_2/day_1/dz1.html">
+        <img src="../img/avatar_vader_2.jpg" alt="realsize" class="popup_img"></a>
+    </div>
+</body>
+</html>

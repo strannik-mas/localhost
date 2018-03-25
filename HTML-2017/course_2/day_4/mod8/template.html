@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrapper {
+            width: 740px;
+            border: 1px solid #f00;
+            margin: 0 auto;
+        }
+        .menu_top {
+            padding: 0;
+            list-style-type: none;
+            display: table;
+            width: 100%;
+            height: 53px;
+            background: url(images/menu_tall.gif) repeat-x;
+        }
+        .menu_top li {
+            /* line-height: 53px; */
+            display: table-cell;
+            text-align: center;
+        }
+        .menu_top a {
+            width: 100%;
+            float: left;
+            height: 28px;
+            
+            margin-top: 12px;
+            color: #919191;
+            text-decoration: none;
+            background: url(images/menu_libg.gif) 0 0 repeat-y;
+        }        
+        /* .menu_top li:first-child a{
+            background: none;
+        } */
+        .menu_top a.active {
+            color: #000;
+            text-decoration: underline;
+        }
+        .menu_top li:first-child {
+            background: url(images/menu_left.gif) 0 0 no-repeat;
+        }
+        .menu_top li:last-child {
+            background: url(images/menu_right.gif) 100% 0 no-repeat;
+        }
+        /*Слайдер*/
+        #slider {
+            width: 740px;
+            height: 310px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background: url(images/myheader.png) 0 0 no-repeat;
+            position: relative;
+        }
+        #slider .slide{
+            position: absolute;
+            left: 415px;
+            top: 15px;
+        }
+        #slider h2, #slider h3, #slider p {
+            color: #fff;
+            font-family: Arial,sans-serif;
+        }
+        #slider h2 {
+            font-size: 50px;
+        }
+        #slider h3 {
+            font-size: 28px;
+            margin-top: -20px;
+        }
+        #slider p {
+            font-size: 14px;
+        }
+        #slider .read_next {
+            width: 103px;
+            color: #222;
+            text-decoration: none;
+            float: right;
+            /* margin-right: 50px; */
+            padding: 3px 20px 5px 20px;
+            background: url(images/header_click_here.jpg) 0 0 no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <!-- div#wrapper>(header>(a>img)+nav>ul.menu_top>li*6>a{ссылка$})+(div#slider>div.slide>h2{заголовок}+h3{заголовок мин}+p{Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!}+a.read_next{read})+(div#blocks>div#col$*5>(h2{header}+h3{header}+p{Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!}+a.read_next{read}))+(footer>nav>ul.menu_bottom>li*6>a{ссылка$}) -->
+    <div id="wrapper">
+        <header>
+            <a href=""><img src="" alt=""></a>
+            <nav>
+                <ul class="menu_top">
+                    <li><a href="">ссылка1</a></li>
+                    <li><a href="">ссылка2</a></li>
+                    <li><a href="">ссылка3</a></li>
+                    <li><a href="">ссылка4</a></li>
+                    <li><a href="">ссылка5</a></li>
+                    <li><a href="">ссылка6</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="slider">
+            <div class="slide">
+                <h2>заголовок</h2>
+                <h3>заголовок мин</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+        </div>
+        <div id="blocks">
+            <div id="col1">
+                <h2>header</h2>
+                <h3>header</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+            <div id="col2">
+                <h2>header</h2>
+                <h3>header</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+            <div id="col3">
+                <h2>header</h2>
+                <h3>header</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+            <div id="col4">
+                <h2>header</h2>
+                <h3>header</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+            <div id="col5">
+                <h2>header</h2>
+                <h3>header</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odio!</p>
+                <a href="" class="read_next">read</a>
+            </div>
+        </div>
+        <footer>
+            <nav>
+                <ul class="menu_bottom">
+                    <li><a href="">ссылка1</a></li>
+                    <li><a href="">ссылка2</a></li>
+                    <li><a href="">ссылка3</a></li>
+                    <li><a href="">ссылка4</a></li>
+                    <li><a href="">ссылка5</a></li>
+                    <li><a href="">ссылка6</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

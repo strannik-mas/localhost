@@ -1,0 +1,19 @@
+*html .border{
+
+
+}
+*html .border .png{
+
+/*
+ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+ src='i/border3.png',
+ sizingMethod='crop'
+ );*/
+}
+
+*html .wide .png{
+
+}
+
+
+

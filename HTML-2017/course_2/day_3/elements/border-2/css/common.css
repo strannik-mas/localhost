@@ -1,0 +1,14 @@
+body{
+ padding: 200px 0 0 200px;
+ background: #f60
+}
+.border{
+ width: 200px;
+ background: #ffc
+}
+.border .out{
+ padding: 20px
+}
+.border .bottom{
+
+}

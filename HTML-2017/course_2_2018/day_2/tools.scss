@@ -1,0 +1,28 @@
+@mixin button($colour: lime, $scale: 1, $width: 200px, $height: 60px) {
+    display: inline-block;
+    background: $colour;
+    margin: 4px;
+    width: $width * $scale;
+    height: $height * $scale;
+    text-align: center;
+    line-height: $height * $scale;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: $height * 0.4 * $scale;
+    border: 1px solid #bcbcbc;
+    box-shadow: 0 0 5px #eee;
+    font-family: Helvetica, Geneva, sans-serif;
+    color: #999999;
+
+    &:hover {
+        //background: $colour - 83;
+        background: darken($colour, 20%);
+    }
+
+    &:active {
+        background: lighten($colour, 20%);
+    }
+}

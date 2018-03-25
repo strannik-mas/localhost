@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Селекторы псевдоклассов</title>
+<style type="text/css">
+div{
+ padding: 10px 50px;
+}
+/*:target :empty :enabled :disabled*/
+
+div:empty{
+ background: #f60;
+}
+div:target{
+ background: #0ff;
+ border: 1px solid #000;
+}
+:enabled{
+ color: #080
+}
+:disabled{
+ color: #f00
+}
+
+</style>
+</head>
+<body>
+	<p>Первый параграф в body</p>
+	<p>Второй параграф в body</p>
+	<div id="d">
+		<p>Первый параграф в div</p>
+		<p>Второй параграф в div</p>
+	</div>
+	<p>Текст и <a href="#d">ссылка на блок с id=&quot;d&quot;</a> в параграфе</p>
+	<p>Текст и <a href="#">ссылка на несуществующую метку</a> в параграфе</p>
+	<div></div>
+	<p>Элемент формы <input type="text" value="активный"></p>
+	<p>Неактивный элемент формы <input type="text" value="неактивный" disabled        ></p>
+	
+</body>
+</html>

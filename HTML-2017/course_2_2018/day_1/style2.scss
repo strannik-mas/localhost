@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+}
+
+$main-width: 800px;
+$main-height: 400px;
+
+.rectangle {
+    width: $main-width;
+    height: $main-height;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -($main-width / 2);
+    margin-top: -($main-height / 2);
+    box-shadow: 0 0 10px gray;
+}
+
+.left, .right {
+    height: $main-height;
+    display: inline-block;
+    vertical-align: top;
+}
+
+body {
+    background: #bcbcbc;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+
+.left {
+    width: $main-width * 0.55;
+    background: url("city.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+
+.right {
+    width: $main-width * 0.45;
+    background: maroon;
+}
+
+.city-text {
+    font-size: 32px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+}
+
+.country-text {
+    font-size: 24px;
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    color: white;
+}
+
+.top, article, .photos {
+    margin: 30px 20px;
+}
+
+.top h2, .top h3 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.top h2 {
+    font-size: 24px;
+}
+
+.top h3, article, .photos>p, .more {
+    font-size: 16px;
+}
+
+article {
+    padding: 20px;
+}
+
+.photos {
+    position: relative;
+}
+
+.photos>p {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+}
+
+.photos img {
+    width: 50px;
+    height: 50px;
+}
+
+.images {
+    position: absolute;
+    top: 25px;
+}
+
+.circle-image {
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.more {
+
+}

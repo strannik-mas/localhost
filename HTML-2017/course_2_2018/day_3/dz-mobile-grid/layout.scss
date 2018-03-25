@@ -1,0 +1,307 @@
+$wrapper-size: 1366px;
+$content-height: 1940px;
+$content-height-smart: 1024px;
+$height-h3: 30px;
+$default-border: 1px solid black;
+$offset: 20px;
+$menu-element-height: 65px;
+$menu-element-width: 150px;
+$link-color: orange;
+
+@mixin adaptive($media) {
+    @if $media == smart {
+        @media only screen and(max-width: 480px) {@content}
+    }
+
+    @else if $media == tablet {
+        @media only screen and (min-width: 480px) and (max-width: 1024px) {@content}
+    }
+
+    @else if $media == iphoneX {
+        /* Portrait and Landscape */
+        @media only screen
+        and (min-device-width: 375px)
+        and (max-device-width: 812px)
+        and (-webkit-min-device-pixel-ratio: 3) {
+            @content
+        }
+
+    }
+}
+
+.column-common {
+    box-shadow: 0 0 5px #123;
+    display: inline-block;
+    vertical-align: top;
+    margin: $offset / 2;
+}
+
+.wrapper {
+    width: $wrapper-size;
+    margin: 0 auto;
+
+    @include adaptive(smart) {
+        width: 100%;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+    }
+
+    @include adaptive(iphoneX){
+        width: 100%;
+    }
+}
+
+header {
+    @extend .column-common;
+    height: 97px;
+    width: $wrapper-size - $offset;
+    background: lime;
+    margin-bottom: 0;
+
+    @include adaptive(smart) {
+        width: 100%;
+        margin: 0;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        margin: 0;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+nav {
+    @extend .column-common;
+    width: $wrapper-size - $offset;
+    background: darkcyan;
+    margin-top: 0;
+
+    @include adaptive(smart) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+}
+
+.slider {
+    @extend .column-common;
+    height: 366px;
+    width: ($wrapper-size *2 / 3) - $offset;
+    background: yellowgreen;
+
+    @include adaptive(smart) {
+        display: none;
+    }
+
+    @include adaptive(iphoneX) {
+        display: none;
+    }
+
+    @include adaptive(tablet) {
+        display: none;
+    }
+}
+
+.slider-text {
+    @extend .column-common;
+    height: 366px;
+    width: ($wrapper-size / 3) - $offset;
+    background: yellowgreen;
+
+    @include adaptive(smart) {
+        display: none;
+    }
+
+    @include adaptive(iphoneX) {
+        display: none;
+    }
+
+    @include adaptive(tablet) {
+        display: none;
+    }
+}
+
+.widget {
+    @extend .column-common;
+    height: 343px;
+    width: ($wrapper-size / 5) - $offset;
+    background: #45f;
+
+    @include adaptive(smart) {
+        width: 100%;
+        margin: 0;
+        height: $height-h3;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        margin: 0;
+        height: $height-h3;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        margin: 0;
+        height: $height-h3;
+    }
+}
+
+.content-container, .news {
+    @extend .column-common;
+    height: $content-height;
+}
+
+.content-container {
+    width: ($wrapper-size * 3 / 4) - $offset;
+    background: #7092BE;
+
+    @include adaptive(smart) {
+        width: 100%;
+        margin: 0;
+        height: $content-height-smart;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        margin: 0;
+        height: $content-height-smart;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        margin: 0;
+        height: $content-height-smart;
+    }
+}
+
+.news {
+    width: ($wrapper-size / 4) - $offset;
+    background: #ff01df;
+
+    @include adaptive(smart) {
+        display: none;
+    }
+
+    @include adaptive(iphoneX) {
+        display: none;
+    }
+
+    @include adaptive(tablet) {
+        display: none;
+    }
+}
+
+.popular, .new-product {
+    height: ($content-height / 2);
+    background: lightyellow;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    @include adaptive(smart) {
+        display: block;
+        width: 100%;
+        margin: 0;
+        height: $content-height-smart / 2;
+        overflow: hidden;
+    }
+
+    @include adaptive(iphoneX) {
+        display: block;
+        width: 100%;
+        margin: 0;
+        height: $content-height-smart / 2;
+        overflow: hidden;
+    }
+
+    @include adaptive(tablet) {
+        display: block;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        height: $content-height-smart / 2;
+    }
+}
+
+.black {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    height: $height-h3;
+    line-height: $height-h3;
+    background: #000;
+    color: whitesmoke;
+}
+
+.product {
+    @extend .column-common;
+    height: ($content-height / 4) - $offset - $height-h3;
+    width: ($wrapper-size * 3 / 12) - $offset;
+    background: #ff0022;
+    margin-left: 0;
+
+    @include adaptive(smart) {
+        display: block;
+        width: 95%;
+        margin: $offset /2 auto;
+        height: ($content-height-smart / 4)  - $height-h3;
+    }
+
+    @include adaptive(iphoneX) {
+        display: block;
+        width: 95%;
+        margin: $offset /2 auto;
+        height: ($content-height-smart / 4)  - $height-h3;
+    }
+
+    @include adaptive(tablet) {
+        display: block;
+        width: 90%;
+        margin: $offset /2 auto;
+        height: ($content-height-smart / 4)  - $height-h3;
+    }
+}
+
+footer {
+    @extend .column-common;
+    height: 51px;
+    width: $wrapper-size - $offset;
+    background: saddlebrown;
+    margin-bottom: 0;
+
+    @include adaptive(smart) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+
+    @include adaptive(iphoneX) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+
+    @include adaptive(tablet) {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+}

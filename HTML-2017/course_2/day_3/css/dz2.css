@@ -1,0 +1,59 @@
+html, body, #wrapper{
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+#wrapper {
+    /* background-color: yellow; */
+}
+#main{
+    margin-bottom: -100px;
+    min-height: 100%;
+    background: url(../img/right.png) 100% 0  repeat-y;   
+    background-position-x: 100%;
+}
+#all{
+    background: url(../img/left.png) repeat-y;
+    padding-bottom: 100px;
+    overflow: hidden;
+}
+#container1, #container2, #container3 {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+#container3 {
+    background: url(../img/right.png) 100% 0;
+    /* overflow: hidden; */
+}
+#container2 {
+    background-color: yellow;
+    right: 30%;
+}
+#container1 {
+    background: url(../img/left.png);
+    right: 40%;
+}
+#col1, #col2, #col3 {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    padding-top: 10px;
+}
+#col1 {
+    width: 26%;
+    left: 72%;
+}
+#col2 {
+    width: 36%;
+    left: 76%;
+}
+#col3 {
+    width: 26%;
+    left: 80%;
+}
+footer {
+    height: 100px;
+    background-color: #45daf8;
+}

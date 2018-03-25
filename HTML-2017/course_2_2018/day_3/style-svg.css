@@ -1,0 +1,13 @@
+.abc {
+    height: 500px;
+}
+
+.svg-example {
+    width: 1000px;
+    height: 1000px;
+    background: yellow url(heart.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: contain;
+    background-size: contain;
+}

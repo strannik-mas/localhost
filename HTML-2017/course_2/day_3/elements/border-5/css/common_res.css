@@ -1,0 +1,46 @@
+body{
+ background: #69c;
+ padding: 100px; 
+}
+.border{
+width: 300px;
+position: relative;
+}
+.border .content{
+ padding: 20px;
+ background: #ffc;
+ border-left: 2px solid #000;
+ border-right: 2px solid #000;
+}
+
+.border .png{
+  position: absolute;
+  height: 10px;
+  left: 0;
+  width: 100%;
+  overflow: hidden
+}
+.border .top{
+  top: -10px;
+}
+
+.border .png i{
+  width: 100%;
+}
+.border .png b{
+   margin-left: 100%;/*из-за IE6*/  
+  width: 100%;
+}
+
+.border .png i, .border .png b{
+  position: absolute;
+  left: -15px;
+  height: 20px;
+  background: url(../i/line.png);
+}
+.border .bottom i, .border .bottom b{
+  top: -10px;
+  
+}
+
+

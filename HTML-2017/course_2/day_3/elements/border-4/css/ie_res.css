@@ -1,0 +1,22 @@
+
+.border{
+ zoom:1;
+
+ filter:progid:DXImageTransform.Microsoft.Gradient(
+  StartColorStr='#ccccff',
+  EndColorStr='#6699cc',
+  GradientType=0
+ );
+}
+
+*html .border .png{
+ zoom:1;
+ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+ src='i/sprite.png',
+ sizingMethod='crop'
+ );
+}
+*html .wide .png{
+
+}
+

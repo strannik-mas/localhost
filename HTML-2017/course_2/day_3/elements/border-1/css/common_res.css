@@ -1,0 +1,21 @@
+body{
+ padding: 200px 0 0 200px;
+ background: #FF7F2A
+}
+.border{
+ width: 200px;
+ padding-top: 24px;
+ background: #ffc url(../i/border2.png) no-repeat;
+ overflow: hidden;
+}
+.border .out{
+ padding: 20px;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000
+}
+.border .bottom{
+ width: 200%;
+ height: 27px;
+ background: url(../i/border2.png) no-repeat bottom;
+ margin-left: -100% ;/*двигаем элемент на половину ширины контейнера*/
+}

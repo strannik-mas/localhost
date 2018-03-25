@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Позиционирование absolute</title>
+<style>
+#out{
+ background: #ccf;
+ /* position: fixed; */
+ position: absolute;
+ width: 300px;
+ height: 200px;
+ top:0;
+ left:0;
+ right:0;
+ bottom:0;
+ margin: auto;
+}
+</style>
+<!--[if lte IE 7]>
+<style>
+#intro{
+    background-color: #ccf;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    top: -50%;
+    left: -50%;
+}
+#out {
+    background-color: transparent;
+    left: 50%;
+    top: 50%;
+}    
+</style>
+<![endif]-->
+</head>
+<body>
+<div id="out">
+    <div id="intro"></div>
+</div>
+
+</body>
+</html>

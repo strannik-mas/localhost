@@ -1,0 +1,23 @@
+body{
+ padding: 200px 0 0 200px;
+ background: #FF7F2A
+}
+.border{
+ width: 200px;
+ background: #ffc url(../i/border2.png) no-repeat;
+ padding-top: 27px;
+ /* overflow: hidden; */
+}
+.border .out{
+ padding: 20px;
+ border-left: 2px solid #000;
+ border-right: 2px solid #000;
+}
+.border .bottom{
+    background: url(../i/border2.png) -200px 0 no-repeat;
+    height: 27px;
+    
+    /*первый способ с margin*/
+    /* width: 200%;
+    margin-left: -100%; */
+}

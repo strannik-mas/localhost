@@ -1,0 +1,14 @@
+*html .border{
+ zoom:1
+}
+
+*html .border .png{
+ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+ src='i/sprite.png',
+ sizingMethod='crop'
+ );
+}
+*html .wide .png{
+
+}
+

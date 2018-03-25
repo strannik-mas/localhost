@@ -1,0 +1,125 @@
+html{
+ background: #fff;
+ color: #808080;
+ font: 12px tahoma, sans-serif;
+}
+body{
+ margin: 0;
+}
+a {
+ color: #00afdd;
+}
+
+html, body, #container{
+ height: 100%;
+}
+
+#container{
+ width:1000px;
+ margin: auto;/*для центрирования*/
+}
+
+
+#main{
+ min-height: 100%;
+ margin-bottom: 0 30px -58px;
+}
+
+#all{
+ padding: 0 30px 100px;
+ overflow: hidden;
+}
+
+#outer{
+ float: right;
+ width: 100%;
+ margin-left: -285px
+}
+#right{
+ float: right;
+ margin-left: -285px
+}
+
+#photo{
+ display: block;
+ width: 100%;
+ margin: -30px 0 30px
+}
+
+#left{
+ float: left;
+ width: 225px;
+ padding-top: 235px;/*из-за лого*/
+}
+/*
+
+
+
+#right{
+ float: right;
+ width: 30%;
+}
+#center{
+ margin: 0 30% 0 20%;
+}
+
+*/
+#header{
+ position: relative;
+ height: 83px;
+ /*background: #fcf;*/
+}
+
+#menu{
+ margin: 0 -20px 0 275px; 
+}
+#menu ul{
+display: table;
+table-layout:fixed;
+width: 100%;
+ margin: 0;
+ padding: 29px 0 0;
+ list-style: none;
+ /*background:#fcf;*/
+}
+#menu li{
+ display: table-cell;
+ text-align: center;
+}
+#menu a{
+ display: inline-block;
+ height: 26px;
+ padding: 0 10px;
+ line-height: 20px;
+ font-size: 14px;
+ text-transform: uppercase;
+ text-decoration: none;
+ border-radius: 10px;
+ -moz-border-radius: 10px;
+ color: #808080;
+}
+#menu a:hover{
+ background-color: #e0e0e0;
+}
+#menu a.active{
+ background-color: #00afdd;
+ color: #fff;
+}
+
+
+#logo{
+ position: relative;
+ left: 0;
+ top: 100%;
+ width: 225px;
+ height: 235px;
+ background: #ccf;
+}
+
+#footer{
+ height:58px;
+ margin: 0 30px;
+ background: #00afdd;
+ border-radius: 35px 35px 0 0;
+ -moz-border-radius: 35px 35px 0 0;
+}

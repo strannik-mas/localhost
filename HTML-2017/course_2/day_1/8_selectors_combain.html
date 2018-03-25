@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Комбинации селекторов</title>
+<style type="text/css">
+
+/*Контекстный селектор - предки-потомки
+div strong{color:#0f0;}
+td td{}
+*/
+
+/*Дочерний селектор - родитель-ребенок
+div > strong{color:#0f0;}
+*/
+
+/*Соседний селектор - ближайший сосед слева
+h1 + p{color:#0f0;}
+*/
+
+/*Соседний селектор - любой сосед слева*/
+/**/
+h1 ~ p{color:#0f0;}
+
+
+</style>
+</head>
+<body>
+	<div>
+		<h1>Заголовок</h1>
+		<p><strong>Первый</strong> параграф в div</p>
+		<p><strong>Второй</strong> параграф в div</p>
+		<strong>Просто полужирный текст в div</strong>
+	</div>
+	<p><strong>Первый</strong> параграф в body</p>
+</body>
+</html>

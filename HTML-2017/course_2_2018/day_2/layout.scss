@@ -1,0 +1,41 @@
+$wrapper-size: 1024px;
+$default-border: 1px solid black;
+$offset: 20px;
+
+.column-common {
+    height: 200px;
+    //outline: $default-border;
+    box-shadow: 0 0 5px #123;
+    display: inline-block;
+    vertical-align: top;
+    margin: $offset / 2;
+}
+
+.wrapper {
+    width: $wrapper-size;
+    margin: 0 auto;
+}
+
+.column-one {
+    @extend .column-common;
+    width: $wrapper-size - $offset;
+    background: lime;
+}
+
+.column-big {
+    @extend .column-common;
+    width: ($wrapper-size / 2) - $offset;
+    background: grey;
+}
+
+.column-middle {
+    @extend .column-common;
+    width: ($wrapper-size / 3) - $offset;
+    background: yellowgreen;
+}
+
+.column-small {
+    @extend .column-common;
+    width: ($wrapper-size / 4) - $offset;
+    background: #45f;
+}

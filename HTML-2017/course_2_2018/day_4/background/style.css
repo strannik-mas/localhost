@@ -1,0 +1,13 @@
+body {
+    background-color: yellow;
+    background-image: url(1.png), url(2.png), url(3.png);
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 100px auto;
+    box-shadow: 0 40px 150px #999;
+    height: 800px;
+    background: #fff;
+    border-radius: 10px;
+}

@@ -1,0 +1,26 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<dom-module id="hello-element">
+    <template>
+        <style>
+            :host{
+                display: inline-block;
+            }
+            #hello-element_in{
+                font-size: 32px;
+                font-family: Helvetica, sans-serif;
+                color: lime;
+                background-color: #ccc;
+                padding: 4px;
+            }
+        </style>
+        <div id="hello-element_in">
+            <p>Hello!</p>
+        </div>
+    </template>
+    <script>
+        class HelloElement extends Polymer.Element {
+            static get is() { return "hello-element"; }
+        }
+        customElements.define(HelloElement.is, HelloElement);
+    </script>
+</dom-module>

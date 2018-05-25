@@ -1,0 +1,51 @@
+$mycolor: #bcbcbc;
+$mysize: 24px;
+
+@mixin gradient($color1, $color2){
+    background: $color1;
+    background: -moz-linear-gradient(left, $color1 0%, $color2 100%);
+    background: -webkit-linear-gradient(left, $color1 0%,$color2 100%);
+    background: linear-gradient(to right, $color1 0%,$color2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$color1", endColorstr='$color2',GradientType=1 );
+}
+
+@mixin mybutton($width, $height, $text-size, $text-color){
+    width: $width;
+    height: $height;
+    line-height: $height;
+    text-align: center;
+    font-size: $text-size;
+    color: $text-color;
+    border: 1px solid #000;
+    display: block;
+    cursor: pointer;
+}
+
+.abc-button {
+    @include mybutton(200px, 80px, 32px, #f00);
+    @include gradient(red, orange);
+    &:hover{
+        background: orangered;
+    }
+
+    &:active {
+        background: lime;
+    }
+}
+
+.button2 {
+    @include mybutton(400px, 120px, 48px, $mycolor);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.abc {
+    color: $mycolor;
+    font-size: $mysize;
+}
+
+.abc2 {
+    color: $mycolor;
+    font-size: $mysize+2;
+}

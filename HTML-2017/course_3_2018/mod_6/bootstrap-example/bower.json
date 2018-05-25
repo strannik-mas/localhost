@@ -1,0 +1,17 @@
+{
+  "name": "bootstrap-example",
+  "homepage": "https://github.com/strannik-mas/localhost",
+  "authors": [
+    "Alexander <mas_m@ukr.net>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

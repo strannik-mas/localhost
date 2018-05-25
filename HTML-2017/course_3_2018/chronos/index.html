@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chronos</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="footer.html">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <img src="img/time.png" alt="" class="logo__pic">
+                <span class="logo__title">Chronos</span>
+            </div>
+            <nav class="hmenu">
+                <ul class="hmenu__spisok">
+                    <li class="hmenu__item hmenu__link_active"><div class="hmenu__rborder hmenu__link_active"></div><a href="" class="hmenu__link hmenu__link_active">Pinboard</a></li>
+                    <li class="hmenu__item"><div class="hmenu__rborder"></div><a href="" class="hmenu__link">Calendar</a></li>
+                    <li class="hmenu__item"><div class="hmenu__rborder"></div><a href="" class="hmenu__link">Friends</a></li>
+                    <li class="hmenu__item" data-content="Messages">
+                        <div class="bagic">
+                            <span class="bagic__text">8</span>
+                        </div>
+                        <div class="popup">
+                            <div class="arrow"></div>
+                            <div class="messages">
+
+                                <div class="messages__header">
+                                    <a href="" class="messages__link messages__link_active">Inbox (8)</a>
+                                    <span class="messages__headerslash"> / </span>
+                                    <a href="" class="messages__link">Sent</a>
+                                    <span class="messages__icon"><i class="fab fa-pied-piper"></i></span>
+                                </div>
+                                <div class="messages__container">
+                                    <div class="messages__row">
+                                        <div class="messages__circlePhoto">
+                                            <img src="img/avatar.jpg" alt="" class="messages__photo">
+                                        </div>
+                                        <div class="messages__message">
+                                            <span class="messages__name">Jacob Hubertus</span><br/>
+                                            <p
+                                                    class="messages__text">Are you coming to the Roadtrip</p>
+                                        </div>
+                                        <div class="messages_line"></div>
+                                    </div>
+                                    <div class="messages__row">
+                                        <div class="messages__circlePhoto">
+                                            <img src="img/avatar_yoda.png" alt="" class="messages__photo">
+                                        </div>
+                                        <div class="messages__message">
+                                            <span class="messages__name">Jacob Hubertus</span><br/>
+                                            <p
+                                                    class="messages__text">Are you coming to the Roadtrip</p>
+                                        </div>
+                                        <div class="messages_line"></div>
+                                    </div>
+                                    <div class="messages__row">
+                                        <div class="messages__circlePhoto">
+                                            <img src="img/avatar2.jpg" alt="" class="messages__photo">
+                                        </div>
+                                        <div class="messages__message">
+                                            <span class="messages__name">Jacob Hubertus</span><br/>
+                                            <p
+                                                    class="messages__text">Are you coming to the Roadtrip</p>
+                                        </div>
+                                        <div class="messages_line"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="" class="hmenu__link">Messages</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="profile">
+                <div class="profile__circle">
+                    <img src="img/avatar_vader_2.jpg" alt="" class="profile__img">
+                </div>
+                <span class="profile__plusbutton"><i class="fas fa-plus profile__addbutton"></i></span>
+            </div>
+        </header>
+        <div class="slider">
+            <div class="slider slider_filter"></div>
+            <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">10 023</span></div>
+            <div class="theme">
+                <h2 class="theme__header">Roadtrip on Hightway One</h2>
+                <p class="theme__dates">26 January - 1 Fefruary</p>
+            </div>
+            <div class="friends">
+                <div class="friends__circle"><img src="img/avatar_yoda.png" alt="" class="friends__photo"></div>
+                <div class="friends__circle"><img src="img/avatar.jpg" alt="" class="friends__photo"></div>
+                <div class="friends__circle"><img src="img/avatar2.jpg" alt="" class="friends__photo"></div>
+                <div class="friends__line"></div>
+                <div class="friends__text">
+                    <span class="friends__yes rmenu__link_active">Yes</span>
+                    <span class="friends__slash"> / </span>
+                    <span
+                        class="friends__no">No</span>
+                </div>
+            </div>
+            <div class="featured">
+                <h3 class="featured__header">Featured</h3>
+                <div class="featured__line"></div>
+            </div>
+            <nav class="rmenu">
+                <ul class="rmenu__spisok">
+                    <li class="rmenu__item">
+                        <a href="" class="rmenu__link">Blog Post</a>
+                    </li>
+                    <li class="rmenu__item">
+                        <a href="" class="rmenu__link rmenu__link_active">Event</a>
+                    </li>
+                    <li class="rmenu__item">
+                        <a href="" class="rmenu__link">Photo</a>
+                    </li>
+                    <li class="rmenu__item">
+                        <a href="" class="rmenu__link">Music</a>
+                    </li>
+                    <li class="rmenu__item">
+                        <a href="" class="rmenu__link">Video</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="info">
+                <h2 class="infoHeader">Your Pinboard</h2>
+                <div class="sort"><span class="sort__text">sort by</span>
+                    <div class="sort__circle sort__circle_red"></div>
+                    <div class="sort__circle sort__circle_orange"></div>
+                    <div class="sort__circle sort__circle_blue"></div>
+                    <div class="sort__circle sort__circle_green"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container__row">
+                    <div class="container__post container__post_city">
+                        <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">10 023</span>
+                        </div>
+                        <div class="sort__circle sort__circle_red container__post_sort"></div>
+                    </div>
+                    <div class="container__post container__post_white">
+                        <div class="likes"><span class="likes__heart likes__heart_grey"><i class="fas fa-heart"></i></span><span class="likes__count">10 023</span>
+                        </div>
+                        <div class="sort__circle sort__circle_blue container__post_sort"></div>
+                        <p class="container__text container__text_grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum.</p>
+                    </div>
+                    <div class="container__post container__post_kanat">
+                        <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">99</span>
+                        </div>
+                        <div class="theme">
+                            <h2 class="theme__header">Company retreat in Dear Valley Utah</h2>
+                            <p class="theme__dates">3 pm - 8 pm</p>
+                        </div>
+                        <div class="friends friends_bottom">
+                            <div class="friends__circle"><img src="img/avatar_yoda.png" alt="" class="friends__photo"></div>
+                            <div class="friends__circle"><img src="img/avatar.jpg" alt="" class="friends__photo"></div>
+                            <div class="friends__circle"><img src="img/avatar2.jpg" alt="" class="friends__photo"></div>
+                            <div class="friends__line"></div>
+
+                        </div>
+                        <div class="friends__text friends__text_right">
+                            <span class="friends__yes rmenu__link_active">Yes</span>
+                            <span class="friends__slash"> / </span>
+                            <span
+                                    class="friends__no">No</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__row">
+                    <div class="container__post container__post_shlem">
+                        <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">22</span>
+                        </div>
+                        <div class="theme">
+                            <h2 class="theme__header">Daft punk - get lucky</h2>
+                        </div>
+                        <div class="player">
+                            <span class="player__loud"><i class="fas fa-volume-up"></i></span>
+                            <div class="player__progress">
+                                <div class="player__played"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container__post container__post_sunset">
+                        <div class="likes"><span class="likes__heart likes__heart_grey"><i class="fas fa-heart"></i></span><span class="likes__count">2</span>
+                        </div>
+                        <div class="theme">
+                            <h2 class="theme__header">Summer Nights</h2>
+                        </div>
+                        <div class="player">
+                            <span class="player__loud"><i class="fas fa-play"></i></span>
+                            <div class="player__progress">
+                            <div class="player__played player__played_30"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="container__post container__post_white">
+                        <div class="likes"><span class="likes__heart likes__heart_grey"><i class="fas fa-heart"></i></span><span class="likes__count">52</span>
+                        </div>
+                        <p class="container__text container__text_grey">What if the world revolver around Doge?</p>
+                    </div>
+                </div>
+                <div class="container__row">
+                    <div class="container__post container__post_sunset2">
+                        <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">1401</span>
+                        </div>
+                        <div class="sort__circle sort__circle_red container__post_sort"></div>
+                    </div>
+                    <div class="container__post container__post_white">
+                        <div class="likes"><span class="likes__heart likes__heart_grey"><i class="fas fa-heart"></i></span><span class="likes__count">19</span>
+                        </div>
+                        <div class="sort__circle sort__circle_blue container__post_sort"></div>
+                        <p class="container__text container__text_grey">Everything is so cool around</p>
+                    </div>
+                    <div class="container__post container__post_flipper">
+                        <div class="likes"><span class="likes__heart"><i class="fas fa-heart"></i></span><span class="likes__count">52</span>
+                        </div>
+                        <div class="theme">
+                            <h2 class="theme__header">Santa Monica Pier</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <footer-calendar></footer-calendar>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.bordered {
+  border-bottom: 1px solid orange;
+}
+.my-header {
+  color: #5b83ad;
+  font-size: 24px;
+  width: 10px;
+  width: 20px;
+  width: 30px;
+  width: 40px;
+  width: 50px;
+  border-bottom: 1px solid orange;
+}
+.my-header2 {
+  color: #6c94be;
+  font-size: 36px;
+}
+.my-header3 {
+  color: #9fc7f1;
+  font-size: 36px;
+}

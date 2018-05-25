@@ -1,0 +1,31 @@
+@light-blue: #5b83ad;
+@nice-blue: @light-blue+#111;
+@text-size: 24px;
+
+.loop(@counter) when (@counter > 0){
+    .loop(@counter - 1);
+    width: (10px * @counter);
+}
+
+.bordered {
+    border-bottom: 1px solid orange;
+}
+
+.my-header {
+    color: @light-blue;
+    font-size: @text-size;
+
+    .loop(5);
+
+    .bordered;
+}
+
+.my-header2 {
+    color: @nice-blue;
+    font-size: @text-size * 1.5;
+}
+
+.my-header3 {
+    color: @nice-blue + #333;
+    font-size: @text-size * 1.5;
+}

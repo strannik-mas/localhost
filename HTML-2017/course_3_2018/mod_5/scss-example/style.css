@@ -1,0 +1,43 @@
+.abc-button {
+  width: 200px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 32px;
+  color: #f00;
+  border: 1px solid #000;
+  display: block;
+  cursor: pointer;
+  background: red;
+  background: -moz-linear-gradient(left, red 0%, orange 100%);
+  background: -webkit-linear-gradient(left, red 0%, orange 100%);
+  background: linear-gradient(to right, red 0%, orange 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$color1", endColorstr='$color2',GradientType=1 ); }
+  .abc-button:hover {
+    background: orangered; }
+  .abc-button:active {
+    background: lime; }
+
+.button2 {
+  width: 400px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  font-size: 48px;
+  color: #bcbcbc;
+  border: 1px solid #000;
+  display: block;
+  cursor: pointer;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px; }
+
+.abc {
+  color: #bcbcbc;
+  font-size: 24px; }
+
+.abc2 {
+  color: #bcbcbc;
+  font-size: 26px; }
+
+/*# sourceMappingURL=style.css.map */

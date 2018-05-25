@@ -1,0 +1,20 @@
+body {
+  color: #555;
+  background: #fff;
+}
+.myblock {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 100px;
+  background: #00a1ff;
+}
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 100px;
+  background: #ff01df;
+}

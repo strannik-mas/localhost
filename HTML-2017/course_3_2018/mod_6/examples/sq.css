@@ -1,0 +1,14 @@
+.div {
+    width: 200px;
+    height: 200px;
+    background: url(http://icons.iconarchive.com/icons/majdi-khawaja/ice-age-4/256/Scrat-icon.png) no-repeat center center;
+    background-size: 70%;
+    transition: 1.5s transform;
+    margin: 100px auto;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+
+.div:hover {
+    transform: rotateY(720deg) scale(1.5);
+}

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Запись в документ</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#demoLinks a { display: block; color: blue }
+	</style>
+	
+	<script type="text/javascript">
+		document.write('<style type="text/css">html{background:#ffc;}</style>');
+		document.write('<div>Содержание добавлено из скрипта в head</div>');
+		
+		function demoWrite(){
+			document.open();
+			document.write("<html>", "<body>");
+			document.write("<h1>Replace</h1>");
+            document.write("</body>", "</html>");
+            document.close();
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Запись в документ</h1>
+	<div id="demoLinks">
+		<a href="javascript:demoWrite()">Переписываем документ</a>
+	</div>
+</body>
+</html>

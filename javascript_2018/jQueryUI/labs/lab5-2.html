@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        .somePlugin .col{
+            color: #fff;
+            background-color: #369;
+            margin: 3px;
+            text-shadow: 1px 1px 1px #000;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="somePlugin"></div>
+
+<script>
+    $(function () {
+
+        $.fn.diagram = function (options) {
+
+            function start() {
+                console.log('started on ' + this);
+            }
+
+            return this.each(function () {
+                var $this = this;
+console.log(options.start);
+                $(this).on('start', options.start || start);
+                $(this).trigger('start');
+
+                options.data.forEach(function (n) {
+//                    console.log(Math.max.apply(null, options.data));
+                    $('<div />').addClass('col').html(n).css("width", 100*n/Math.max.apply(null, options.data)+"%").appendTo($this);
+                }) ;
+            });
+        };
+        /*Создайте плагин, для отображения столбчатой горизонтальной диаграммы*/
+        $('.somePlugin').diagram({data:[34,12,87,23], start: start2})
+    });
+
+    function start2() {
+        console.log('start2');
+    }
+
+</script>
+</body>
+</html>

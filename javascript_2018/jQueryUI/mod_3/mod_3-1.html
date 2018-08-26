@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+<input type="text" name="date" id="date">
+<a href="#" class="date">Дата</a>
+
+<input type="submit" value="Отправить" />
+<a href="http://google.ru">Отправить2</a>
+<button>Отправить3</button>
+<div class="button">Отправить4</div>
+
+<div class="acc">
+    <h2>заголовок 1</h2>
+    <p>lorem 1</p>
+    <h2>заголовок 2</h2>
+    <p>lorem 2</p>
+    <h2>заголовок 3</h2>
+    <p>lorem 3</p>
+    <h2>заголовок 4</h2>
+    <p>lorem 4</p>
+    <h2>заголовок 5</h2>
+    <p>lorem 5</p>
+</div>
+<script>
+    $(() => {
+        $('.acc').accordion({
+            collapsible: true,
+            icons: {"header": "ui-icon-clock", "activeHeader": 'ui-icon-home'},
+//            event: "mouseover",
+            activate: function (e, ui) {
+                console.log($(ui.newHeader).text());
+            }
+        });
+//        $(".acc").accordion("disable");
+
+        //кнопки
+        /*$("input, a, button, .button").button().click(function (e) {
+            e.preventDefault();
+        });
+
+        $('.button').button("instance").option('icons', {primary: 'ui-icon-wrench', secondary: "ui-icon-image"});
+        $('button').button("instance").option('icons', {primary: 'ui-icon-wrench'}).option("text", false);
+        $('a').css('color', 'green');*/
+
+        //датапикер
+        $('#date').datepicker();
+
+        $('.date').click(function () {
+            console.log($('#date').datepicker('getDate'));
+        });
+    });
+</script>
+<input type="text" name="lang" id="lang" />
+<script>
+    $(() => {
+        $('#lang').autocomplete({
+            source: [],
+            minLength: 2,
+            delay: 500,
+            search: function (e, ui) {
+                $(this).autocomplete('instance').option("source", getSearch($(this).val()));
+                console.log(getSearch($(this).val()));
+            }
+        });
+    });
+
+    function getSearch($txt) {
+        var tmp = ['Java', 'Javascript', 'PHP', 'Perl', 'Objective C', ],
+            res = [];
+
+        var re = new RegExp("^"+$txt+".*");
+
+        $.each(tmp, function (i,v) {
+            if(re.test(v))
+                res.push(v);
+        });
+        return res;
+    }
+</script>
+</body>
+</html>

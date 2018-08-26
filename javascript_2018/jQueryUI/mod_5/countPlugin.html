@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Count</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        #content {
+            margin-left: 16em;
+            margin-right: 2em;
+            text-align: justify;
+        }
+
+        h1 {
+            font: 150% Georgia, "Times New Roman", Times, serif;
+        }
+
+        blockquote {
+            font: 70% Georgia, "Times New Roman", Times, serif;
+            text-align: right;
+        }
+
+        h3 {
+            font: 120% Georgia, "Times New Roman", Times, serif;
+        }
+
+        #countPlugin {
+            position: absolute;
+            top: 5em;
+            left: 1em;
+            width: 14em;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!-- Заголовок -->
+        <h1>Добро пожаловать на наш сайт!</h1>
+        <blockquote>
+            Спасибо, что зашли на огонёк!
+        </blockquote>
+        <!-- Заголовок -->
+        <!-- Область основного контента -->
+        <h3>Невероятно, но факт: эпизодический хомяк зыбок</h3>
+        <p>
+            По всей видимости, недокуренный виски расширяет рыцаря. Базальтовый ксилофон бархатист. Бережная волчица
+            философски настроена. Бетонный павиан напыщен и действует тактически. Имманентный крейсер мудр. Разумеется,
+            выдра бархатиста. Радужный кадавр свободен и торжественен. Землистая мулатка шикарна и бархатиста. Конгруэнтная
+            икра трансцендентальна. К своему удивлению мы замечаем, что название уверенного мартини трагически открывает
+            драматичное будущее хомяка.
+        </p>
+        <h3>Угольный дельтапланерист саркастичен</h3>
+        <p>
+            Неспроста свинцовый сосуд мгновенно открывает квазиупругую колбу. Карусель быстра и кратковременна. Часто
+            бывает, что ядерная лапка груба и продуманна. Очевидно, феноменальная шестерня брезентового комплекта бережно
+            увеличивает тайную лампу. Изящное значение резко и метастабильно. Платиновая инерция перегоревшего изолятора волчица
+            образовывает разделение. Свет преднамерен и замысловат. Шланг предумышленен. Деревянное открытие периодично.
+            Базальтовый проектировщик груб. Замкнутый болт наполняет шип. Нагруженность эпизодична и кратковременна волчица.
+        </p>
+        <p>
+            Задумчивое довольствие миролюбиво. Экипаж груб. Далее мы видим, что заповедник исчерпывает кроликa. Будничное
+            благополучие отрадно. Армада звездного букета эксцентрично поглядывает на букмекера скотоводства. Саксофон
+            напыщен. Невероятно, но факт: миролюбивое стекло тайно забирается на освещение хрустального довольствия.
+            Фруктовый перевал задумчив. Лунный паллиатив затаён и романтичен. Эксцентричная ящерица находит адекватную
+            купюру.
+        </p>
+        <!-- Область основного контента -->
+    </div>
+    <div id="countPlugin">
+        <input type="text" id="find">
+        <button id="checkWords">Проверить</button>
+        <div id="result"></div>
+    </div>
+<script>
+    $(()=> {
+        $.fn.countWords = function (options) {
+
+            var opt = $.extend({}, $.fn.countWords.default, options);
+            var methods = {
+                changeColor: function (color) {
+                    console.log(2);
+                    $('.searchMark').css('color', color)
+                }
+            };
+            var args = arguments[1];
+            var self = this;
+//console.log(arguments);
+            opt.words.forEach(function (word, i) {
+                self.each(function () {
+
+                    if(options in methods){
+//                    console.log(args);
+                        methods[options].apply(null,[args]);
+                    }
+//                console.log(options);
+                    var re = {};
+                    var findArr = [];
+                    var l=opt.counter.length;
+
+                    re = new RegExp("(" + word + ")", "gi");
+
+                    $(this).html($(this).html().replace(re, "<mark class='searchMark'>$1</mark>"));
+
+                    //массив найденных значений
+                    findArr = $(this).text().match(re);
+
+                    if(findArr){
+//                    console.log(opt.counter[word]);
+                        if(l==0 || (l>0 && opt.counter[l-1].word != word)){
+                            opt.counter.push({word: word, value: findArr.length});
+                        }else if(l>0 && opt.counter[l-1].word == word){
+                            opt.counter[l-1] = ({word: word, value: findArr.length + Number(opt.counter[l-1].value)});
+                        }
+                    }
+//                console.log(findArr);
+//                console.log(re);
+
+                    if(Object.keys(re).length > 0) {
+                        $res = re.test($(this).html());
+
+
+//                $('.searchMark', this).css('background', opt.background);
+                        if ($res)
+                            $(this).css('background', opt.background);
+                    }
+//                console.log(opt);
+                });
+            });
+
+
+            if(Object.keys(opt.counter).length > 0){
+                opt.counter.sort(function (a,b) {
+                    if(a.value > b.value){
+                        return -1;
+                    }
+                    if(a.value < b.value){
+                        return 1;
+                    }
+                    // a должно быть равным b
+                    return 0;
+                });
+                console.log(opt.counter);
+                for(let i in opt.counter) {
+                    $(opt.res_element).append('<p>Слово <b>' + opt.counter[i].word + '</b> было найдено ' + opt.counter[i].value + ' раз</p>');
+
+                }
+                return true;
+            }else return false;
+        };
+
+        $.fn.countWords.default = {background: 'pink', counter: []};
+
+
+//        $('p').countWords({words:'волчица', res_element: '#result'});
+//        $('p').countWords('changeColor', '#f00');
+//        $('div').countWords({words:['dolor', 'ipsum']});
+
+
+        $('#checkWords').on('click', (e) => {
+            $wordsArr = $('#find').val().split(',');
+            $('p').countWords({words: $wordsArr, res_element: '#result'});
+        });
+    });
+</script>
+</body>
+</html>

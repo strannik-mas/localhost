@@ -1,0 +1,121 @@
+﻿<!doctype html>
+
+<html>
+<head>
+	<title>Раскрывающейся списка</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		ul.expandable li { list-style-image: url('../images/point.gif') }
+		li ul.expandable { display: none } /* выставить в none */
+	</style>
+	<script type="text/javascript">
+		/*
+			Опишите функцию setPlusIcon(), которая 
+			- устанавливает для элементов li значок [+], 
+				если этот элемент имеет вложенный список
+			- регистрирует функцию aClick в качестве обработчика события onclick
+				для всех ссылок
+		*/
+		/*
+			Запустите функцию setPlusIcon() при загрузке страницы
+		*/
+		function setPlusIcon(){
+		    var allLi = document.getElementsByTagName('li');
+		    for(let elLi of allLi){
+		        if(elLi.childNodes[3] != undefined ){
+                    if(elLi.childNodes[3].nodeType ==1 && elLi.childNodes[3].getAttribute('class') ===  'expandable'
+                    ){
+                        elLi.style.listStyleImage = 'url("../images/plus.gif")';
+                    }
+
+
+                }
+            }
+
+            var allA = document.getElementsByTagName('a');
+            for (let a of allA){
+                a.addEventListener('click', aClick);
+            }
+		}
+		/*
+			Опишите функцию aClick(), которая обрабатывает щелчок по ссылке
+			1. Получите объект - ссылку, по которой был сделан щелчок 
+			2. Найдите родительский li
+			3. Найдите вложенный список
+			4. Если вложенных списков нет - разрешите переход по ссылке
+			5. Назначьте вложенному списку нужные свойства и поменяйте иконку
+			6. Запретите переход по ссылке
+		*/
+		function aClick(e){
+		    let a = e.target;
+		    let parentLi = a.parentNode;
+		    if(parentLi.childNodes[3] != undefined && parentLi.childNodes[3].nodeType ==1 && parentLi.childNodes[3].getAttribute('class') ===  'expandable'){
+		        if(parentLi.getAttribute('flag') !== '0') {
+                    parentLi.childNodes[3].style.display = 'block';
+                    parentLi.style.listStyleImage = 'url("../images/minus.gif")';
+                    parentLi.setAttribute('flag', '0');
+                }else{
+                    parentLi.childNodes[3].style.display = 'none';
+                    parentLi.style.listStyleImage = 'url("../images/plus.gif")';
+                    parentLi.setAttribute('flag', '1');
+                }
+                e.preventDefault();
+            }
+		}
+
+
+		
+	</script>
+</head>
+
+<body>
+	<h1>Пример раскрывающегося списка</h1>
+	<ul class="expandable">
+		<li>
+			<a href="#">Книги</a>
+			<ul class="expandable">
+				<li>
+					<a href="#">Отечественные</a>
+					<ul class="expandable">
+						<li><a href="#">Детективы</a></li>
+						<li><a href="#">Научная фантастика</a></li>
+						<li><a href="#">Исторические</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Зарубежные</a>
+					<ul class="expandable">
+						<li><a href="#">Детективы</a></li>
+						<li><a href="#">Научная фантастика</a></li>
+						<li><a href="#">Исторические</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+ 		<li>
+			<a href="#">DVD</a>
+			<ul class="expandable">
+				<li>
+					<a href="#">Отечественные</a>
+					<ul class="expandable">
+						<li><a href="#">Детективы</a></li>
+						<li><a href="#">Научная фантастика</a></li>
+						<li><a href="#">Исторические</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Зарубежные</a>
+					<ul class="expandable">
+						<li><a href="#">Детективы</a></li>
+						<li><a href="#">Научная фантастика</a></li>
+						<li><a href="#">Исторические</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+    <script>
+        window.onload = setPlusIcon();
+    </script>
+</body>
+</html>

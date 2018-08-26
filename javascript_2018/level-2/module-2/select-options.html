@@ -1,0 +1,58 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Использование элементов SELECT и OPTION</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css">
+		a{visibility:hidden}
+	</style>
+	<script type="text/javascript">
+		/*
+		** Коллекция ссылок
+		*/
+		var links = new Object();
+		links["Яндекс"] = "http://www.yandex.ru";
+		links["Рамблер"] = "http://www.rambler.ru";
+		links["Гугл"] = "http://www.google.ru";
+        var s;
+		window.onload = () => {
+            // Создадим в списке SELECT элементы OPTION
+            s = document.myForm.selURL;
+            for (var linkName in links) {
+                var o = new Option();
+                o.value = links[linkName];
+                o.text = linkName;
+                /* или
+				var o = new Option(linkName, links[linkName]); 
+			*/
+                s.add(o);
+            }
+            // Сделаем все элементы формы доступными
+            var f = document.myForm; // или s.form
+            document.getElementsByTagName('a')[0].style.visibility = 'visible';
+            for (var i = 0; i < f.elements.length; i++) {
+                f.elements[i].disabled = false;
+            }
+        }
+
+        function  goToURL() {
+            let url = s.options[s.selectedIndex].value;
+            console.log(url);
+            location.assign(url);
+        }
+	</script>
+</head>
+
+<body>
+	<h1>Использование элементов SELECT и OPTION</h1>
+	<form id="myForm" name="myForm">
+		<label for="selURL" disabled>Выберите адрес</label>
+		<select id="selURL" name="selURL" disabled></select>
+		<a href="javascript:goToURL()">Переход</a>
+	</form>
+	
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

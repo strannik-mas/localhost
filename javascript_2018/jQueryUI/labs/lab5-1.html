@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div class="somePlugin"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, error, officia. A consectetur
+        dicta doloribus eius
+        enim eveniet, iste nihil officiis omnis praesentium quis reiciendis saepe tempore unde, ut veritatis vitae voluptas.
+        Dignissimos doloribus exercitationem recusandae. Et nulla obcaecati saepe! At cum eveniet id modi nihil nisi quo
+        recusandae sunt.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad adipisci aliquid asperiores consectetur,
+            deleniti dolore, ea eaque eligendi est explicabo facere fugiat impedit ipsa iure labore maiores maxime minima
+            modi
+            necessitatibus nihil provident quia quos sapiente tempore voluptatem!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ipsa, laudantium maiores minima quam quis ratione
+            velit? Architecto commodi, doloribus esse eum fugit iusto ratione repudiandae rerum tenetur! Ad aperiam, aut
+            corporis deserunt dolores eius enim eveniet excepturi fugit id illum inventore ipsum iste laudantium nam nihil
+            officia pariatur, perspiciatis porro possimus provident quae quis, quos sed tempora tempore unde veniam voluptas
+            voluptates voluptatum. A accusantium amet asperiores aspernatur, autem blanditiis consequuntur debitis
+            dignissimos
+            ducimus eos esse eum excepturi explicabo id iste labore maiores minima nobis numquam pariatur quas quidem quo
+            repellendus similique suscipit tempora totam ut veritatis voluptates voluptatibus!</p>
+    </div>
+
+    <div class="somePlugin__like" data-like="234"></div>
+
+<script>
+    $(function () {
+
+        /*Создайте плагин "Мне нравится", который будет добавлять одноименную надпись и при нажатии на нее анимационно менять текст на "Понравилось: 1","Понравилось: 2" и т.д.  */
+        $.fn.somePlugin = function () {
+            function init(obj) {
+                var counter = +$(obj).attr('data-like');
+                if(counter == 0){
+                    $(obj).html('Мне нравится');
+                }else {
+                    $(obj).html('Like ' + counter);
+                }
+            }
+
+            function clickEl(event) {
+                $(this).off('click', clickEl);
+                $(this).attr('data-like', +$(this).attr('data-like')+1)
+                init(this);
+            }
+
+            //возвращаем обернутый набор
+            return this.each(function (index, elem) {
+//                var like = $('<div />').html('Мне нравится').addClass('somePlugin__like').appendTo(this);
+                var like = $('.somePlugin__like');
+                init(like);
+                like.appendTo(this);
+                like.on('click', function (event) {
+                    like.on('click', clickEl);
+                })
+            })
+        };
+
+        $('.somePlugin').somePlugin();
+        /*Доп. задание, для тех, кто знаком с AJAX в jQuery:
+        при нажатии на ссылку отправлять данные на url
+        */
+
+    });
+
+</script>
+</body>
+</html>

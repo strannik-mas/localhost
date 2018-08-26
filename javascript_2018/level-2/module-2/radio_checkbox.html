@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Элементы выбора — радиокнопки и флажки</title>
+<link rel="stylesheet" type="text/css" href="css/form.css">
+<script type="text/javascript">
+function f() {
+	var f = document.forms[0];
+	
+}
+</script>
+</head>
+<body>
+<form action="">
+	<input type="hidden" name="userid" value="12345">
+	<fieldset>
+		<legend>Радиокнопки</legend>
+		<div class="block">
+			<label for="g1"><span>Пол</span></label>
+			<div class="group">
+				<label><input type="radio" name="gender" id="g1" value="1">мужской</label>
+				<label><input type="radio" name="gender" value="2">женский</label>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Флажки</legend>
+		<div class="block">
+			<label for="l2"><span>Я знаю</span></label>
+			<div class="group">
+				<label><input type="checkbox" name="lang" value="1">русский</label><br>
+				<label><input type="checkbox" name="lang" value="2" id="l2">английский</label><br>
+				<label><input type="checkbox" name="lang" value="3">испанский</label><br>
+				<label><input type="checkbox" name="lang" value="4">немецкий</label>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Поле для сообщений</legend>
+		<div class="block">
+			<label><span>Что случилось</span><textarea name="about"></textarea></label>
+		</div>
+	</fieldset>
+	<div class="block">
+		<button type="button"><a href="javascript:f()">Кликнуть</a></button>
+		<button type="reset">Сбросить</button>
+    </div>
+</form>
+</body>
+</html>

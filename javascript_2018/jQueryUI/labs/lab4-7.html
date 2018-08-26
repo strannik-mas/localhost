@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        .nav {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="nav">
+    <div class="item"><a href="#">ссылка1</a></div>
+    <div class="item"><a href="#">ссылка2</a></div>
+    <div class="item"><a href="#">ссылка3</a></div>
+    <div class="item"><a href="#">ссылка4</a>
+
+        <div class="nav">
+            <div class="item"><a href="#">ссылка4-1</a></div>
+            <div class="item"><a href="#">ссылка4-2</a></div>
+            <div class="item"><a href="#">ссылка4-3</a></div>
+            <div class="item"><a href="#">ссылка4-4</a></div>
+            <div class="item"><a href="#">ссылка4-5</a></div>
+        </div>
+
+    </div>
+    <div class="item"><a href="#">ссылка5</a></div>
+</div>
+
+<script>
+    $(function () {
+        /*Создать многоуровневое меню, из набора элементов */
+        $('.nav').menu({
+            menus: '.nav',
+            items: '.item',
+            icons: {submenu: "ui-icon-circle-triangle-e"}
+        });
+        /*свойство icons установите в { submenu: "ui-icon-circle-triangle-e" } */
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>jQueryUI</title>
+	<link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+	<script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+	<style>
+	#games div{
+	 width: 50px;
+	 height: 50px;
+	 position: absolute;
+	 left:100px;
+	 text-align: center;
+	 border-radius: 100%;
+	 line-height: 50px;
+	}
+	#games .red{
+	 background-color: #f00;
+	 top:10px
+	}
+	#games .black{
+	 background-color: #555;
+	 top:50px;
+	 left: 300px
+	}
+	</style>
+</head>
+<body>
+<div id="games">
+ <div class="red">0</div>
+ <div class="black">0</div>
+</div>
+
+ 
+<script>
+  /* Установите таймер увеличивающий счетчик цифр на "каждой базе"  */
+  	$( ()=>{
+  	   	var red = $('.red'),
+			black = $('.black');
+  	   	var tick = 1000;
+
+  	   	function init() {
+            red.html(+red.html() + 20);
+            black.html(+black.html() + 15);
+			setTimeout(init, tick);
+        }
+
+        init();
+
+  	   	red.draggable({
+            helper: 'clone',
+            opacity: .5,
+        });
+
+  	   	black.droppable({
+            tolerance: "touch",
+            drop: function (e, ui) {
+                let warClone = $(ui.draggable).clone().html($(ui.draggable).html()/2).appendTo($('#games'));
+
+                var mleft = $(this).css('left');
+                var mtop = $(this).css('top');
+                var self = $(this);
+                $(warClone).animate({
+                    left: mleft,
+                    top: mtop
+                }, 1000, function () {
+                    self.html(self.html() - $(this).html());
+                    $(this).remove();
+                });
+            }
+        });
+	});
+  /*Навесить на красную "базу" эффект draggable и при перетаскивании отправлять анимированный клон с половиной чисел в сторону темной базы */
+  
+  /*При достижении темной базы уменьшать кол-во ее цифр на кол-во пришедших*/
+  
+
+  
+</script>
+</body>
+</html>

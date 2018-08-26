@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Progress Bar</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+    <div id="bar"></div>
+<script>
+    $(() => {
+        $('#bar').progressbar({
+            value: false,
+            complete: function () {
+                console.log('sdfa');
+            }
+        });
+
+        $('#bar').click(function () {
+            var i = 10;
+            var self = $(this);
+            if(self.progressbar('option', 'value') <= 10) {
+//            $(this).progressbar('option', 'value', i);
+                function tick() {
+                    i += 1;
+                    self.progressbar('option', 'value', i);
+                    if (self.progressbar('option', 'value') < self.progressbar('option', 'max'))
+                        setTimeout(tick, 40);
+                }
+
+                tick();
+            }
+        });
+    });
+</script>
+</body>
+</html>

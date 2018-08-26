@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        .my-plugin {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-plugin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aspernatur blanditiis
+        consequatur debitis, dolores ducimus, exercitationem id, nesciunt optio quidem totam voluptates! Cum iusto mollitia
+        nam, repellat rerum vel!
+    </div>
+    <div class="my-plugin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quia recusandae? Consequatur
+        enim laudantium nisi quia vel. Inventore, magni, quos?
+    </div>
+    <div class="my-plugin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi consequuntur corporis
+        culpa delectus dolores eum expedita ipsum itaque magnam obcaecati quaerat, quas repellendus sed sequi totam ut.
+        Aspernatur, assumenda culpa doloremque, ducimus illo ipsum iste possimus quod repudiandae sed sint sunt,
+        voluptatibus? A accusantium consectetur dolore dolorem doloribus eius eos ex exercitationem explicabo, ipsum magnam
+        minima non nulla possimus provident quam quasi quis quod reprehenderit rerum saepe suscipit, tenetur.
+    </div>
+<script>
+    $(()=> {
+        jQuery.fn.somePlugin = function (options) {
+//            console.log('adf' + options.n);
+            return this.each(function (index, element) {
+                $(element).css("background", options.color || '#fcc');
+            });
+        }
+
+//        $('.my-plugin').somePlugin({n: 'start'});
+        $('.my-plugin').somePlugin({color: '#ffc'});
+    })
+</script>
+</body>
+</html>

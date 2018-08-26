@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>jQueryUI</title>
+	<link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+	<script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="../jquery-ui-1.12.1/jquery-ui.js">
+	//Подключите библиотеку jQueryUI к файлу labs/lab1-1.html
+	//Убедитесь в работоспособности библиотеки
+
+	</script>
+    <style>
+        .some {
+            background: #ff9;
+            margin-left: 50px;
+        }
+
+        .some2 {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        #first {
+            position: relative;
+            left: 50px;
+            width: 500px;
+            height: 400px;
+            background-color: pink;
+            border: 20px dotted #369;
+        }
+
+        #second {
+            width: 100px;
+            height: 100px;
+            background-color: lime;
+            border: 4px dashed orange;
+        }
+    </style>
+</head>
+<body>
+	<input type="text" name="date" id="date" class="some">
+    <input type="button" value="Нажать" id="mybutton">
+    <input type="button" value="Шрифт" id="fontSizeChange">
+    <input type="button" value="Фон" id="bgChange">
+
+	<div id="first">1</div>
+	<div id="second">2</div>
+	<script>
+		$(function() {
+		    sessionStorage.setItem('color', true);
+		   $('#date').datepicker();
+		   $('#mybutton').on('click', () => {
+//               $('#date').addClass("some", 1000, "easeInOutBounce", () => {});
+//               $('#date').removeClass("some", 1000, "easeInOutBounce", () => {});
+//               $('#date').switchClass("some", "some2", 1000, "easeInOutBounce", () => {});
+//               $('#date').animate({backgroundColor: "#369", color: "#fff"}, 2000);
+//               $('#date').effect('fade', 5000);
+//               $('#date').hide('fade', 5000);
+//               $("#date").toggleClass("some2", true, 1000, "linear");
+//               $("#date").toggleClass("some2", true, {duration: 2000, easing:"linear"});
+           });
+
+		   $('#fontSizeChange').on('click', () => {
+		       $('#date').animate({fontSize:30}, 2000);
+           });
+
+		   $('#bgChange').on('click', () => {
+		       if(sessionStorage.getItem('color') === 'true'){
+                   $('body').animate({backgroundColor: "#369"}, 3000);
+                   sessionStorage.setItem('color', false);
+               }else {
+		           $('body').animate({backgroundColor: ""}, 3000);
+                   sessionStorage.setItem('color', true);
+               }
+           });
+
+		   /*$('#second').position({
+               my: "right",
+               at: 'left',
+               of: $('#first'),
+               collision: 'none'
+           });*/
+
+            $('#second').position({
+                my: "center",
+                at: 'left',
+                of: $(window),
+                collision: 'none'
+            });
+
+            $('#second').on('click', () => {
+                $('#second').position({
+                    my: "left",
+                    at: 'left',
+                    of: $('body'),
+                    collision: 'none'
+                });
+            });
+
+            $('#first').on('mousemove', (e) => {
+                $('#second').position({
+                    my: "left+2 bottom-5",
+                    of: e,
+                    collision: 'fit'
+                });
+            });
+		});
+	</script>
+</body>
+</html>

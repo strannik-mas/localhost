@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Работа с документом, загруженным в iframe</title>
+<style type="text/css">
+html{background:#fff;cursor:default;font:16px calibri, sans-serif;}
+div{float:left;padding:10px;}
+p{background:#fff;padding:10px;}
+[onclick]{background:#69c;color:#fff;cursor:pointer;}
+iframe{border:2px solid #69c;}
+</style>
+<script type="text/javascript">
+function f() {
+	/* Находим iframe как обычный элемент на странице */
+	var f = document.getElementsByTagName('iframe')[0];
+
+	/* Для доступа к объекту document есть специальные свойства contentDocument и contentWindow */
+	var d = f.contentDocument || f.contentWindow.document;
+
+	/*	А вот так находят глобальный объект, связанный с iframe */
+	var g = f.contentDocument.defaultView || f.contentWindow;
+
+	/* Теперь можно создать новый элемент и добавить его в iframe */
+	var h1 = d.createElement('h1');
+	h1.innerHTML = 'Палучилась!!!';
+	d.body.appendChild(h1);
+}
+</script>
+</head>
+<body>
+<div>
+	<p><a href="javascript:f()">Добавить элемент</a></p>
+	<iframe src="inner.html" frameborder="0"></iframe>
+</div>
+</body>
+</html>

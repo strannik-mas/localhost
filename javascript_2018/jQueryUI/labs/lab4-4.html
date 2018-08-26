@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+<div id="calculator" title="Ипотечный калькулятор">
+    <div class="row">
+        <label for="id1">Размер кредита</label><input type="text" name="param1" id="id1">
+    </div>
+    <div class="row">
+        <label for="id2">Ставка</label><input type="text" name="param2" id="id2">
+    </div>
+    <div class="row">
+        <label for="id3">Кол-во лет</label><input type="text" name="param3" id="id3">
+    </div>
+    <div class="row">
+        <p id="res"></p>
+    </div>
+</div>
+
+<button id="calc">Калькулятор</button>
+
+
+<script>
+    /* При нажатии на кнопку показывать модальное окно калькулятора (перемещение и изменение размера запретить), */
+    $(() => {
+        $('#calculator').dialog({
+            autoOpen:false,
+            closeOnEscape: true,
+            draggable: false,
+            resizable: false
+        });
+        $("#calc").on('click', (e) => {
+            $('#calculator').dialog('open');
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

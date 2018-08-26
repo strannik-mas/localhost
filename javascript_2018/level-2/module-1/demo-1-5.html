@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Новое окно</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#demoLinks a { display: block; color: blue }
+	</style>
+	
+	<script type="text/javascript">
+        var w;
+        var name = 'Parent window';
+		function demoOpen(p){
+		    if(!p){
+		        w = window.open("");
+            }else {
+		        w = window.open("", "", p);
+            }
+		}
+
+		function demoActivate(focus) {
+            if(focus){
+                w.focus();
+            }else {
+                w.blur();
+            }
+        }
+
+        function demoClose() {
+            w.close();
+//            console.dir(w);
+        }
+
+        function demoParent() {
+            window.open('child.html', '', "top=200, left=200, width=300, height=250")
+        }
+	</script>
+</head>
+
+<body>
+	<h1>Объект </h1>
+	<div id="demoLinks">
+		<a href="javascript:demoOpen()">new window</a><br/>
+		<a href="javascript:demoOpen('width=300, height=300')">width, height</a><br/>
+		<a href="javascript:demoOpen('width=300, height=300, menubar=1')">menubar</a><br/>
+		<a href="javascript:demoOpen('width=300, height=300, toolbar=1')">toolbar</a><br/>
+		<a href="javascript:demoOpen('width=300, height=300, status=1')">status</a><br/>
+		<a href="javascript:demoOpen('top=200, left=200, width=300, height=300')">top, left</a><br/>
+        <a href="javascript:demoActivate(w)">Activate window</a><br/>
+        <a href="javascript:demoActivate()">Deactivate window</a><br/>
+        <a href="javascript:demoClose()">Close window</a><br/>
+        <a href="javascript:demoParent()">Открыть дочернее окно</a><br/>
+	</div>
+</body>
+</html>

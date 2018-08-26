@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<div class="accordion">
+    <h3>JavaScript. Уровень 3. Knockout.js.</h3>
+    <div>Knockout.js - свободный JavaScript каркас (framework) веб-приложений, реализующий Model-View-ViewModel
+        шаблон.
+    </div>
+    <h3>JavaScript. Уровень 3б. AJAX. Разработка веб - приложений для Web 2.0</h3>
+    <div>AJAX, состоящий из HTML, JavaScript и DOM-модели — это замечательный подход, который помогает создать вместо
+        тяжеловесных Веб-интерфейсов интерактивные AJAX-приложения. В рамках курса Вы сможете сделать чрезвычайно
+        эффективную веб-разработку повседневной реальностью.
+    </div>
+    <h3>JavaScript. Уровень 3г. HTML5 API</h3>
+    <div>На курсе Вы познакомитесь с тонкостями работы со скриптовым интерфейсом прикладного программирования (API),
+        используя язык программирования JavaScript, научитесь использовать самые востребованные новые возможности HTML5.
+    </div>
+    <h3>JavaScript. Уровень 3в. Серверное программирование на Node.js</h3>
+    <div>Node.js — серверная платформа, использующая язык программирования JavaScript, основанная на движке V8.
+        Предназначена для создания масштабируемых распределённых сетевых приложений, таких как веб-сервер.
+
+    </div>
+</div>
+
+<script>
+	$(() => {
+    /* Создайте на основе перечня курсов "аккордеон"  */
+        $('.accordion').accordion({
+            active: 2,
+            animate: "easeOutBounce",
+            heightStyle: "fill",
+            icons: { "header": "ui-icon-heart", "activeHeader": "ui-icon-calculator" }
+        });
+    /* Настройте аккордеон так, чтобы он был  с третьей развернутой вкладкой, анимацией "easeOutBounce", одинаковой высотой всех панелей */
+
+    /* Внутри каждой панели создайте три кнопки с символами ui-icon-heart, ui-icon-calculator, ui-icon-signal-diag */
+
+    });
+</script>
+</body>
+</html>

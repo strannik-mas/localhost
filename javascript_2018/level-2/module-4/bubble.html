@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+	<title>"Всплытие" события</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<script type="text/javascript">
+		function showElementTag(obj)
+		{
+			console.log(obj.tagName);
+		}
+	</script>	
+</head>
+
+<body onclick="showElementTag(this)">
+	<h1 onclick="showElementTag(this)">
+		"Всплытие" события
+	</h1>
+	<div onclick="showElementTag(this)">
+		<h2 onclick="showElementTag(this)">
+			Заголовок
+		</h2>
+		<p onclick="showElementTag(this)">
+			Текст параграфа
+			<strong onclick="showElementTag(this)">
+				жирный текст
+			</strong>
+		</p>
+	</div>
+</body>
+</html>

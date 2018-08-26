@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<input type="text" name="title" id="title" placeholder="заголовок">
+<input type="text" name="panel" id="panel" placeholder="вкладка">
+<a href="#" id="click">Добавить</a>
+
+<div id="tabs">
+    <ul class="titles">
+        <li><a href="#tabs-1">тест1</a></li>
+    </ul>
+    <div id="tabs-1">
+        <p>тест1</p>
+    </div>
+</div>
+
+<div id="tabs2"></div>
+<script>
+    $(function () {
+        $('#tabs').tabs();
+        /*При нажатии на кнопку "Добавить" добавлять новые вкладки с текстом заголовка и содержимого из однострочных полей ввода*/
+        $('#click').on('click', function (e) {
+            e.preventDefault();
+            $ulStr = '<li><a href="#tabs-2">'+ $('#title').val() +'</a> </li>';
+            $('.titles').append($ulStr);
+            //кнопка удаления
+            $("<button />").button({text:false, icons: {primary: "ui-icon-gear"}}).appendTo($('body')).click(() => {
+//                $id = $('a', li).attr('href').splice(1);
+                $id = 'tabs-2';
+                $('#' + $id).remove();
+                $('a[href="#' + $id+'"]').closest('li').remove();
+                $('#tabs').tabs('refresh');
+            });
+
+            /*$divStr = '<div id="tabs-2"><p>'+ $('#panel').val() +'</p><a href="" id="del" onclick="deleteTab()">delete</a> </div>';
+            $('#tabs').append($divStr).tabs("refresh");*/
+            var div = $('<div />').attr("id", 'tabs-2').appendTo($('#tabs'));
+            $("<p />").html($('#panel').val()).appendTo($('#tabs'));
+            $("#tabs").tabs('refresh');
+        });
+
+        /*Дополнительное (при наличии времени): создавать у вкладки кнопку закрытия и при нажатии удалять вкладку*/
+        var deleteTab = () => {
+            $('.titles').find('a[href=#tabs-2]').parent().remove();
+            $('#tabs-2').remove();
+            $('#tabs').tabs('refresh');
+        };
+    });
+
+</script>
+
+
+</body>
+</html>

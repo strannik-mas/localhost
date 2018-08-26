@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+<a href="#" class="w">Открыть</a>
+<div class="win" title="Header">
+    <h3>Заголовок</h3>
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</div>
+<script>
+    $(() => {
+        $('.win').dialog();
+        /*$('.w').click(function () {
+            $('.win').dialog({
+                show: {effect: 'blind', duration: 5000}
+            });
+        });*/
+
+        $('.w').click(function () {
+            $('.win').dialog("open");
+        });
+    });
+
+</script>
+</body>
+</html>

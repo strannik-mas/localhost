@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin1</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        span.some {
+            padding: 4px;
+            background-color: rgba(50,50,50,.3);
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-plugin"></div>
+    <input type="text" id="find">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aspernatur blanditiis
+        consequatur debitis, dolores ducimus, exercitationem id, nesciunt optio quidem totam voluptates! Cum iusto mollitia
+        nam, repellat rerum vel!
+    </div>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quia recusandae? Consequatur
+        enim laudantium nisi quia vel. Inventore, magni, quos?
+    </div>
+    <div >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi consequuntur corporis
+        culpa delectus dolores eum expedita ipsum itaque magnam obcaecati quaerat, quas repellendus sed sequi totam ut.
+        Aspernatur, assumenda culpa doloremque, ducimus illo ipsum iste possimus quod repudiandae sed sint sunt,
+        voluptatibus? A accusantium consectetur dolore dolorem doloribus eius eos ex exercitationem explicabo, ipsum magnam
+        minima non nulla possimus provident quam quasi quis quod reprehenderit rerum saepe suscipit, tenetur.
+    </div>
+    <div class="my-plugin"></div>
+<script>
+    $(()=> {
+        $.fn.myPlugin = function () {
+            return this.each(function (index, element) {
+                var dt = (new Date()).toLocaleTimeString();
+                $('<span />').addClass('some').html(dt).prependTo(this);
+
+                function tick() {
+                    $('.some').html((new Date()).toLocaleTimeString());
+                    setTimeout(tick, 1000);
+                }
+                tick();
+            });
+        };
+
+        $('.my-plugin').myPlugin();
+
+        $.fn.searchMark = function (options) {
+
+            var opt = $.extend({}, $.fn.searchMark.default, options);
+            var methods = {
+                changeColor: function (color) {
+                    console.log(2);
+                    $('.searchMark').css('color', color)
+                }
+            };
+            var args = arguments[1];
+//console.log(args);
+            return this.each(function () {
+
+                if(options in methods){
+                    console.log(args);
+                    methods[options].apply(null,[args]);
+                }
+//                console.log(options);
+//                console.log(opt);
+                var re = {};
+                if(typeof opt.words == 'string') {
+                    re = new RegExp("(" + opt.words + ")", "gi");
+                }
+                if(typeof opt.words == 'object')
+                    re = new RegExp("(" + opt.words.join("|")+")", "gi");
+
+                $(this).html($(this).html().replace(re, "<mark class='searchMark'>$1</mark>"));
+//                console.log(re);
+                if(Object.keys(re).length > 0) {
+                    $res = re.test($(this).html());
+
+
+//                $('.searchMark', this).css('background', opt.background);
+                    if ($res)
+                        $(this).css('background', opt.background);
+                }
+            });
+        };
+
+        $.fn.searchMark.default = {background: 'pink'};
+
+
+        $('div').searchMark({words:'possimus'});
+        $('div').searchMark('changeColor', '#f00');
+//        $('div').searchMark({words:['dolor', 'ipsum']});
+    })
+</script>
+</body>
+</html>

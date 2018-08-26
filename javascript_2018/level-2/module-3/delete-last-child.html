@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+	<title>Удаление элементов</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<script type="text/javascript">
+		function deleteLastElement(){
+			var body = document.body;
+	
+			if (body.hasChildNodes()){
+				var element = body.lastChild;
+				body.removeChild(element);
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div>
+		<a href="javascript:deleteLastElement()">Удалить последний элемент</a>
+	</div>
+	<h1>Удаление элементов</h1>
+	<p>В этом примере есть несколько параграфов текста</p>
+    <div>
+		<p>Причем эти параграфы находятся на разном уровне</p>
+		<p>Например, некоторые из них вложены в DIV</p>
+		<div>
+			<p>Вложенный P в DIV</p>
+		</div>
+    </div>
+    <p>Это последний параграф</p>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        .order .row {
+            margin: 5px;
+        }
+
+        .catalog {
+            float: left
+        }
+
+        .filters {
+            width: 300px;
+            position: fixed;
+            right: 10px;
+            top: 240px;
+        }
+
+        .basket {
+            width: 150px;
+            position: fixed;
+            right: 10px;
+            top: 10px;
+        }
+
+        .basket span {
+            display: inline-block;
+        }
+
+        .basket .items:nth-child(2n) {
+            background-color: #ffc;
+        }
+
+
+    </style>
+    <script>
+        $(function () {
+
+            /*1. Создайте диалоговые окна на элементах с классами .order и .success. Оформите кнопки внутри них виджетом button. Убедитесь, что окна работают корректно и программно их спрячьте*/
+            $('.order, .success').dialog({
+                autoOpen: false
+            });
+            $('.order').dialog({
+                buttons: [
+                    {
+                        text: "Заказать",
+                        icon: 'ui-icon-lightbulb',
+                        click: function () {
+                            $( this ).dialog( "close" );
+                            $( ".success" ).dialog( "open");
+                            $('.success').dialog({
+                                buttons: [
+                                    {
+                                        text: "Ok",
+                                        icon: 'ui-icon-heart',
+                                        click: function () {
+                                            $(this).dialog("close");
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                    }
+                ]
+            });
+//            $('.order button, .success button').button();
+
+            /*2. Создайте кнопки удаления товаров из корзины (с эффектом Drop для удаляемого пункта) и оформления заказа. При оформлении заказа прятать корзину с эффектом Slide, показывать окно Формы заказа с тем же эффектом */
+            $('.basket .ccc').button({
+                icon: "ui-icon-close"
+            });
+            $('.basket .ccc').closest("a").on('click', function (e) {
+                e.preventDefault();
+                $(this).closest(".items").effect({
+                    effect: "drop",
+                    easing: "swing",
+                    duration: "slow",
+                    complete: function () {
+                        $(this).remove();
+                    }
+                });
+            });
+
+            $('.basket .ui-icon-check').closest("a").on("click", function (e) {
+                e.preventDefault();
+
+                $('.basket').hide({
+                    effect: "slide",
+                    complete: function () {
+                        $('.order').dialog("option", "show", {effect: "slide"}).dialog("open");
+
+                        //9 задание
+                        $html = $('<div />');
+                        $('.basket .items').each(function (index, element) {
+                            $html.append(element);
+                        });
+//                        console.log($html);
+                        $('.order').prepend($html);
+                        /*$('#sendOrder').on('click', function (e) {
+                             $('.order').dialog({
+                                 hide: { effect: "explode", duration: 1000 }
+                             });
+                             $('.success').dialog("option", "show", {effect: "slide"}).dialog("open");
+                        });*/
+                    }
+                });
+                
+                
+            });
+
+            /*3. Из блока фильтров сделать виджет аккордеон. Свойство icons должно принимать объект со свойствами  header: "ui-icon-circle-arrow-e" и  activeHeader: "ui-icon-circle-arrow-s". Вторую вкладку сделайте активной и разместите в ней виджет слайдер. Это будет фильтр по цене */
+            $('.filters').accordion({
+                icons: {
+                    header: "ui-icon-circle-arrow-e",
+                    activeHeader: "ui-icon-circle-arrow-s",
+                },
+                active: 1
+            });
+
+
+            /*4. У слайдера по цене, установить диапазон 0-20000 руб. При изменении положения ползунка, менять значение элементе с классом .price на значение свойства value ползунка*/
+            $('#price').slider({
+                min:0,
+                max:20000,
+                slide: function (e,ui) {
+//                    console.log(ui);
+                    $('.price').text(ui.value);
+                }
+            });
+
+            /*5. Создать выбор даты производства. Локализовать его (русский язык)*/
+            $('#datepicker').datepicker();
+
+            /*6. К элементу с идентификатором #title подключить плагин Autocomplete с выбором значений по названию товара. При выборе, прятать остальные товары */
+            $('#title').autocomplete({
+                create: function(e,ui){
+                    var source =[]
+                    $('.catalog .items h3').each(function (element, i) {
+                        source.push($(this).text());
+                    });
+                    $(this).autocomplete("option", "source", source)
+                },
+                select: function (e,ui) {
+                    $(".catalog .items").hide();
+
+//                    $(".catalog .items h3:contains('" + ui.item.value + "')").closest(".catalog .items").show();
+                    $(".catalog .items h3").each(function (n,e) {
+                        if($(e).text() == ui.item.value){
+                            $(this).closest('.items').show();
+                        }
+                    });
+                }
+            });
+
+            $('#title').on("keyup",function (e) {
+                if(this.value == ""){
+                    $(".catalog .items").show();
+                }
+            });
+
+            /*7. Оформить ссылки "В корзину" при помощи плагина button. При нажатии на кнопку, добавлять товар в корзину. При повторении добавления отдельного товара, считать кол-во товаров в корзине. Нажатие на кнопку добавления и само появления нового товара в корзине сопровождать анимацией*/
+            $('.catalog .items a').button().on('click', function (e) {
+                e.preventDefault();
+
+                var template = '<div class="items item@number@" id="@id@"><span class="name">@title@</span><span class="qty">1шт.</span><a href="#"><span class="ccc"></span></a></div>';
+
+                var item = $(this).closest('.items');
+                var number = +item.attr("id").slice(4);
+                var title = $("h3", item).text();
+
+                template = template.replace("@number@", number);
+                template = template.replace("@title@", title);
+                template = template.replace("@id@", "basket"+number);
+                $('#order-button').before(template);
+                $('.basket .ccc').button({
+                    icon: "ui-icon-close"
+                });
+            });
+
+
+            /*8. Сделать возможным добавление товара в корзину посредством перетаскивания. */
+            $('.items').draggable({
+                helper: "clone"
+            });
+            $('.basket').droppable({
+                drop: function (e,ui) {
+                    var template = '<div class="items item@number@" id="@id@"><span class="name">@title@</span><span class="qty">1шт.</span><a href="#"><span class="ccc"></span></a></div>';
+
+                    var item = ui.draggable;
+                    var number = +item.attr("id").slice(4);
+                    var title = $("h3", item).text();
+
+                    template = template.replace("@number@", number);
+                    template = template.replace("@title@", title);
+                    template = template.replace("@id@", "basket"+number);
+                    $('#order-button').before(template);
+                    $('.basket .ccc').button({
+                        icon: "ui-icon-close"
+                    });
+                }
+            });
+
+            /*9. Добавлять перечень и кол-во товаров из корзины в окно Оформления заказа, при нажатии на кнопку "Оформить". */
+
+
+
+        });
+    </script>
+
+</head>
+<body>
+<!--.order[title="Форма заказа"]>(.row*3>(label[for=label$]{Label$}+input[type=text][id=label$][name=label$]))+button{Заказать}-->
+<div class="order" title="Форма заказа" id="orderForm">
+    <div class="row"><label for="label1">Label1</label><input type="text" id="label1" name="label1"></div>
+    <div class="row"><label for="label2">Label2</label><input type="text" id="label2" name="label2"></div>
+    <div class="row"><label for="label3">Label3</label><input type="text" id="label3" name="label3"></div>
+    <button id="sendOrder">Заказать</button>
+</div>
+
+<!--.success[title="Спасибо за заказ!"]>p{Заказ успешно оформлен!}+button{Ок}-->
+<div class="success" title="Спасибо за заказ!">
+    <p>Заказ успешно оформлен!</p>
+    <button>Ок</button>
+</div>
+
+
+<!--(.catalog>h2{Каталог}+.items.item$*5>h3{Товар$}+p{Описание товара $}+a[href=#]{В корзину})+(.filters>((h3>{Фильтр$}+span{текст})+div#filter$>input:text)*7)+.basket>h2{Корзина}+(.items.item$*4>span.name{Товар$}+span.qty{2шт.}+(a[href=#]>span.ui-icon.ui-icon-close))+a[href=#]>span.ui-icon.ui-icon-check+{Оформить}
+-->
+<div class="catalog">
+    <h2>Каталог</h2>
+    <div class="items item1" id="item1">
+        <h3>Товар1</h3>
+        <p>Описание товара 1</p>
+        <a href="#">В корзину</a>
+    </div>
+    <div class="items item2" id="item2">
+        <h3>Товар2</h3>
+        <p>Описание товара 2</p>
+        <a href="#">В корзину</a>
+    </div>
+    <div class="items item3" id="item3">
+        <h3>Товар3</h3>
+        <p>Описание товара 3</p>
+        <a href="#">В корзину</a>
+    </div>
+    <div class="items item4" id="item4">
+        <h3>Товар4</h3>
+        <p>Описание товара 4</p>
+        <a href="#">В корзину</a>
+    </div>
+    <div class="items item14" id="item14">
+        <h3>Товар14</h3>
+        <p>Описание товара 14</p>
+        <a href="#">В корзину</a>
+    </div>
+    <div class="items item5" id="item5">
+        <h3>Товар5</h3>
+        <p>Описание товара 5</p>
+        <a href="#">В корзину</a>
+    </div>
+</div>
+<div class="filters">
+    <h3>Цена от <span class="price">0</span></h3>
+    <div id="filter1">
+        <div id="price"></div>
+    </div>
+    <h3>Дата выпуска <span class="datepicker"></span></h3>
+    <div id="filter2"><input type="text" name="datepicker" id="datepicker"></div>
+    <h3>Поиск<span class="title"></span></h3>
+    <div id="filter3"><input type="text" name="title" id="title"></div>
+    <h3>Фильтр4<span>текст</span></h3>
+    <div id="filter4"><input type="text" name="" id=""></div>
+    <h3>Фильтр5<span>текст</span></h3>
+    <div id="filter5"><input type="text" name="" id=""></div>
+    <h3>Фильтр6<span>текст</span></h3>
+    <div id="filter6"><input type="text" name="" id=""></div>
+    <h3>Фильтр7<span>текст</span></h3>
+    <div id="filter7"><input type="text" name="" id=""></div>
+</div>
+<div class="basket">
+    <h2>Корзина</h2>
+    <div class="items item1">
+        <span class="name">Товар1</span>
+        <span class="qty">2шт.</span>
+        <a href="#"><span class="ccc"></span></a>
+    </div>
+    <div class="items item2">
+        <span class="name">Товар2</span>
+        <span class="qty">2шт.</span>
+        <a href="#"><span class="ccc"></span></a>
+    </div>
+    <div class="items item3">
+        <span class="name">Товар3</span>
+        <span class="qty">2шт.</span>
+        <a href="#"><span class="ccc"></span></a>
+    </div>
+    <div class="items item4">
+        <span class="name">Товар4</span>
+        <span class="qty">2шт.</span>
+        <a href="#"><span class="ccc"></span></a>
+    </div>
+    <a href="#" id="order-button"><span class="ui-icon ui-icon-check"></span>Оформить</a>
+</div>
+
+
+</body>
+</html>

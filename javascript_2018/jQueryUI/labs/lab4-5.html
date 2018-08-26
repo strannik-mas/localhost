@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div class="price">стоимость <span></span></div>
+<div id="price"></div>
+
+
+<script>
+    $(function () {
+        var min = 1000,
+            max = 23000;
+        $('.price').text(min + '-' + max);
+        /*создать слайдер на каждом #price  */
+        $('#price').slider({
+            min: min,
+            max: max,
+            step: 100,
+            range: "true",
+            values: [5000, 10000],
+            slide: function (e,ui) {
+                $('.price').text(ui.values[0] + '-' + ui.values[1]);
+            }
+        });
+        /*указать минимальный размер 1000, максимальный 23000, с шагом в 100, ранжирование по минимальной части. Убедиться, что все работает */
+
+        /*указать ранжирование true, добавить второй ползунок. Позиции ползунков должны быть 5000 и 10000 */
+
+        /*навесить событие, которое будет записывать в спан диапазон чисел при любом движении ползунка (например, "4000-15000")*/
+
+    });
+
+</script>
+
+
+</body>
+</html>

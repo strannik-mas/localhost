@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+	<style>
+	.goods{
+	 width: 100px;
+	 height: 100px;
+	 background-color: #ff9;
+	 margin: 5px;
+	}
+	#basket{
+	 width: 100px;
+	 height: 100px;
+	 background-color: #f63;
+	 color: #fff;
+	 position: fixed;
+	 top: 10px;
+	 right: 10px;
+	}
+	</style>
+</head>
+<body>
+<div id="catalog">
+ <div class="goods">Товар 1</div>
+ <div class="goods">Товар 2</div>
+ <div class="goods">Товар 3</div>
+ <div class="goods">Товар 4</div>
+ <div class="goods">Товар 5</div>
+</div>
+ <div id="basket">
+  Корзина
+  <div id="items"></div>
+ </div>
+ 
+<script>
+  /* Навесить на элементы с классом .goods эффект перетаскивания с настройками appendTo: "body", helper: "clone"  */
+    $(() => {
+        $('.goods').draggable({
+            appendTo: 'body',
+            helper: 'clone',
+        });
+
+
+  /* Навесить на элементы с идентификатором #basket эффект принимающего элемента с настройками activeClass - "ui-state-default", hoverClass - "ui-state-hover", accept - ":not(.ui-sortable-helper)"  */
+        $('#basket').droppable({
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            accept: ":not(.ui-sortable-helper)",
+
+  
+  
+  /*
+   Задайте метод drop у принимающего элемента drop - function( event, ui ) { $( "<div></div>" ).text( ui.draggable.text() ).appendTo( this );      }
+  */
+             drop: function ( event, ui ) {
+                 $( "<div></div>" ).text( ui.draggable.text() ).appendTo( this );
+             }
+        }).sortable({
+            stop: function (e, ui) {
+                $(this).removeClass("ui-state-default");
+            }
+        });
+
+ /*   Сделайте возможной сортировку товаров  */
+
+    });
+</script>
+</body>
+</html>

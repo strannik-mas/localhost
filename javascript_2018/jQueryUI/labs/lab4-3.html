@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+<div id="dialog-question1" title="Опрос о здоровом образе жизни">
+    <p>
+        Вы завтракали утром?
+    </p>
+</div>
+<div id="dialog-question2" title="Жрачка">
+    <p>
+        <input type="text" name="question2" id="question2" placeholder="Что именно кушали?">
+    </p>
+</div>
+<div id="dialog-yes" title="Love eat">
+    <p>
+        И мы любим кушать <span id="my">%word%</span>
+    </p>
+</div>
+<div id="dialog-no" title="Заголовок окна">
+    <p>
+        Нужно вести здоровый образ жизни!...
+    </p>
+</div>
+
+<button id="quiz">Опрос</button>
+
+
+<script>
+    $(() => {
+        $('div').hide();
+    /*При нажатии на кнопку "Опрос", показать диалоговое окно с вопросом о завтраке (добавить кнопки "Да" и "Нет", с закрытием окна по нажатию), заголовок окна должен называться "Опрос о здоровом образе жизни".*/
+        $('#quiz').on('click', (e) => {
+            $('#dialog-question1').dialog({
+                show: {effect: 'blind', duration: 500},
+                width: 400,
+                height: 300,
+                buttons: [
+                    {
+                        text: "Да",
+                        icon: 'ui-icon-heart',
+                        click: function () {
+                            $( this ).dialog( "close" );
+                            $('#dialog-question2').dialog({
+                                show: {effect: 'blind', duration: 500},
+                                width: 400,
+                                height: 300,
+                                buttons: [
+                                    {
+                                        text: 'Ok',
+                                        icon: 'ui-icon-heart',
+                                        click: function () {
+                                            $( this ).dialog( "close" );
+                                            $('#my').text($('#question2').val());
+                                            $('#dialog-yes').dialog({
+                                                width: 400,
+                                                height: 300,
+                                            });
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                    },
+                    {
+                        text: "Нет",
+                        icon: 'ui-icon-lightbulb',
+                        click: function () {
+                            $( this ).dialog( "close" );
+                            $('#dialog-no').dialog({
+                                width: 400,
+                                height: 300,
+                            });
+                        }
+                    }
+                ],
+            });
+        });
+
+    /*При положительном ответе, спрашивать что именно кушали и потом выводить окно с уведомлением о том, что любим кушать мы*/
+
+    /*При отрицательном ответе, выводить окно с рассказом о здоровом образе жизни */
+
+    /*Все окна должны быть размером 400x300, с собственными заголовками*/
+    });
+
+</script>
+
+
+</body>
+</html>

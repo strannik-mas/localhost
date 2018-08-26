@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Коллекция элементов elements, методы форм reset и submit</title>
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <script type="text/javascript">
+        "use strict";
+        var form;
+
+        function getForm() {
+            form = document.forms[0];
+        }
+
+        function f() {
+            form.elements.q.focus();
+        }
+
+        function r() {
+            form.reset();
+        }
+
+        function s() {
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+<form action="https://google.ru/search" target="_blank" name="search">
+    <fieldset>
+        <legend>Я ищу</legend>
+        <div class="block">
+            <label><span>Слово</span><input type="text" name="q" ></label>
+        </div>
+    </fieldset>
+    <div class="block">
+        <button><a href="javascript:getForm()">Select Form</a></button>
+        <button><a href="javascript:f()">Кликнуть</a></button>
+        <button><a href="javascript:r()">Сбросить</a></button>
+        <button><a href="javascript:s()">Отправить</a></button>
+        <button type='submit'>Submit</button>
+    </div>
+</form>
+</body>
+</html>

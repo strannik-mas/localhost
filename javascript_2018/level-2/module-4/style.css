@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size:0;
+    /*border: 0;*/
+}
+
+body {
+    background-color: yellow;
+    background-image: url(img/1.png), url(img/2.png), url(img/3.png);
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 100px auto;
+    box-shadow: 0 40px 150px #999;
+    height: 1500px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.wrapper>h1 {
+    margin: 20px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.wrapper>button {
+    font-size: 14px;
+    margin-left: 100px;
+}
+
+.mistake {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 100px 0;
+}
+
+.mistake__message {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.box {
+    margin: auto;
+    display: flex;
+    vertical-align: top;
+    width: 900px;
+    height: 1200px;
+    border: 1px solid orange;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
+
+.box__image {
+    background-color: #ffcccc;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-box-shadow: 3px 3px 7px 5px #369;
+    -moz-box-shadow: 3px 3px 7px 5px #369;
+    box-shadow: 3px 3px 7px 5px #369;
+    border-radius: 20px;
+    width: 205px;
+    height: 270px;
+}
+
+.box__image_back {
+    background: #fff url(img/r.jpg) no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.box__image_face {
+    background: url(img/mahjong.png) no-repeat;
+}

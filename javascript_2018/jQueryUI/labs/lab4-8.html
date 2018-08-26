@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryUI</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+    <style>
+        #progressbar {
+            width: 800px;
+        }
+
+        .ui-progressbar-value {
+            text-align: right;
+            line-height: 35px;
+        }
+    </style>
+</head>
+<body>
+
+<button>Кнопка</button>
+
+<div id="progressbar"></div>
+
+<script>  $(function () {
+
+    /*Создайте индикатор загрузки с максимальным значением 150 и анимационной полосой загрузки (value: false)*/
+    $('#progressbar').progressbar({
+        value: false,
+        max: 150,
+        complete: function () {
+            console.log('yearrewrw');
+        }
+    });
+
+    /*после нажатия на кнопку, индикатор должен увеличиваться по нелинейной зависимости от времени и при достижении максимума выводить alert("Завершено!")*/
+    $("button").click(function () {
+        var i = 1;
+        var self = $('#progressbar');
+        function tick() {
+            i *= 1.1;
+            self.progressbar('option', 'value', i);
+            if (self.progressbar('option', 'value') < self.progressbar('option', 'max'))
+                setTimeout(tick, 40);
+        }
+
+        tick();
+    });
+});
+</script>
+
+
+</body>
+</html>

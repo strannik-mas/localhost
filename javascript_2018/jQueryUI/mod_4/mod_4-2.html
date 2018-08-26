@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tabs</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui-1.12.1/datepicker-ru.js"></script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">tab1</a></li>
+            <li><a href="#tabs-2">tab2</a></li>
+            <li><a href="#tabs-3">tab3</a></li>
+        </ul>
+        <div id="tabs-1">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore ea ex iure magni maiores minima
+                officia, quam recusandae, repellendus saepe sed soluta vel? Amet assumenda corporis in ipsa laudantium natus
+                neque odio repellendus sunt ullam! Aliquam animi blanditiis consectetur deserunt eos error esse eum eveniet
+                ex excepturi expedita hic ipsum magnam nesciunt non odio odit, officiis optio praesentium quae quas quisquam
+                quos ratione reiciendis temporibus, ullam vel? Adipisci commodi cumque distinctio eligendi error expedita
+                facere iste, possimus sapiente voluptate! Aut, autem, cupiditate dicta dignissimos dolore dolores earum
+                impedit ipsa labore minus modi non perferendis soluta totam voluptatem! Eius, suscipit?</p>
+        </div>
+        <div id="tabs-2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore ea ex iure magni maiores minima
+                officia, quam recusandae, repellendus saepe sed soluta vel? Amet assumenda corporis in ipsa laudantium natus
+                neque odio repellendus sunt ullam! Aliquam animi blanditiis consectetur deserunt eos error esse eum eveniet
+                ex excepturi expedita hic ipsum magnam nesciunt non odio odit, ?</p>
+        </div>
+        <div id="tabs-3">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore ea ex iure magni maiores minima
+                officia, quam recusandae, repellendus saepe sed soluta vel? Amet assumenda cor voluptate! Aut, autem, cupiditate dicta dignissimos dolore dolores earum
+                impedit ipsa labore minus modi non perferendis soluta totam voluptatem! Eius, suscipit?</p>
+        </div>
+    </div>
+<script>
+    $(() => {
+        $('#tabs').tabs({
+            active: 2,
+            collapsible: true,
+            disabled: [1],
+//            event: 'mouseover',
+            show: {
+                duration: 2000,
+                easing: 'easeOutBounce'
+            },
+        });
+    });
+</script>
+</body>
+</html>

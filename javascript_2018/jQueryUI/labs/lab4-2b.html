@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Autocomplete - Custom data and display</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style>
+  #project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  #project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+  <script>
+  $(function() {
+    var projects = [
+      {
+        value: "CSS",
+        label: "Документация по CSS",
+        desc: "Когда начинаем изучать HTML , документацию найти достаточно просто.  А  спецификация CSS разбита на модули.",
+		url: "dokumentatsiya-po-css"
+      },
+      {
+        value: "CSS",
+        label: "Анимация в CSS",
+        desc: "Анимация в CSS — очень интересная возможность для создания подвижных фрагментов на сайте",
+        url: "animatsiya-v-css"
+      },
+      {
+        value: "HTML",
+        label: "HTML компрессор",
+        desc: "HTML компрессор — утилита/сервис позволяющий уменьшать объем HTML-страниц за счет удаления лишних пробелов",
+        url: "html-kompressor"
+      },
+      {
+        value: "HTML и CSS",
+        label: "Обтекание в HTML и CSS",
+        desc: "Если вы не очень хорошо понимаете как работает обтекание в HTML и CSS (свойство float), то эта заметка поможет сориентироваться",
+        url: "obtekanie-v-html-i-css"
+      }
+    ];
+ 
+    $( "#project" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+		location.href = "http://htmllab.ru/"+ui.item.url;
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "<br>" + item.desc + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
+</head>
+<body>
+ 
+<div id="project-label">Для старта работы введите CSS:</div>
+<input id="project">
+
+ 
+</body>
+</html>

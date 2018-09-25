@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Лабораторная работа: counter</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+  <!-- Шаблон компонента -->
+  <script type="text/html" id="counter">
+      <div data-bind="text:inc"></div>
+      <button data-bind="click:onClick(-1)">Уменьшить</button>
+      <button data-bind="click:onClick(1)">Увеличить</button>
+  </script>
+</head>
+
+<body>
+  <counter params="inc: inc, dec: dec"></counter>
+  <script>
+    // Регистрация компонента
+      ko.components.register("counter", {
+          viewModel: function(params){
+              console.log(params.inc());
+              self = this;
+              this.inc = params.inc;
+              this.dec = params.dec;
+              this.onClick = function(num){
+                  console.log(num);
+                  self.dec(parseInt(num));
+                  self.inc(self.inc() + parseInt(num));
+              }
+          },
+          template: {element: "counter"}
+      });
+      function ComponentViewModel(){
+          this.inc = ko.observable(1);
+          this.dec = ko.observable(0);
+      }
+      ko.applyBindings(new ComponentViewModel());
+    // Описание модели
+  </script>
+</body>
+
+</html>

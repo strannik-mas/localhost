@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Демонстрация: tpl.html</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+  <script type="text/html" id="tpl_courses">
+      <h3 data-bind="text:title"></h3>
+      <p data-bind="text:desc"></p>
+  </script>
+<!--
+    <script type="text/html" id="tpl_tracks">
+        <li>
+            <strong data-bind="text:name"></strong>
+            <ul data-bind="template:{name:'tpl_titles', foreach: titles, as: 'title'}"></ul>
+        </li>
+    </script>
+    <script type="text/html" id="tpl_titles">
+        <li data-bind="text: title></li>
+    </script>
+-->
+</head>
+
+<body>
+  <h1>Наши курсы</h1>
+<!--  <ul data-bind="template:{name:'tpl_tracks', foreach: tracks, as: 'track'}"></ul>-->
+<!--  <div data-bind="template:{name:'tpl_courses', data:js}"></div>-->
+  <div data-bind="template:{name:'tpl_courses', foreach:courses, afterRender: someMethod}"></div>
+  
+  <script>
+    //
+      /*var Courses = {
+          tracks: ko.observableArray([
+              {name: "JavaScript", titles: ["ECMA-262", "BOM/DOM", "Node.js"]},
+              {name: "PHP", titles: ["Basic", "Advanced ", "Proffessional"]},
+              {name: "XML", titles: ["XML и XSLT", "AJAX"]}
+          ])
+      };
+      ko.applyBindings(Courses);*/
+      
+      function Courses(){
+          this.courses = [
+              {title: "JavaScript", desc: "Описание курса JavaScript"},
+              {title: "PHP", desc: "Описание курса PHP"},
+              {title: "XML и XSLT", desc: "Описание курса XML и XSLT"}
+          ];
+          this.someMethod = function(el, data){
+              console.log(data);
+          };
+          /*this.js = {title: "JavaScript", desc: "Описание курса JavaScript"};
+          this.php = {title: "PHP", desc: "Описание курса PHP"};
+          this.xml = {title: "XML и XSLT", desc: "Описание курса XML и XSLT"};*/
+      }
+      ko.applyBindings(new Courses());
+  </script>
+</body>
+
+</html>

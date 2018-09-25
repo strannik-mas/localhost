@@ -1,0 +1,53 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/mod_3/lab3-1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/mod_2-timer.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_4/lab4.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/lab2-1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1/lab1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1/mod_1-1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_3/lab3-2.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_3/lab3-3.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_3/lab3.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/clock.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1/dz1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/mod_2-4.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/mod_2-1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/mod_2-3.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1/dz3.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_3/lab3_2.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/mod_2-2.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/validator.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1/dz2.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_1-1.js" />
+        <item url="file://$PROJECT_DIR$/dist/mod_2/clock_many.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/mod_3/lab3-1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/mod_2-timer.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_4/lab4.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/lab2-1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1/lab1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1/mod_1-1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_3/lab3-2.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_3/lab3-3.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_3/lab3.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/clock.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1/dz1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/mod_2-4.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/mod_2-1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/mod_2-3.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1/dz3.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_3/lab3_2.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/mod_2-2.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/validator.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1/dz2.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_1-1.js" />
+      <root url="file://$PROJECT_DIR$/dist/mod_2/clock_many.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Лабораторная работа: contacts</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+  <script type="text/html" id="contacts">
+      <h3 data-bind="text: name">Имя</h3>
+    <p>
+      Телефон: <span data-bind="text: phone">123-45-67</span>
+    </p>
+    <p>
+      Email: <span data-bind="text: email">name@email.ru</span>
+    </p>
+    <button data-bind="click:$root.removeContact">Удалить</button>
+  </script>
+</head>
+
+<body>
+
+  <h2>Список контактов</h2>
+    <div data-bind="template:{name: 'contacts',foreach: contacts, afterRender: afterAdd}"></div>
+  
+  <script>
+    function СontactsViewModel() {
+      var self = this;
+      this.contacts = ko.observableArray([
+        {
+          name: 'Вася Пупкин',
+          phone: "123-45-67",
+          email: 'vasya@pupkin.ru'
+        },
+        {
+          name: 'Федя Сумкин',
+          phone: "987-65-43",
+          email: 'fedya@sumkin.ru'
+        },
+        {
+          name: 'Зина Корзинкина',
+          phone: "756-39-44",
+          email: 'zina@korzinkina.ru'
+        }
+      ]),
+      this.removeContact = function(){
+          self.contacts.remove(this);
+      },
+      this.afterAdd = function(elements, data){
+          for(var i = 0; i< elements.length; ++i){
+              if(elements[i].nodeType == 1 && elements[i].tagName != "BUTTON"){
+                  elements[i].style.color = "red";
+              }
+          }
+      }
+    }
+    ko.applyBindings(new СontactsViewModel());
+  </script>
+</body>
+
+</html>

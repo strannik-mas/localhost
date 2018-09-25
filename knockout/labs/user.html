@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа: 1.1</title>
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+</head>
+
+<body>
+  <div id="person">
+    <p>
+      Имя: <span data-bind="text:firstName">...</span>
+      <br/> 
+      Фамилия: <span data-bind="text:lastName">...</span>
+    </p>
+    <input type="text" data-bind="value:firstName, valueUpdate:'keyup'">
+    <input type="text" data-bind="value:lastName">
+    <p data-bind="visible:isFullName">Полное имя: <strong data-bind="text:fullName">...</strong></p>
+    <button data-bind="click:getName">Как вас зовут?</button>
+  </div>
+  
+  <script>
+    function PersonViewModel() {
+        var self = this;
+        this.firstName = ko.observable("Name");
+        this.lastName = ko.observable("Surname");
+        this.fullName = ko.computed(function(){
+              return self.firstName() + " " + self.lastName();
+          });
+        this.getName = function(){
+            var name = prompt('What is your name?', this.firstName())  ;
+            this.firstName(name);
+            
+            var lastName = prompt('What is your lastName?', this.lastName())  ;
+            this.lastName(lastName);
+        };
+        this.isFullName = ko.computed(function(){
+            return (this.firstName() && this.lastName()) ? true : false;
+        }, this);
+      };
+      
+      ko.applyBindings(new PersonViewModel());
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Демонстрация: tpl2.html</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+    <script type="text/html" id="standard">
+        <li>
+            <strong data-bind="text:title"></strong>
+        </li>
+    </script>
+    <script type="text/html" id="webinar">
+        <li style="background: yellow">
+            <strong data-bind="text:title"></strong>
+        </li>
+    </script>
+</head>
+
+<body>
+  <h1>Наши курсы</h1>
+  <ul data-bind="template:{name: show, foreach: courses, as: 'track'}"></ul>
+  
+  <script>
+    //
+      var Courses = {
+          courses: ko.observableArray([
+              {title: "JavaScript", webinar:ko.observable(true)},
+              {title: "PHP", webinar:ko.observable(false)},
+              {title: "XML", webinar:ko.observable(true)}
+          ]),
+          show: function(course){
+              return course.webinar() ? "webinar" : "standard";
+          }
+      };
+      ko.applyBindings(Courses);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Демонстрация: component.html</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+  <script type="text/html" id="user-list-tpl">
+      <h3>User list</h3>
+      <hr/>     
+  </script>
+ <script type="text/html" id="tpl">
+      Введите текст: <input data-bind='value:text'> <span data-bind='text:calculate()'></span>     
+  </script>
+</head>
+
+<body>
+<!--
+  <div data-bind="component: 'user-list'">
+     <h3 id="h3">User list</h3>
+     <button id="btn">HELLO</button>      
+  </div>-->
+  
+<!--
+  <div data-bind="component: 'text-field'"></div>
+  <div data-bind="component: {name: 'text-field', params: {initialText: '!!!'}}"></div>
+  <text-field params="initialText: 'custom'"></text-field>
+-->
+<!--  <text-field params="obj: {a:1, b:2}"></text-field>-->
+  <text-field params="obj: new Date()"></text-field>
+  
+  <script>
+      /*function userViewModel(){
+          console.log('here');
+      }
+      var cmp = document.getElementById('h3');
+      var btn = document.getElementById('btn');
+      var list = [cmp, btn];
+      ko.components.register("user-list", {
+          viewModel: {
+              createViewModel: function(params, componentInfo){
+                  console.log(params, componentInfo);
+                  return new userViewModel();
+              }
+          },
+          template: list
+//          template: {element: cmp}
+//          template: {element: "user-list-tpl"}
+      });*/
+      /*ko.components.register("user-list", {
+          viewModel: userViewModel,
+          template: {element: "user-list-tpl"}
+      });*/
+      
+      ko.components.register("text-field", {
+          viewModel: function(params){
+              console.log(params);
+              this.text = ko.observable(params && params.initialText || "");
+              this.calculate = function(){
+                  if(this.text().length){
+                      return "Вы ввели: " + this.text() + " длиной " + this.text().length + " символов"
+                  }
+              };
+          },
+          template: {element: "tpl"}
+          /*template: "Введите текст: <input data-bind='value:text'> "
+                    + "<span data-bind='text:calculate()'></span>"*/
+      });
+      
+      ko.applyBindings();
+  </script>
+</body>
+
+</html>

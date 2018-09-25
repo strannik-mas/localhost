@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Demo-User</title>
+    <link rel='stylesheet' href='../style.css' />
+    <script src='../knockout.js'></script>
+    <script src='lib.js'></script>
+</head>
+<body>
+    <form action="" id="f" method="get" data-bind="submit:doit"></form>
+    
+    <div data-bind="event:{mouseover:function(m, e){showHint(m,e,'firstName')}, mouseout:hideHint}">
+        <label>Имя:</label>
+        <input type="text" form="f" data-bind="value:firstName, hasfocus:hasFocus">
+        <span class="hint" data-bind="visible:hint()=='firstName'">Например, Иван</span>
+    </div>
+    <div data-bind="event:{mouseover:function(m, e){showHint(m,e,'lastName')}, mouseout:hideHint}">
+        <label>Фамилия:</label>
+        <input type="text" form="f" data-bind="value:lastName">
+        <span class="hint" data-bind="visible:hint()=='lastName'">Например, Петров</span>
+    </div>
+    
+    <div>
+        <label for="">Phone:
+            <input type="text" form="f" data-bind="value:phone1">
+        </label><br>
+        <label for="">Phone2:
+            <input type="text" form="f" data-bind="value:phone2, enable:phone1">
+        </label>
+    </div>
+    <div>
+        <label>Вы человек?</label>
+        <input type="checkbox" form="f" data-bind="checked:agree"><br>
+        <input type="checkbox" form="f" data-bind="checked:goods, value:'one'">
+        <input type="checkbox" form="f" data-bind="checked:goods, value:'two'"><br>
+        
+        <input type="radio" form="f" data-bind="checked:gender" name="group" value="m">
+        <input type="radio" form="f" data-bind="checked:gender" name="group" value="f">
+    </div>
+    
+    <div>
+        <select data-bind="options:coursesList, optionsText:'title', optionsValue:'value', selectedOptions: selectedCourse"></select>
+    </div>
+    
+    <div>
+       <button data-bind="click:showData, enable:agree">Flag</button>
+        <button type="submit" form="f">Send</button>
+        <button data-bind="click:showData">Нажать</button>
+        <button data-bind="click:getInfo">Показать</button>
+        <button data-bind="click:setInfo">Изменить</button>
+    </div>
+    <script>
+        function User(){
+            var self = this;
+            var xml = {title: 'XML-XSLT', value: "xml2"};
+            
+            this.hasFocus = ko.observable(true);
+            this.coursesList = ko.observableArray([ 
+                {title: 'HTML', value: "html"}, 
+                {title: 'JavaScript-1', value: "js-1"}, 
+                {title: 'JavaScript-2', value: "js-2"}, 
+                xml,
+                {title: 'jQuery', value: "jq"}, 
+                {title: 'PHP-1', value: "php-1"}, 
+                {title: 'PHP-2', value: "php-2"}
+            ]);
+            this.selectedCourse = ko.observableArray(['xml2']);
+            
+            this.gender = ko.observableArray(['m', 'f']);
+            
+            this.goods = ko.observableArray(['one', 'two']);
+            this.agree = ko.observable(false);
+            this.phone1 = ko.observable("");
+            this.phone2 = ko.observable("");
+            this.firstName = ko.observable("Джон");
+            this.lastName = ko.observable("Smith");
+            /*this.showData = function(model, event){
+                console.log(model.firstName(), "нажал на кнопку")  ;
+                console.log("случилось событие: ", event);
+            };*/
+            this.showData = function(){
+                console.log(ko.toJSON(this));
+            };
+            this.getInfo = function(){
+                console.log(this.firstName());
+            };
+            this.setInfo = function(){
+                this.firstName("Mike");
+            };
+            
+            this.hint = ko.observable("");
+            this.showHint = function(model, event, hint){
+//                console.log(event.type);
+                this.hint(hint);
+            };
+            this.hideHint = function(model, event){
+//                console.log(event.type);
+                this.hint("");
+            };
+            
+            this.doit = function (){
+                console.log("post form");
+            }
+        }
+        ko.applyBindings(new User());
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.book{
+    border: 3px dotted #fa0056;
+}
+
+.book_selected {
+    background: #cef;
+}
+
+.book_default {
+    /*opacity:.5;*/
+    /*background: #ccc;*/
+}

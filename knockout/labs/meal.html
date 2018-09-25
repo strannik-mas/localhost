@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа: meal</title>
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+</head>
+
+<body>
+  <h2>Наши заказы</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Блюдо</th>
+        <th>Цена</th>
+        <th>...</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach:seats">
+        <tr>
+            <td><input type="text"  data-bind="value:name"></td>
+           <td><select data-bind="options:$root.availableMeals, optionsText:'mealName', optionsValue:'value', event:{change: $root.selectionChanged}"></select></td>
+            <td data-bind="text:formattedPrice"></td>
+            <td><button data-bind="click:$root.addSeat">Добавить</button></td>
+            <td><button data-bind="click:$root.removeSeat">Удалить</button></td>
+<!--
+            <td data-bind="text:$root.availableMeals[0].mealName"></td>
+            <td data-bind="text:$root.availableMeals[0].price"></td>
+-->
+      </tr>
+    </tbody>
+  </table>
+  <textarea id="jsonData" cols="70" rows="10"></textarea><br>
+  <button data-bind="click:dataExport, disable:seats().length == 0">Экспорт</button>
+  
+  <h3>Всего заказов на: <span data-bind="text:totalPrice().toFixed(2)"></span> руб.</h3>
+  
+  <script>
+    // Конструктор: отвечает за запись в таблице
+    function SeatReservation(name, initialMeal) {
+        var self = this;
+        self.name = name;
+        self.meal = ko.observable(initialMeal);
+        
+        self.formattedPrice = ko.computed(function() {
+//            console.log(self.meal());
+            if(self.meal().price > 0){
+                return "цена " + self.meal().price + " руб.";
+            } else {
+                return "нет";
+            }
+        });
+    }
+
+    // ViewModel
+    function ReservationsViewModel() {
+      var self = this;
+
+      // Список блюд по-умолчанию
+      self.availableMeals = [
+        { mealName: "Стакан воды", price: 0 , value: 0},
+        { mealName: "Стандарт (сэндвич)", price: 25, value: 1 },
+        { mealName: "Премиум (лобстеры)", price: 257.95, value: 2 },
+        { mealName: "Богема (филе жирафа)", price: 3720.99, value: 3 }
+      ];    
+
+        // Редактируемые данные
+        self.seats = ko.observableArray([
+            new SeatReservation("Вася", self.availableMeals[0]),
+            new SeatReservation("Петя", self.availableMeals[0])
+        ]);
+        
+        self.addSeat = function(){
+            /*var record = prompt("Имяпользователя и номер бдюда", "Гость|0");
+            record = record.split("|");
+            if(record[1] <= self.availableMeals.length -1){
+                self.seats.push(new SeatReservation(record[0], self.availableMeals[record[1]]));
+            } else {
+                alert("Блюда с таким номером еще нет");
+                self.addSeat();
+            }*/
+            
+            self.seats.push(new SeatReservation("", self.availableMeals[1]));
+        }; 
+        
+        self.removeSeat = function(seat){
+            self.seats.remove(seat);
+        };
+        
+        self.totalPrice = ko.computed(function(){
+            let arr = self.seats();
+            let sumPrice = 0;
+            for(let i=0; i<= arr.length-1; i++){
+                sumPrice += arr[i].meal().price;
+            }
+//            console.log(sumPrice);
+            return sumPrice;
+        }); 
+        
+        self.selectionChanged = function(model, event) {
+//            console.log(model.meal());  
+//            console.log(event.target.value); 
+            model.meal(self.availableMeals[event.target.value]);
+//            console.log(model.meal());
+        };
+        
+        self.dataExport = function(){
+            document.getElementById('jsonData').innerText = ko.toJSON(this.seats());
+        };
+    }
+
+    ko.applyBindings(new ReservationsViewModel());
+  </script>
+
+
+</body>
+
+</html>

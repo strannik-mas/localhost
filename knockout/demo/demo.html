@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Демонстрация: Knockout JavaScript library v3.4.2</title>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='../style.css' />
+  <script src='../knockout.js'></script>
+  <script src='lib.js'></script>
+</head>
+
+<body>
+<!--  <h1>Привет, <span data-bind="text:name"></span>! из <span data-bind="text:location"></span></h1>-->
+ <h1 data-bind="text:info"></h1>
+  <button id="btnName" data-bind="click:getName">Представьтесь</button>
+  <button id="btnLocation" data-bind="click:getLocation">Откуда вы?</button>
+  <button data-bind="click:addCourse">Добавить курс</button>
+  <button data-bind="click:debug">Debug</button>
+  
+  <p data-bind="with:announsedCourse">
+      Готов новый курс <strong data-bind="html:markedTitle"></strong>!<br>
+      Запишись, пока цена <span data-bind="text:price"></span> рублей.<br/>
+      <a data-bind="attr:{href: link}">Подробности...</a>
+  </p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>п/п</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Подготовка</th>
+        <th>Удалить</th>
+<!--        <th>&nbsp;</th>-->
+      </tr>
+    </thead>
+<!--    <tbody data-bind="foreach:{data:coursesList, includeDestroyed:true}">-->
+    <tbody data-bind="foreach:coursesList">
+      <tr>
+          <td data-bind="text:$index()+1"></td>
+        <td data-bind="text:$data.title"></td>
+        <td data-bind="text:price"></td>
+        <td>
+            <ul data-bind="foreach:reqs">
+                <li data-bind="text:$data"
+            </ul>
+        </td>
+        <td><button data-bind="click:$root.deleteCourse">Удалить</button></td>
+        
+<!--        <td data-bind="if:discount()>0" style="color:red">Дешевле на <span data-bind="text:discountFormat"></span>!</td>-->
+         <td data-bind="visible:discount()>0" style="color:red">Дешевле на <span data-bind="text:discountFormat, css:{discount: discount()> .15}, style:{fontWeight: discount()<.15?'bold':'normal'}"></span>!</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+      var announsedCourse = ko.observable(new Course('Super course', 2000));
+      announsedCourse().link = "http://ya.ru";
+      
+      function Course(title, price, reqs, discount){
+          this.title = ko.observable(title);
+          this.price = ko.observable(price);
+          this.reqs = (typeof reqs !== "undefined") ? reqs : [];
+          
+          var discount = (typeof discount !== "undefined") ? discount : 0;
+          
+          this.discount = ko.observable(discount);
+          this.discountFormat = ko.computed(function(){
+              return this.discount()*100 + "%";
+          }, this);
+          
+          this.markedTitle = ko.computed(function(){
+              return "<mark>" + this.title() + "</mark>";
+          }, this);
+      }
+      
+    //view-model
+      function Customer() {
+//          var self = this;
+          this.name = ko.observable("Гость");
+          this.location = ko.observable("Москвы");
+          this.getName = function(){
+            var name = prompt("Как вас зовут?", this.name());
+            this.name(name);
+          };
+          this.getLocation = function(){
+            var location = prompt("Откуда вы?", this.location());
+            this.location(location);
+          };
+          this.info = ko.computed(function(){
+//              console.log(this);
+//              return "Привет " + self.name() + " из " + self.location();
+              return "Привет " + this.name() + " из " + this.location();
+          }, this);
+          
+          // Добавляем список в объект Customer
+          this.coursesList = ko.observableArray([ 
+            new Course("HTML/CSS", 9150, [], .20), 
+            new Course("WebMastering", 13450, ["HTML and CSS"]), 
+            new Course("JavaScript-ECMA", 8950, ["HTML and CSS", "WebMastering"]) 
+          ]);
+          
+          this.addCourse = function(){
+              var obj = getCourse();
+              if("title" in obj){
+                  console.log(obj.discount);
+                  this.coursesList.push(new Course(obj.title, obj.price, obj.reqs, obj.discount));
+              }
+          };
+          var self= this;
+          this.deleteCourse = function(course){
+//              console.log(this);
+              console.log(course._destroy);
+//              console.log(self.coursesList().length);
+              self.coursesList.destroy(course);
+              console.log(course._destroy);
+          };
+          this.debug = function(){
+                var arr = this.coursesList()  ;
+                for(var i=0; i<arr.length; i++)
+                    console.log(arr[i].title(), arr[i]._destroy);
+          };         
+      };     
+      
+      //привязка view-model to view
+      ko.applyBindings(new Customer());
+//      console.log(customer.name());
+  </script>
+</body>
+    
+</html>

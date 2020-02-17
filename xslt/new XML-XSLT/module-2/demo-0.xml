@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pricelist [
+	<!ELEMENT pricelist (book+)>
+	<!ELEMENT book (title, author, price)>
+	<!ELEMENT title (#PCDATA)>
+	<!ELEMENT author (#PCDATA)>
+	<!ELEMENT price (#PCDATA)>
+]>
+<pricelist>
+	<book>
+		<title>Название</title>
+		<author>Автор</author>
+		<price>123.00</price>
+	</book>
+</pricelist>

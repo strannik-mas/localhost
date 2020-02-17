@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<?xml-stylesheet type="text/xsl" href="demo-7.xsl" ?>
+<mydata>
+	<types>
+		<type col="1" name="int" />
+		<type col="2" name="string" />
+		<type col="3" name="float" />
+	</types>
+	
+	<table>
+		<row>
+			<col no="1">1</col>
+			<col no="2">Название</col>
+			<col no="3">123.6</col>
+		</row>
+		<row>
+			<col no="1">2</col>
+			<col no="2">Название 2</col>
+			<col no="3">456.8</col>
+		</row>
+		<row>
+			<col no="1">3</col>
+			<col no="2">778.9</col>
+			<col no="3">123.6</col>
+		</row>
+	</table>
+</mydata>

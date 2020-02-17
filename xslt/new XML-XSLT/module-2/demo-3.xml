@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books SYSTEM "demo-3.dtd">
+<books>
+	<book>
+		<title>Название</title>
+		<author>Автор</author>
+		<price>123.00</price>
+		<publisher>&apress;</publisher>
+	</book>
+	<book>
+		<book>
+			<title>Название</title>
+			<author>Автор</author>
+			<price>123.00</price>
+			<publisher>&apress;</publisher>
+		</book>
+		<book>
+			<title>Название</title>
+			<author>Автор</author>
+			<price>123.00</price>
+			<publisher>&apress;</publisher>
+		</book>
+	</book>
+</books>

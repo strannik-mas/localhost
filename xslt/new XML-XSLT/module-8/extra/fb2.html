@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<title>Демонстрация FB2</title>
+		<style type="text/css">
+			#fb2 { font-family: Georgia, serif }
+			#fb2 p { margin: 0px }
+			#fb2 div.author, #fb2 h1, #fb2 h2 { text-align: center }
+			#fb2 h1 { font-size: 1.3em }
+			#fb2 h2 { font-size: 1.1em }
+			#fb2 h3 { font-size: 1em }
+			.epigraph { text-align: right; font-size:0.8em; font-style:italic; margin-left: 50% }
+			.epigraph p.author  { color: navy }
+			.chapter p { text-indent: 2em }
+			.cite, .citeAuthor { margin: 1em; margin-left: 10%; margin-right: 10%; text-align: left; font-family: cursive }
+			.poem { margin-left: 30%; margin-right: 30%; font-style: italic }
+			.stanza {margin-top: 1em; margin-bottom: 1em }
+			.stanza p { text-indent: 0px }
+		</style>
+		<script type="text/javascript">
+			function pageInit()
+			{
+			   // Загрузка документа
+			   var dom = new ActiveXObject("MSXML2.DOMDocument");
+			   dom.async = false;
+			   dom.load("monday.fb2.xml");
+			   
+			   // Загрузка XSLT
+			   var xsl = new ActiveXObject("MSXML2.DOMDocument");
+			   xsl.async = false;
+			   xsl.load("fb2.xsl");
+			   
+			   // Преобразование
+			   var result = dom.transformNode(xsl);
+			   document.body.innerHTML += result;				   
+			}
+			window.onload = pageInit;
+		</script>
+	</head>
+	<body>
+		<h1>Демонстрация FB2</h1>
+	</body>
+</html>

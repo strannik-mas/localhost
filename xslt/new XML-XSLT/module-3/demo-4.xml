@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="demo-4.xsd">
+	
+	<customer>
+		<id>A-2</id>
+		<name>Петя</name>
+		<age>24</age>
+		<birthday>2008-05-12</birthday>
+		<phone>240-45-45</phone>
+		<day>Понедельник</day>
+	</customer>	
+
+</root>

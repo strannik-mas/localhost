@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<myBooks>
+	
+	<book xmlns="http://igor-borisov.ru/catalog/pricelist">
+		<title>XML и IE5</title>
+		<author>Алекс Гомер</author>
+		<price>200</price>
+	</book>
+	
+	<book xmlns="http://igor-borisov.ru/catalog/staff">
+		<title>Dimanic HTML</title>
+		<author>Алекс Хоумер</author>
+		<price>120</price>
+	</book>
+	
+</myBooks>

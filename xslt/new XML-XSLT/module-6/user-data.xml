@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<users>
+	<user login="vasya@mail.ru">
+		<name>Василий Пупкин</name>
+		<age>28</age>
+		<phone>+7 (903) 123-45-67</phone>
+	</user>
+
+	<user login="fedya@mail.ru">
+		<name>Федор Сумкин</name>
+		<age>32</age>
+		<phone>+7 (905) 987-54-87</phone>
+	</user>
+
+	<user login="masha@mail.ru">
+		<name>Маша Морковкина</name>
+		<age>22</age>
+		<phone>+7 (909) 963-45-67</phone>
+	</user>	
+</users>

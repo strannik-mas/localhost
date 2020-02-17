@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<a:data xmlns="http://www.course-xml.ru/course/lab1"
+		xmlns:a="http://igor-borisov.ru/course/xml/lab2"
+		xmlns:html="http://www.w3.org/1999/xhtml">
+	<a:lesson id="">
+		<startDate>18-10-2010</startDate>
+		<description>
+			<html:div>
+				&lt; &gt; &amp; 
+			</html:div>
+		</description>
+	</a:lesson>
+</a:data>

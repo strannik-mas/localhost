@@ -77,11 +77,11 @@ function foo(x, y=2, z=3){
 }
 foo(1);
 function foo(x, y, ...a){
-	// var a = Array.prototype.slice.call(arguments, 2);
-	print(a);
+	var a = Array.prototype.slice.call(arguments, 2);
+	console.log(a);
 }
-foo(1,2,3,4,5,6)
-var p = ["a", "b", "c"];
+foo(1,2,3,4,5,6)*/
+/*var p = ["a", "b", "c"];
 var x = [1,2,...p];
 //тоже самое 
 // var x = x.concat(p);
@@ -120,12 +120,12 @@ let m = new Map();
 m.set('name', 'John');
 m.set('age', 25);
 // print(m.size);
-// print(m.get('name'));
+// print(m.get('name'));*/
 let s = new Set("hello");
 s.add(1).add(2).add('s').add(2);
-print(Array.from(s));
+console.log(Array.from(s));
 // print(s.size);
-*/
+
 /*
 class Shape{
 	constructor(x, y){

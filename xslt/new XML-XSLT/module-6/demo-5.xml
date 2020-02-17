@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo-5.xsl"?>
+<forum>
+	<!-- Сообщение форума -->
+	<message id="1" author="vasya@mail.ru">
+		<topic>Как дела?</topic>
+		<text>Как дела, народ?</text>
+
+		<!-- Ответы на сообщение в форуме -->
+		<message id="2" author="fedya@mail.ru">
+			<topic>Как дела?</topic>
+			<text>Нормально!</text>		
+		</message>
+		
+		<!-- Ответы на сообщение в форуме -->
+		<message id="3" author="masha@mail.ru">
+			<topic>Как дела?</topic>
+			<text>Превед!</text>		
+		</message>		
+		
+	</message>
+</forum>

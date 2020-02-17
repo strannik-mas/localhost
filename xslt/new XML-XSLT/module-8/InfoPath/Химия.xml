@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-infoPathSolution solutionVersion="1.0.0.1" productVersion="12.0.0" PIVersion="1.0.0.0" href="file:///C:\XML\module-8\InfoPath\Экзамены.xsn" name="urn:schemas-microsoft-com:office:infopath:-jg-lem-:-myXSD-2011-04-30T04-42-56" ?>
+<?mso-application progid="InfoPath.Document" versionProgid="InfoPath.Document.2"?>
+<my:Экзамен xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2011-04-30T04:42:56" xml:lang="ru">
+	<my:Преподаватель>Петров</my:Преподаватель>
+	<my:Предмет>Химия</my:Предмет>
+	<my:Дата>2011-04-29</my:Дата>
+	<my:Студенты>
+		<my:Студент>
+			<my:Фамилия>Пупкин</my:Фамилия>
+			<my:Оценка>3</my:Оценка>
+		</my:Студент>
+		<my:Студент>
+			<my:Фамилия>Сумкин</my:Фамилия>
+			<my:Оценка>4</my:Оценка>
+		</my:Студент>
+		<my:Студент>
+			<my:Фамилия>Морковкина</my:Фамилия>
+			<my:Оценка>5</my:Оценка>
+		</my:Студент>
+	</my:Студенты>
+</my:Экзамен>

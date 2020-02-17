@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mytable>
+	<row>
+		<int>1</int>
+		<string>Название</string>
+		<float>123.6</float>
+	</row>
+	<row>
+		<int>2</int>
+		<string>Название 2</string>
+		<float>456.8</float>
+	</row>
+	<row>
+		<int>3</int>
+		<string>778.9</string>
+		<float>123.6</float>
+	</row>
+</mytable>

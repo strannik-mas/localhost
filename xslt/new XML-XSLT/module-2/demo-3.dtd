@@ -1,0 +1,9 @@
+<!ELEMENT books (book+) >
+<!ELEMENT book ((title, author+, price, publisher) | book+ ) >
+<!ELEMENT title (#PCDATA) >
+<!ELEMENT author (#PCDATA) >
+<!ELEMENT price (#PCDATA) >
+<!ELEMENT publisher (#PCDATA) >
+<!ENTITY bhv "BHV">
+<!ENTITY will "Williams">
+<!ENTITY apress "A-Press Publishing">

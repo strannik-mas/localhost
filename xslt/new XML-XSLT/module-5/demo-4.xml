@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo-4.xsl"?>
+<menu>
+	<menuItem title="Поисковики">
+		<menuItem title="Гугль" link="http://www.google.ru" />
+		<menuItem title="Яндекс" link="http://www.yandex.ru" />
+		<menuItem title="Бинг" link="http://www.bing.com" />
+	</menuItem>
+	
+	<menuItem title="Специалист">
+		<menuItem title="Курсы PHP">
+			<menuItem title="PHP. Уровень 1. Основы создания сайтов" link="http://www.specialist.ru/course/rnr1-a" />
+			<menuItem title="PHP. Уровень 2. Разработка web - сайтов и взаимодействие с MySQL" link="http://www.specialist.ru/course/rnr2-a" />
+			<menuItem title="PHP. Уровень 3. Профессиональная разработка на PHP5" link="http://www.specialist.ru/course/rnr3" />
+			<menuItem title="РНР. Уровень 4. Проектирование и разработка сложных веб - проектов на РНР 5" link="http://www.specialist.ru/course/php4" />
+		</menuItem>
+		<menuItem title="Курсы JavaScript">
+			<menuItem title="JavaScript. Уровень 1. Основы веб - программирования" link="http://www.specialist.ru/course/oprveb" />
+			<menuItem title="JavaScript. Уровень 2. Расширенные возможности" link="http://www.specialist.ru/course/dzhsk-a" /><menuItem title="AJAX. Разработка веб - приложений для Web 2.0" link="http://www.specialist.ru/course/ayaks" />			
+		</menuItem>	
+	</menuItem>
+</menu>

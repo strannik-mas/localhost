@@ -98,9 +98,9 @@
         <div>
             <h3 v-if="switched">Component is enabled</h3>
             <h3 v-else>Component is disabled</h3>
-        </div>-->
+        </div>
 
-        <!--<h1>bootstrap</h1>-->
+        <h1>bootstrap</h1>
         <form class="pt-3" @submit.prevent="onSubmit">
             <div class="form-group">
                 <label for="email">Email</label>
@@ -116,7 +116,7 @@
                 <div class="invalid-feedback" v-if="!$v.email.email">This field should be an email</div>
                 <div class="invalid-feedback" v-if="!$v.email.uniqueEmail">This email is already exists</div>
             </div>
-<!--            <pre>{{$v.email}}</pre>-->
+            <pre>{{$v.email}}</pre>
 
             <div class="form-group">
                 <label for="password">Password</label>
@@ -155,7 +155,37 @@
                     type="submit"
                     :disabled="$v.$invalid"
             >Submit</button>
-        </form>
+        </form>-->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!--<li class="nav-item">
+
+                        <router-link class="nav-link" :to="'/'">Home</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="'/cars'">Cars</router-link>
+                        </li>-->
+                    <router-link tag="li" class="nav-item" to="/" active-class="active" exact>
+                        <a class="nav-link">Home</a>
+                    </router-link>
+                    <router-link tag="li" class="nav-item" to="/cars" active-class="active" exact>
+                        <a class="nav-link">Cars</a>
+                    </router-link>
+
+                    <router-link tag="li" class="nav-item" to="/car/3" active-class="active" exact>
+                        <a class="nav-link">Car 3</a>
+                    </router-link>
+                    <router-link tag="li" class="nav-item" to="/car/4" active-class="active" exact>
+                        <a class="nav-link">Car 4</a>
+                    </router-link>
+
+                </ul>
+            </div>
+        </nav>
+
+        <router-view></router-view>
     </div>
 
 </template>
@@ -167,20 +197,20 @@
 
     // import listMixin from "./listMixin";
     // import Onoff from "./Onoff";
-    import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+    //import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
     export default {
         methods: {
           /*changeNameToAudi() {
               this.carName = 'Audi';
-          }*/
+          }
             onSubmit() {
                 console.log('Email', this.email);
                 console.log('Password', this.password);
                 this.email = '';
                 this.password = '';
                 this.confirmPassword = '';
-            }
+            }*/
         },
         name: 'app',
         data() {
@@ -203,12 +233,12 @@
                 // defaultSocial: 'vk',
                 // age: 20
                 // switched: true
-                form: {
-                    password: ''
-                },
-                email: '',
-                password: '',
-                confirmPassword: '',
+                // form: {
+                //     password: ''
+                // },
+                // email: '',
+                // password: '',
+                // confirmPassword: '',
             }
         },
         watch: {
@@ -241,7 +271,7 @@
                 });
             }*/
         },
-        validations: {
+        /*validations: {
             email: {
                 required,  //для ES6 можно совпадающие значения не указывать
                 email,
@@ -260,13 +290,13 @@
                 minLength: minLength(6)
             },
             confirmPassword: {
-                /*sameAs: sameAs((vue) => {
+                /!*sameAs: sameAs((vue) => {
                     // return vue.form.password;
                     return vue.password;
-                })*/
+                })*!/
                 sameAs: sameAs('password')
             }
-        }
+        }*/
         //mixins: [listMixin]
     }
 </script>

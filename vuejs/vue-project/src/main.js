@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import Vuelidate from 'vuelidate';
 import App from './App.vue';
-/*import ColorDirective from './color'
+/*import Vuelidate from 'vuelidate';
+import ColorDirective from './color'
 // import List from "./List";
 //import Car from './Car.vue'
 
@@ -18,13 +18,19 @@ Vue.mixin({
     beforeCreate() {
         console.log('beforeCreate')
     }
-});*/
+});
 
-Vue.use(Vuelidate);
+Vue.use(Vuelidate);*/
+
+import VueRouter from 'vue-router';
+import router from './routes'
+
+Vue.use(VueRouter)
 
 new Vue({
     el: '#app',
-    render: h => h(App)
+    render: h => h(App),
+    router
 });
 
 

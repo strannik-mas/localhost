@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 1px solid #000;
+            display: inline-block;
+            margin: 40px;
+        }
+
+        .red {background: red;}
+        .blue {background: blue;}
+        .green {background: green;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<input type="text" v-on:input="changeName">
+    <h1>String: {{ name }}</h1>
+    <h1>Sum: {{ 10 + 60 }}</h1>
+    <h1>Num: {{ number }}</h1>
+    <h1>Method {{ sayHello() }}</h1>
+    <h1>If statement: {{ isOk ? 'I am OK' : "I am not ok" }}</h1>
+    <h1>Functions: {{ string.split('').reverse().join('') }}</h1>
+    <h2><a v-bind:href="url">{{ url }}</a></h2>
+    <h2 v-html="link"></h2>
+    <hr>
+
+    <h2 v-on:mouseover="onHover">Счетчик2 = {{ counter2 }}</h2>
+    <button v-on:click="counter2++">Увеличить</button>
+
+    <h2>{{ title }} = {{ counter }}</h2>
+    <button v-on:click="riseCounter(5, 'Изменено на 5', $event)">Увеличить на 5</button>
+    <button v-on:click="riseCounter(10, 'Изменено на 10', $event)">Увеличить на 10</button>
+    <h2>
+        <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
+    </h2>
+    <h2 v-on:mousemove="handleMouseMove">
+        X: {{ x }} \ Y: {{ y }}
+        <span v-on:mousemove.stop="">Не изменять</span>
+    </h2>
+    <hr>
+    <input type="text" v-on:keyup.enter.space="alertValue">
+    <h2><a :href="url">Google</a></h2>
+    <h2>Counter: {{ counter }}</h2>
+    <button @click="counter++">Увеличить</button>
+    <input type="text" @input="inputValue = $event.target.value" :value="inputValue">
+    <input type="text" v-model.lazy="inputValue">
+    <h2>{{ inputValue }}</h2>
+    <div class="circle" @click="isActive = !isActive" :class="{'red': isActive, 'green': !isActive}"></div>
+    <div class="circle" @click="isActive = !isActive" :class="getCssClasses"></div>
+    <div class="circle" :class="[color, {'red': isActive}]"></div>
+    <div class="circle" :style="circleClasses"></div>
+    <div class="circle" :style="[circleClasses, {'width': height + 'px'}]"></div>
+    <hr>
+    <input type="text" v-model="color">
+    <input type="text" v-model="height">
+    <h2 v-if="isVisible">I am visible</h2>
+    <h2 v-else>No I am not</h2>
+    <button @click="isVisible = !isVisible">toggle</button>
+    <h2 v-if="type == 'a'">A</h2>
+    <h2 v-else-if="type == 'b'">B</h2>
+    <h2 v-else-if="type == 'c'">C</h2>
+    <h2 v-else>not match</h2>
+    <hr>
+    <input type="text" v-model="type">
+    <template v-if="isVisible">
+        <h2>I am title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, tempore!</p>
+    </template>
+
+    <template v-else>
+        <h2 style="color: red">I am title</h2>
+        <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, tempore!</p>
+    </template>
+    <h1 v-show="isVisible">I am visible</h1>
+    <h2 v-show="!isVisible">No I am not</h2>
+    <hr>
+    <button @click="isVisible = !isVisible">toggle</button>
+    <ul>
+        <li v-for="person in people">{{ person }}</li>
+        <li v-for="(person, index) in people">{{index+1}}. {{ person.name }} - <b>{{ person.age }}</b></li>
+        <li v-for="(person, index) of people">{{index+1}}. {{ person.name }} - <b>{{ person.age }}</b></li>
+    </ul>
+    <hr>
+    <ol>
+        <li v-for="num of 4">{{num}}</li>
+    </ol>
+    <hr>
+    <ul>
+        <li v-for="(value, key, index) in person"><em>{{index+1}}. </em><b>{{key}} </b>{{value}}</li>
+    </ul>
+    <h2>Counter {{counter}} \ {{counter2}}</h2>
+    <h3>Result: {{result()}}</h3>
+    <h3>Computed result: {{computedResult}}</h3>
+    <button @click="add">Add</button>
+    <button @click="sub()">Sub</button>
+    <button @click="counter2++">Add2</button>
+    <h2>{{ title }}</h2>
+    <h3>{{newField}}</h3>
+    <button @click="title = 'Updated title'">Update title</button>
+</div>
+<hr>
+<div id="app2">
+    <h2>{{ title }}</h2>
+    <button @click="updateFirstTitle">Update first title</button>
+    <h2 ref="heading">{{ title }}</h2>
+    <button @click="updateFirstTitle">Update title</button>
+    <hr ref="horline">
+    <h2>{{ title }}</h2>
+    <button @click="title = 'Updated title'">Update title</button>
+    <button @click="doDestroy">destroy</button>
+    <div style="border: 1px solid #000; padding: 1px;">
+        <h2>Counter {{counter}}</h2>
+        <button @click="counter++">Add to counter</button>
+    </div>
+
+    <div style="border: 1px solid #000; padding: 1px;">
+        <h2>Counter {{counter2}}</h2>
+        <button @click="counter2++">Add to counter2</button>
+    </div>-->
+    <my-counter v-for="c in 2"></my-counter>
+</div>
+<hr>
+<div id="app2">
+    <my-counter></my-counter>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    /*var dataObj = {
+        counter: 0
+    };*/
+
+    var component = {
+        template: `
+            <div style="border: 1px solid #000; padding: 1px;">
+                <h2>Counter: {{counter}}</h2>
+                <button @click="counter++">Add to counter</button>
+            </div>
+        `,
+        data: function () {
+            return {
+                counter: 0
+            };
+        },
+        methods: {
+            add: function(){
+                this.counter++;
+            }
+        }
+    }
+
+    /*Vue.component('my-counter', {
+        template: `
+            <div style="border: 1px solid #000; padding: 1px;">
+                <h2>Counter: {{counter}}</h2>
+                <button @click="counter++">Add to counter</button>
+            </div>
+        `,
+        data: function () {
+            return {
+                counter: 0
+            };
+            //return dataObj;     //работает по ссылке, т.е. для всех объектов каунтер будет общий
+        },
+        methods: {
+            add: function(){
+                this.counter++;
+            }
+        }
+    });*/
+
+    new Vue({
+        el: '#app',
+            /*data: {
+              /*type: 'a',
+                counter2: 0,
+                name: 'Vue!',
+                number: 1002,
+                isOk: false,
+                string: 'My name is Vlad'
+                url: 'http://google.com'
+                link: '<a href="http://google.com">Google</a>'
+                title: 'Счетчик',
+                counter: 0,
+                x: 0,
+                y: 0
+
+                url: 'http://google.com'
+                inputValue: 'Initial value'
+                isActive: false,
+                color: 'blue',
+                height: 100
+                isVisible: true
+                people: [
+                    'Vlad',
+                    'Max',
+                    'Elena',
+                    'Sasha'
+                ]
+                people: [
+                    {name: 'Vlad', age:20},
+                    {name: 'Max', age:20},
+                    {name: 'Elena', age:20}
+                ],
+                person: {
+                    name: "Max",
+                    age: 50,
+                    job: "Frontend"
+                }
+                counter: 0,
+                counter2: 0
+                //condition: 'less than 3'
+            title: 'Hello I am Vue!',
+            counter: 0,
+            counter2: 0,
+        },*/
+        /*beforeCreate: function(){
+            console.log('before create');
+        },
+        created: function(){
+            console.log('created');
+        },
+        beforeMount: function(){
+            console.log('before mount');
+        },
+        mounted: function(){
+            console.log('mounted');
+        },
+        beforeUpdate: function(){
+            console.log('before update');
+        },
+        updated: function(){
+            console.log('updated');
+        },
+        beforeDestroy: function(){
+            console.log('before destroy');
+        },
+        destroyed: function(){
+            console.log('destroyed');
+        },*/
+        methods: {
+            /*onHover: function (event) {
+                event.target.style.color = 'red';
+            },
+            changeName: function(event) {
+                this.name = event.target.value;
+            }
+            sayHello: function () {
+                return 'I am function';
+            }
+            riseCounter: function(num, str, event){
+                this.counter += num;
+                this.title = str;
+
+                if (num === 5){
+                    //blue
+                    event.target.style.color = 'blue';
+                } else if (num === 10) {
+                    //red
+                    event.target.style.color = 'red';
+                }
+            }
+            clickOnGoogle: function (event) {
+                event.preventDefault();
+            }
+            handleMouseMove: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            alertValue: function (event) {
+                alert(event.target.value);
+
+            }
+            getCssClasses: function () {
+                return {
+                    'red': this.isActive,
+                    'green': !this.isActive
+                }
+            }
+            add: function () {
+                this.counter++;
+                this.condition = this.counter > 3 ? 'More than 3' : 'less than 3';
+            },
+            sub: function () {
+                this.counter--;
+                this.condition = this.counter > 3 ? 'More than 3' : 'less than 3';
+            },
+            result: function () {
+                return this.condition = this.counter > 3 ? 'More than 3' : 'less than 3';
+            }
+            alertFast: function () {
+                alert('i from vue1');
+            }
+            updateFirstTitle: function () {
+                this.title = 'new';
+                this.$refs.heading.style.color = 'red';
+                // console.log(this.$refs);
+                console.log(this.$refs.horline);
+            }*/
+            doDestroy: function () {
+                this.$destroy();
+            }
+        },
+        computed: {
+            /*getCssClasses: function () {
+                return {
+                    'red': this.isActive,
+                    'green': !this.isActive
+                }
+            }
+            circleClasses: function () {
+                return {
+                    'background': this.color,
+                    'height': this.height + 'px'
+                }
+            }
+            computedResult: function () {
+                return this.condition = this.counter > 3 ? 'More than 3' : 'less than 3';
+            }*/
+        },
+        watch: {
+            /*counter: function (val) {
+                //console.log(this.counter);
+                console.log(val);
+            }*/
+        },
+        //template: '<div><h1>{{title}}</h1><p>sslkj</p></div>'
+        components: {
+            'my-counter' : component
+        }
+    });
+
+    /*vue1.$mount('#app');    //тоже что с полем el
+
+    vue1.newField = 'Random text';
+
+    new Vue({
+        el: '#app2',
+        data: {
+            title: 'Hello from vue 2'
+        },
+        methods: {
+            updateFirstTitle: function () {
+                vue1.title = 'Updated from second app';
+                vue1.newField = 'New new field';
+
+                setTimeout(function () {
+                    vue1.alertFast();
+                }, 1000)
+            }
+        }
+    });*/
+
+    new Vue({
+       el: '#app2',
+        components: {
+           myCounter: component
+        }
+    });
+</script>
+</body>
+</html>

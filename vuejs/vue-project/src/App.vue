@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container pt-5 text-center">
         <!--<h1>Parent: {{carName}}</h1>
 
         <app-counter :counter="counter"></app-counter>
@@ -155,18 +155,18 @@
                     type="submit"
                     :disabled="$v.$invalid"
             >Submit</button>
-        </form>-->
+        </form>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!--<li class="nav-item">
+                    <li class="nav-item">
 
                         <router-link class="nav-link" :to="'/'">Home</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" :to="'/cars'">Cars</router-link>
-                        </li>-->
+                        </li>
                     <router-link tag="li" class="nav-item" to="/" active-class="active" exact>
                         <a class="nav-link">Home</a>
                     </router-link>
@@ -186,6 +186,35 @@
         </nav>
 
         <router-view></router-view>
+        <div class="form-group">
+            <label for="name">Car Name</label>
+            <input type="text" class="form-control" v-model.trim="carName" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="year">Car year</label>
+            <input type="text" class="form-control" v-model.number="carYear" id="year">
+        </div>
+
+        <button class="btn btn-success" @click="createCar">Create car</button>
+        <button class="btn btn-primary" @click="loadCars">Load cars</button>
+        <hr>
+        <ul class="list-group">
+            <li
+                    class="list-group-item"
+                    v-for="car of cars"
+                    :key="car.id"
+            ><b>{{car.name}}</b> -{{car.year}}</li>
+        </ul>
+
+        <app-counter :counter="counter"></app-counter>
+        <app-actions @counterUpdated="counter += $event"></app-actions>-->
+        <h1>{{title}}</h1>
+        <hr>
+        <app-counter></app-counter>
+        <app-second-counter></app-second-counter>
+        <hr>
+        <app-actions></app-actions>
     </div>
 
 </template>
@@ -193,11 +222,13 @@
 <script>
 
     // import Car from './Car.vue';
-    //import Counter from './Counter.vue';
+    import Counter from './Counter.vue';
 
     // import listMixin from "./listMixin";
     // import Onoff from "./Onoff";
     //import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+    import Actions from "./Actions";
+    import SecondCounter from "./SecondCounter";
 
     export default {
         methods: {
@@ -210,15 +241,53 @@
                 this.email = '';
                 this.password = '';
                 this.confirmPassword = '';
+            }
+            createCar(){
+                const car = {
+                    name: this.carName,
+                    year: this.carYear
+                }
+                // this.$http.post('http://localhost:3000/cars', car)
+                //     .then(responce => {
+                //         console.log(responce);
+                //         return responce.json();
+                //     })
+                //     .then(newCar => {
+                //         console.log(newCar)
+                //     })
+
+                this.resource.save({}, car);
+            },
+            loadCars(){
+                // this.$http.get('http://localhost:3000/cars')
+                // .then(responce => {
+                //     console.log(responce);
+                //     return responce.json();
+                // })
+                // .then(cars => {
+                //     this.cars = cars;
+                //     // console.log(cars)
+                // })
+
+                this.resource.get().then(responce => {
+                    console.log(responce);
+                    return responce.json();
+                })
+                .then(cars => {
+                    this.cars = cars;
+                    console.log(cars)
+                });
             }*/
         },
         name: 'app',
         data() {
             return {
                 //msg: 'Welcome   sss'
-                //carName: 'Ford',
+                // carName: 'Ford',
                 // carName: 1000,
                 // carYear: 2010,
+                // cars: [],
+                // resource: null,
                 // visible: true,
                 // counter: 0
                 //title: 'Hello I am Vue!',
@@ -251,6 +320,9 @@
             //appCar: Car,
             //appCounter: Counter
             // appOnoff: Onoff
+            appCounter: Counter,
+            appActions: Actions,
+            appSecondCounter: SecondCounter
         },
         /*directives: {
             font: {
@@ -270,6 +342,9 @@
                     return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1;
                 });
             }*/
+            title() {
+                return this.$store.getters.title
+            }
         },
         /*validations: {
             email: {
@@ -296,8 +371,11 @@
                 })*!/
                 sameAs: sameAs('password')
             }
+        }
+        mixins: [listMixin],
+        created() {
+            this.resource = this.$resource('cars');
         }*/
-        //mixins: [listMixin]
     }
 </script>
 

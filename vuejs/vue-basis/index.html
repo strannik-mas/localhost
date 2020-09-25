@@ -357,13 +357,22 @@
                 }, 1000)
             }
         }
-    });*/
+    });
 
     new Vue({
        el: '#app2',
         components: {
            myCounter: component
         }
+    });*/
+
+    window.addEventListener('load', () => {
+        new Vue({
+            el: 'body',
+            components: {
+                myCounter: component
+            }
+        });
     });
 </script>
 </body>
